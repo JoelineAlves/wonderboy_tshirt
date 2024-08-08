@@ -25,9 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p*gkx!ihepw+_(3xfukrl(l92338!kl_r*hvfy)@xqbz@(168q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-joelinealve-wonderboyts-9eq11vf2ubo.ws-eu115.gitpod.io']
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-joelinealve-wonderboyts-9eq11vf2ubo.ws-eu115.gitpod.io',
+]
 
 
 # Application definition
@@ -53,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'wonderboy_tshirt.urls'
@@ -82,6 +88,16 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'wonderboy_tshirt.wsgi.application'
 
