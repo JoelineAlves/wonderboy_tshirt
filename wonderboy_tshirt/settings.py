@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io/']
+CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
 
 
 # Application definition
@@ -53,6 +53,8 @@ INSTALLED_APPS = [
 
      # Other
      'crispy_forms',
+     'bootstrap4',
+     'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
