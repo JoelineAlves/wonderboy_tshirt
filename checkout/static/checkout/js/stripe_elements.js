@@ -103,7 +103,7 @@ form.addEventListener('submit', function(ev) {
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     // Submit the form once payment is confirmed
-                    //form.submit();
+                    form.submit();
                 }
             }
         });
