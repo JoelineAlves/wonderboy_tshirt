@@ -1,1 +1,1 @@
-web: gunicorn wonderboytshirt.wsgi:application
+web: gunicorn wonderboy_tshirt.wsgi:application
