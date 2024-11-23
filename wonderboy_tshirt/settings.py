@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-p*gkx!ihepw+_(3xfukrl(l92338!kl_r*hvfy)@xqbz@(168q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
+ALLOWED_HOSTS = ['wonderboytshirt.herokuapp.com', '8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
 
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
@@ -126,12 +126,20 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'wonderboy_tshirt.wsgi.application'
 
 
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     }
- }
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
