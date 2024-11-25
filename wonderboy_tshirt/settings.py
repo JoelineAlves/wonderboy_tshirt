@@ -57,7 +57,7 @@ INSTALLED_APPS = [
      'crispy_forms',
      'bootstrap4',
      'crispy_bootstrap4',
-      'storages',
+     'storages',
 ]
 
 MIDDLEWARE = [
@@ -182,8 +182,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-# Directory where static files will be collected
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
