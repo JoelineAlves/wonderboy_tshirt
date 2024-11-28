@@ -31,7 +31,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ['wonderboytshirt.herokuapp.com', 'joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io', 'wonderboytshirt-90045f83868e.herokuapp.com']
 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io', 'https://wonderboytshirt.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
 
 
 
