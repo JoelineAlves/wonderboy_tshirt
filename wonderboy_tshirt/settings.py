@@ -28,10 +28,19 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['wonderboytshirt.herokuapp.com', 'localhost:8000', 'wonderboytshirt-90045f83868e.herokuapp.com']
+ALLOWED_HOSTS = [
+    'wonderboytshirt.herokuapp.com',  # Heroku
+    'joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io',  # Gitpod
+    'localhost',  # Para testes locais
+    '127.0.0.1',  # Para IP local
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://wonderboytshirt.herokuapp.com',  # Heroku com HTTPS
+    'https://joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io',  # Gitpod com HTTPS
+    'http://localhost:8000',  # Localhost sem HTTPS
+]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
 
 
 # Application definition
