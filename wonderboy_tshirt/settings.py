@@ -28,10 +28,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['wonderboytshirt.herokuapp.com', 'joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io', 'wonderboytshirt-90045f83868e.herokuapp.com']
+ALLOWED_HOSTS = ['joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io', 'wonderboytshirt-90045f83868e.herokuapp.com']
 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io']
+CSRF_TRUSTED_ORIGINS = [
+    'https://wonderboytshirt-90045f83868e.herokuapp.com',  # Domínio de produção no Heroku
+    'https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io',  # Domínio de desenvolvimento no Gitpod
+]
+
 
 
 
@@ -182,7 +186,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
