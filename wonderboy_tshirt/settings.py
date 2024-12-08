@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+#DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG=True
 
 ALLOWED_HOSTS = [
     '8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io',
@@ -36,7 +37,8 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://wonderboytshirt-90045f83868e.herokuapp.com',  # Domínio de produção no Heroku
-    'https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io',  # Domínio de desenvolvimento no Gitpod
+    #'https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io',  # Domínio de desenvolvimento no Gitpod
+    'https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io/',
 ]
 
 
