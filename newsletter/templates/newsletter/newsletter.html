@@ -14,30 +14,34 @@
   </div>
   <hr>
 
-  {% for letter in newsletters %}
-  <div class="flex-col gap-2">
-    <h2 class="ft-sky-300">{{ letter.title }}</h2>
-    {% if letter.image %}
-      <img class="newsletter-img bd-radius-1" src="{{ letter.image.url }}" alt="{{ letter.title }}">
-    {% elif letter.image_url %}
-      <img class="newsletter-img bd-radius-1" src="{{ letter.image_url }}" alt="{{ letter.title }}">
-    {% else %}
-      <p>No image available</p>
-    {% endif %}
-    
-    <div class="flex-row-wrap justify-between gap-3">
-      <p>{{ letter.content }}</p>
-      <div class="flex-row align-center gap-2">
-        <p>{{ letter.date_published|date:"F j, Y" }}</p>  <!-- Formatted date -->
-        {% if user.is_superuser %}
-        <a href="{% url 'edit_newsletter' letter.id %}" class="btn btn-md bg-amber-400 ft-slate-900 bd-radius-1 bd-width-0">Edit</a>
-        <a href="{% url 'delete_newsletter' letter.id %}" class="btn btn-md bg-red-400 ft-slate-900 bd-radius-1 bd-width-0">Delete</a>
-        {% endif %}
+  {% if newsletters %}
+    {% for letter in newsletters %}
+    <div class="flex-col gap-2">
+      <h2 class="ft-sky-300">{{ letter.title }}</h2>
+      {% if letter.image %}
+        <img class="newsletter-img bd-radius-1" src="{{ letter.image.url }}" alt="{{ letter.title }}">
+      {% elif letter.image_url %}
+        <img class="newsletter-img bd-radius-1" src="{{ letter.image_url }}" alt="{{ letter.title }}">
+      {% else %}
+        <p>No image available</p>
+      {% endif %}
+      
+      <div class="flex-row-wrap justify-between gap-3">
+        <p>{{ letter.content }}</p>
+        <div class="flex-row align-center gap-2">
+          <p>{{ letter.date_published|date:"F j, Y" }}</p>  <!-- Formatted date -->
+          {% if user.is_superuser %}
+          <a href="{% url 'edit_newsletter' letter.id %}" class="btn btn-md bg-amber-400 ft-slate-900 bd-radius-1 bd-width-0">Edit</a>
+          <a href="{% url 'delete_newsletter' letter.id %}" class="btn btn-md bg-red-400 ft-slate-900 bd-radius-1 bd-width-0">Delete</a>
+          {% endif %}
+        </div>
       </div>
     </div>
-  </div>
-  <hr>
-  {% endfor %}
+    <hr>
+    {% endfor %}
+  {% else %}
+    <p>Atualmente, não há newsletters disponíveis. Fique ligado para atualizações futuras!</p>
+  {% endif %}
 </div>
 
 {% endblock %}
