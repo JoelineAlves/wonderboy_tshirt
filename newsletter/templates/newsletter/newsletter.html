@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ newsletter.title }}{% endblock %}
+{% block title %}Newsletters{% endblock %}
 
 {% block content %}
 <div class="container width-60 breakpoint-lg margin-auto pad-2 flex-col gap-2">
@@ -8,36 +8,38 @@
     <h1>Newsletters</h1>
     <!-- Check if user is superuser -->
     {% if user.is_superuser %}
-    <a href="{% url 'create_newsletter' %}" class="btn btn-md bg-sky-400 ft-slate-900 bd-radius-1 bd-width-0">Create
-      Newsletter</a>
+      <a href="{% url 'create_newsletter' %}" class="btn btn-md bg-sky-400 ft-slate-900 bd-radius-1 bd-width-0">Create Newsletter</a>
     {% endif %}
   </div>
   <hr>
 
-  {% for letter in newsletters %}
-
-  <div class="flex-col gap-2">
-    <h2 class="ft-sky-300">{{ letter.title }}</h2>
-    {% if letter.image %}
-    <img class="newsletter-img" src="{{ letter.image.url }}" alt="{{ letter.title }}" class="bd-radius-1">
-    {% else %}
-    <img class="newsletter-img" src="{{ letter.image_url }}" alt="{{ letter.title }}" class="bd-radius-1">
-    {% endif %}
-    <div class="flex-row-wrap justify-between gap-3">
-      <p>{{ letter.content }}</p>
-      <div class="flex-row align-center gap-2">
-        <p>{{ letter.date_published }}</p>
-        {% if user.is_superuser %}
-        <a href="{% url 'edit_newsletter' letter.id %}"
-          class="btn btn-md bg-amber-400 ft-slate-900 bd-radius-1 bd-width-0">Edit</a>
-        <a href="{% url 'delete_newsletter' letter.id %}"
-          class="btn btn-md bg-red-400 ft-slate-900 bd-radius-1 bd-width-0">Delete</a>
+  {% if newsletters %}
+    <!-- Loop through newsletters -->
+    {% for letter in newsletters %}
+      <div class="flex-col gap-2">
+        <h2 class="ft-sky-300">{{ letter.title }}</h2>
+        {% if letter.image %}
+          <img class="newsletter-img" src="{{ letter.image.url }}" alt="{{ letter.title }}" class="bd-radius-1">
+        {% else %}
+          <img class="newsletter-img" src="{{ letter.image_url }}" alt="{{ letter.title }}" class="bd-radius-1">
         {% endif %}
+        <div class="flex-row-wrap justify-between gap-3">
+          <p>{{ letter.content }}</p>
+          <div class="flex-row align-center gap-2">
+            <p>{{ letter.date_published }}</p>
+            {% if user.is_superuser %}
+              <a href="{% url 'edit_newsletter' letter.id %}" class="btn btn-md bg-amber-400 ft-slate-900 bd-radius-1 bd-width-0">Edit</a>
+              <a href="{% url 'delete_newsletter' letter.id %}" class="btn btn-md bg-red-400 ft-slate-900 bd-radius-1 bd-width-0">Delete</a>
+            {% endif %}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <hr>
-  {% endfor %}
+      <hr>
+    {% endfor %}
+  {% else %}
+    <!-- Message displayed if there are no newsletters -->
+    <p>No newsletters available yet.</p>
+  {% endif %}
 </div>
-
 {% endblock %}
+
