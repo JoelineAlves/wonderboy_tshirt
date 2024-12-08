@@ -1,17 +1,30 @@
 from django import forms
-from .models import SubscribeToNewsletter
+from .models import Newsletters
 
 class NewsletterForm(forms.ModelForm):
+
     class Meta:
-        model = SubscribeToNewsletter
-        fields = ['newsletter', 'email']  # Fields for choosing the newsletter and the email address
+        model = Newsletters
+        fields = [
+            'title', 
+            'content', 
+            'date_published',
+            'image',
+            'image_url'
+        ]
+        widgets = {
+            'date_published': forms.DateInput(attrs={'type': 'date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Define placeholders and CSS classes for fields
         placeholders = {  
-            'email': 'Enter your email',
+            'title': 'Title',
+            'content': 'Content',
+            'date_published': 'Date Published',
+            'image': 'Image',
+            'image_url': 'Image URL'
         }
 
         classes = [
@@ -25,7 +38,6 @@ class NewsletterForm(forms.ModelForm):
             'pad-inline-1'
         ]
 
-        # Apply the placeholders and classes to the fields
         for field in self.fields:
             if field in placeholders:
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
