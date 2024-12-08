@@ -28,7 +28,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io', 'wonderboytshirt-90045f83868e.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io',
+    'wonderboytshirt-90045f83868e.herokuapp.com',
+]
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -76,6 +79,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ROOT_URLCONF = 'wonderboy_tshirt.urls'
 
