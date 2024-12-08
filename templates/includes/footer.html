@@ -1,0 +1,120 @@
+<footer class="bg-slate-900 pad-4 flex-col">
+    <div class="container width-90 breakpoint-lg margin-auto">
+      <div class="grid tracks-fixed track-size-300 justify-center gap-2">
+        <!-- Section 1 -->
+        <div class="flex-col gap-2" aria-labelledby="about-us">
+          <p id="about-us" class="ft-size-2xl ft-sky-400">About Us</p>
+          <p class="ft-size-sm">
+            My Fitness provides a service for all your fitness equipment needs.
+          </p>
+        </div>
+        <!-- Section 2 -->
+        <div class="flex-col gap-2" aria-labelledby="contact-us">
+          <p id="contact-us" class="ft-size-2xl ft-sky-400">Contact Us</p>
+          <ul class="flex-col gap-2 ft-size-sm">
+            <li>
+              <p class="ft-sky-hover-300">
+                Email: <a href="mailto:example@email.com">example@email.com</a>
+              </p>
+            </li>
+            <li>
+              <p class="ft-sky-hover-300">
+                Phone: <a href="tel:0123456789">0123456789</a>
+              </p>
+            </li>
+            <li>
+              <p class="ft-sky-hover-300">
+                Address: 123 Example Street, Example City, EX1 2PL
+              </p>
+            </li>
+          </ul>
+        </div>
+        <!-- Section 3-->
+        <div class="flex-col gap-2" aria-labelledby="useful-links">
+          <p id="useful-links" class="ft-size-2xl ft-sky-400">Useful Links</p>
+          <ul class="flex-col gap-2 ft-size-sm">
+            <li>
+              <a href="{% url 'home' %}" class="ft-sky-hover-300" aria-label="Home">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'all_products' %}?category=1" class="ft-sky-hover-300" aria-label="Fitness Equipment">
+                Fitness Equipment
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'all_products' %}?category=2" class="ft-sky-hover-300" aria-label="Sports Equipment">
+                Sports Equipment
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'all_products' %}?category=3" class="ft-sky-hover-300" aria-label="Weights and Barbells">
+                Weights and Barbells
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'all_products' %}?category=4" class="ft-sky-hover-300" aria-label="Yoga and Pilates">
+                Yoga and Pilates
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Section 4-->
+        <div class="flex-col gap-2" aria-labelledby="newsletter">
+          <p id="newsletter" class="ft-size-2xl ft-sky-400">Newsletter</p>
+          <p class="ft-size-sm">
+            Sign up to our newsletter to receive the latest news and offers.
+          </p>
+          <form action="{% url 'subscribe_to_newsletter' %}" class="flex-row gap-1" method="post">
+            {% csrf_token %}
+            <input type="email" name="email" id="email" required
+              class="bd-width-0 bg-slate-600 pad-inline-2 bd-radius-2 shadow-focus-1 sh-sky-400 transition-medium"
+              placeholder="Enter your email" aria-label="Email">
+            <button type="submit" class="btn bg-sky-400 bd-width-0 ft-black bd-radius-2 pad-inline-1"
+              aria-label="Subscribe to Newsletter">
+              Subscribe
+            </button>
+          </form>
+          <div class="flex-row align-center gap-2">
+            <a href="https://www.facebook.com"
+              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
+              target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook ft-size-lg"></i>
+            </a>
+            <a href="https://www.twitter.com"
+              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
+              target="_blank" aria-label="Twitter">
+              <i class="fab fa-twitter ft-size-lg"></i>
+            </a>
+            <a href="https://www.instagram.com"
+              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
+              target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram ft-size-lg"></i>
+            </a>
+            <a href="https://www.youtube.com"
+              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
+              target="_blank" aria-label="YouTube">
+              <i class="fab fa-youtube ft-size-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container width-100 bg-slate-950 pad-4">
+      <!-- Section 1 -->
+      <div class="flex-row-wrap gap-2 align-center justify-center">
+        <div class="flex-row align-center justify-center">
+          <p class="ft-size-sm">
+            &copy; 2024 Wonderbot T-shirt. All rights reserved.
+          </p>
+        </div>
+        <div class="flex-row align-center justify-center gap-1">
+          <p class="ft-light-2 ft-size-sm">
+            Website created by
+            <span class="ft-sky-300">Joeline Alves</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>

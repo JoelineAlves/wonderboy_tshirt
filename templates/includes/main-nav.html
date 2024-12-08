@@ -51,13 +51,5 @@
                 <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
             </div>
         </li>
-
-        {% if user.is_superuser or subscribed_user %}
-        <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'newsletter' %}" id="newsletter-link">
-                Newsletter
-            </a>
-        </li>
-        {% endif %}
     </ul>
 </div>
