@@ -261,6 +261,15 @@ a.category-badge > span.badge:hover {
     border-radius: 0;
 }
 
+Sticky Footer container
+----------------------------------------
+*/
+.sticky-footer {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
