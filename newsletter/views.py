@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Newsletters, SubscribeToNewsletter
 from django.contrib import messages
 from .forms import NewsletterForm
@@ -7,14 +7,20 @@ from .forms import NewsletterForm
 def subscribe_to_newsletter(request):
     if request.method == 'POST':
         email = request.POST.get('email')
+        # Verifica se o usuário já está inscrito
         if SubscribeToNewsletter.objects.filter(email=email).exists():
             messages.error(request, 'Você já está inscrito na newsletter.')
         else:
-            # Aqui, você também precisa associar a qual newsletter o usuário se inscreveu
+            # Tenta obter a newsletter com base no id enviado no formulário
             newsletter_id = request.POST.get('newsletter')
-            newsletter = Newsletters.objects.get(id=newsletter_id)
-            SubscribeToNewsletter.objects.create(email=email, newsletter=newsletter)
-            messages.success(request, 'Você se inscreveu com sucesso na newsletter.')
+            
+            # Verifica se o id da newsletter foi enviado e se a newsletter existe
+            if newsletter_id:
+                newsletter = get_object_or_404(Newsletters, id=newsletter_id)
+                SubscribeToNewsletter.objects.create(email=email, newsletter=newsletter)
+                messages.success(request, 'Você se inscreveu com sucesso na newsletter.')
+            else:
+                messages.error(request, 'Newsletter não selecionada.')
     return redirect('home')
 
 
@@ -87,3 +93,4 @@ def delete_newsletter(request, id):
     }
     
     return render(request, template, context)
+
