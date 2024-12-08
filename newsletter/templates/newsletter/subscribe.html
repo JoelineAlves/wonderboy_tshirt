@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe to Newsletter</title>
+</head>
+<body>
+    <h2>Subscribe to our Newsletter</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div>
+            <label for="newsletter">Choose Newsletter:</label>
+            <select name="newsletter" required>
+                {% for newsletter in newsletters %}
+                    <option value="{{ newsletter.id }}">{{ newsletter.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <button type="submit">Subscribe</button>
+    </form>
+
+    <p><a href="{% url 'home' %}">Go to Home</a></p>
+</body>
+</html>

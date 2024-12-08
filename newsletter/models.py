@@ -1,27 +1,28 @@
 from django.db import models
-
+from django.utils import timezone  # Importando o timezone
 
 class Newsletters(models.Model):
-    # A class for storing the newsletters created by the admin.
-    date_created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
-    is_published = models.BooleanField(default=False)
-    date_published = models.DateTimeField(null=True, blank=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    # The image field is used to store the image of the newsletter. upload to media folder
-    image = models.ImageField(upload_to='newsletter/', null=True, blank=True)
-    image_url = models.URLField(null=True, blank=True)
-    
+    image = models.ImageField(upload_to='newsletter_images/', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
+    date_published = models.DateTimeField(auto_now_add=True)  # Data de publicação automática
+    is_active = models.BooleanField(default=True)  # Campo para indicar se a newsletter está ativa
+
     def __str__(self):
         return self.title
 
-
 class SubscribeToNewsletter(models.Model):
-    email = models.EmailField(null=True, blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField(unique=True)
+    newsletter = models.ForeignKey(Newsletters, on_delete=models.CASCADE, null=True, blank=True)  # Permite nulo até que existam boletins
+    date_subscribed = models.DateTimeField(default=timezone.now)  # Definindo o valor padrão como a data e hora atuais
 
     def __str__(self):
         return self.email
+
+
+
+
+
 
 
