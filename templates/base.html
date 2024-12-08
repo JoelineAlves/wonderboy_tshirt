@@ -80,6 +80,16 @@
                             {% endif %}
                         </div>
                     </li>
+
+                    <!-- The Newsletter link -->
+                    {% if request.user.is_superuser or subscribed_user %}
+                    <li role="none" class="transition-medium ft-sky-hover-400">
+                        <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
+                            Newsletter
+                        </a>
+                    </li>
+                    {% endif %}
+
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
                             <div class="text-center">
