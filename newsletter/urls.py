@@ -1,85 +1,11 @@
-from django.shortcuts import render, redirect
-from .models import Newsletters, SubscribeToNewsletter
-from django.contrib import messages
-from .forms import NewsletterForm
+from django.urls import path
 
-# Create your views here.
-def subscribe_to_newsletter(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        if SubscribeToNewsletter.objects.filter(email=email).exists():
-            messages.error(request, 'You have already subscribed to the newsletter.')
-        else:
-            SubscribeToNewsletter.objects.create(email=email)
-            messages.success(request, 'You have successfully subscribed to the newsletter.')
-    return redirect('home')
+from . import views
 
-
-def newsletter(request):
-    newsletters = Newsletters.objects.all()
-    template = 'newsletter/newsletter.html'
-    context = {
-        'newsletters': newsletters
-    }
-    return render(request, template, context)
-
-
-def create_newsletter(request):
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Newsletter created successfully.')
-            return redirect('newsletter')
-        else:
-            messages.error(request, 'An error occurred. Please try again.')
-    else:
-        form = NewsletterForm()
-
-
-    template = 'newsletter/create_newsletter.html'
-    context = {
-        'form': form,
-        'newsletter': Newsletters.objects.all()
-    }
-    
-    return render(request, template, context)
-
-
-def edit_newsletter(request, id):
-    newsletter = Newsletters.objects.get(id=id)
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST, request.FILES, instance=newsletter)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Newsletter updated successfully.')
-            return redirect('newsletter')
-        else:
-            messages.error(request, 'An error occurred. Please try again.')
-    else:
-        form = NewsletterForm(instance=newsletter)
-
-    template = 'newsletter/edit_newsletter.html'
-    context = {
-        'form': form,
-        'newsletter': newsletter
-    }
-    
-    return render(request, template, context)
-
-
-# View for deleting a newsletter from the database
-def delete_newsletter(request, id):
-    newsletter = Newsletters.objects.get(id=id)
-
-    if request.method == 'POST':
-        newsletter.delete()
-        messages.success(request, 'Newsletter deleted successfully.')
-        return redirect('newsletter')
-    
-    template = 'newsletter/delete_newsletter.html'
-    context = {
-        'newsletter': newsletter
-    }
-    
-    return render(request, template, context)
+urlpatterns = [
+    path('subscribe/', views.subscribe_to_newsletter, name='subscribe_to_newsletter'),
+    path('newsletter/', views.newsletter, name='newsletter'),
+    path('create-newsletter/', views.create_newsletter, name='create_newsletter'),
+    path('edit-newsletter/<int:id>/', views.edit_newsletter, name='edit_newsletter'),
+    path('delete-newsletter/<int:id>/', views.delete_newsletter, name='delete_newsletter'),
+]

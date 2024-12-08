@@ -1,30 +1,20 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Newsletters, SubscribeToNewsletter
 from django.contrib import messages
 from .forms import NewsletterForm
 
-# View para inscrição na newsletter
+# Create your views here.
 def subscribe_to_newsletter(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        # Verifica se o usuário já está inscrito
         if SubscribeToNewsletter.objects.filter(email=email).exists():
-            messages.error(request, 'Você já está inscrito na newsletter.')
+            messages.error(request, 'You have already subscribed to the newsletter.')
         else:
-            # Tenta obter a newsletter com base no id enviado no formulário
-            newsletter_id = request.POST.get('newsletter')
-            
-            # Verifica se o id da newsletter foi enviado e se a newsletter existe
-            if newsletter_id:
-                newsletter = get_object_or_404(Newsletters, id=newsletter_id)
-                SubscribeToNewsletter.objects.create(email=email, newsletter=newsletter)
-                messages.success(request, 'Você se inscreveu com sucesso na newsletter.')
-            else:
-                messages.error(request, 'Newsletter não selecionada.')
+            SubscribeToNewsletter.objects.create(email=email)
+            messages.success(request, 'You have successfully subscribed to the newsletter.')
     return redirect('home')
 
 
-# View para exibir todas as newsletters disponíveis
 def newsletter(request):
     newsletters = Newsletters.objects.all()
     template = 'newsletter/newsletter.html'
@@ -34,38 +24,38 @@ def newsletter(request):
     return render(request, template, context)
 
 
-# View para criar uma nova newsletter
 def create_newsletter(request):
     if request.method == 'POST':
         form = NewsletterForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Newsletter criada com sucesso.')
+            messages.success(request, 'Newsletter created successfully.')
             return redirect('newsletter')
         else:
-            messages.error(request, 'Ocorreu um erro. Por favor, tente novamente.')
+            messages.error(request, 'An error occurred. Please try again.')
     else:
         form = NewsletterForm()
 
+
     template = 'newsletter/create_newsletter.html'
     context = {
-        'form': form
+        'form': form,
+        'newsletter': Newsletters.objects.all()
     }
     
     return render(request, template, context)
 
 
-# View para editar uma newsletter existente
 def edit_newsletter(request, id):
     newsletter = Newsletters.objects.get(id=id)
     if request.method == 'POST':
         form = NewsletterForm(request.POST, request.FILES, instance=newsletter)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Newsletter atualizada com sucesso.')
+            messages.success(request, 'Newsletter updated successfully.')
             return redirect('newsletter')
         else:
-            messages.error(request, 'Ocorreu um erro. Por favor, tente novamente.')
+            messages.error(request, 'An error occurred. Please try again.')
     else:
         form = NewsletterForm(instance=newsletter)
 
@@ -78,13 +68,13 @@ def edit_newsletter(request, id):
     return render(request, template, context)
 
 
-# View para excluir uma newsletter
+# View for deleting a newsletter from the database
 def delete_newsletter(request, id):
     newsletter = Newsletters.objects.get(id=id)
 
     if request.method == 'POST':
         newsletter.delete()
-        messages.success(request, 'Newsletter excluída com sucesso.')
+        messages.success(request, 'Newsletter deleted successfully.')
         return redirect('newsletter')
     
     template = 'newsletter/delete_newsletter.html'
@@ -93,4 +83,3 @@ def delete_newsletter(request, id):
     }
     
     return render(request, template, context)
-
