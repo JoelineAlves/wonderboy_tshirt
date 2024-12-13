@@ -7,12 +7,14 @@ from .forms import NewsletterForm
 def subscribe_to_newsletter(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        
+
+        # Verificar duplicidade
         if SubscribeToNewsletter.objects.filter(email=email).exists():
             messages.error(request, 'You have already subscribed to the newsletter.')
         else:
             subscription = SubscribeToNewsletter.objects.create(email=email)
-
+            
+            # Vincular ao usuário autenticado
             if request.user.is_authenticated and request.user.email == email:
                 subscription.user = request.user
                 subscription.save()
@@ -20,6 +22,7 @@ def subscribe_to_newsletter(request):
             messages.success(request, 'You have successfully subscribed to the newsletter.')
 
     return redirect('home')
+
 
 
 def newsletter(request):

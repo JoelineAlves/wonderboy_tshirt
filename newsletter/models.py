@@ -24,7 +24,8 @@ class SubscribeToNewsletter(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.email or "No email"
+        return self.user.email if self.user else (self.email or "No email")
+
 
 
 
