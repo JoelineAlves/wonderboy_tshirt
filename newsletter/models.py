@@ -19,18 +19,12 @@ class Newsletters(models.Model):
 
 
 class SubscribeToNewsletter(models.Model):
-    user = models.OneToOneField(
-        User, 
-        on_delete=models.CASCADE, 
-        null=True, 
-        blank=True, 
-        related_name='newsletter_subscription'
-    )  # Relacionamento com o usuário
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.email
+        return self.email or "No email"
 
 
 
