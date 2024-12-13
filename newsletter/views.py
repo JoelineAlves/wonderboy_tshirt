@@ -1,22 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import Newsletters, SubscribeToNewsletter
 from django.contrib import messages
-from django.utils import timezone  # Importando timezone para usar a data e hora atuais
 from .forms import NewsletterForm
 
 # Create your views here.
 def subscribe_to_newsletter(request):
     if request.method == 'POST':
         email = request.POST.get('email')
+        
         if SubscribeToNewsletter.objects.filter(email=email).exists():
             messages.error(request, 'You have already subscribed to the newsletter.')
         else:
-            # Agora, vamos definir explicitamente o campo 'date_added'
-            SubscribeToNewsletter.objects.create(
-                email=email,
-                date_added=timezone.now()  # Definindo explicitamente o valor de 'date_added'
-            )
+            subscription = SubscribeToNewsletter.objects.create(email=email)
+
+            if request.user.is_authenticated and request.user.email == email:
+                subscription.user = request.user
+                subscription.save()
+
             messages.success(request, 'You have successfully subscribed to the newsletter.')
+
     return redirect('home')
 
 
@@ -87,3 +89,4 @@ def delete_newsletter(request, id):
     }
     
     return render(request, template, context)
+

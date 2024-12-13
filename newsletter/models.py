@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Newsletters(models.Model):
@@ -18,6 +19,13 @@ class Newsletters(models.Model):
 
 
 class SubscribeToNewsletter(models.Model):
+    user = models.OneToOneField(
+        User, 
+        on_delete=models.CASCADE, 
+        null=True, 
+        blank=True, 
+        related_name='newsletter_subscription'
+    )  # Relacionamento com o usuário
     email = models.EmailField(null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
