@@ -1,4 +1,5 @@
 from django import forms
+from django import forms
 from .models import Newsletters
 
 class NewsletterForm(forms.ModelForm):
@@ -42,4 +43,3 @@ class NewsletterForm(forms.ModelForm):
             if field in placeholders:
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
             self.fields[field].widget.attrs['class'] = ' '.join(classes)
-

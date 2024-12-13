@@ -52,12 +52,12 @@
             </div>
         </li>
 
-        {% if user.is_superuser or user.is_authenticated and user.subscribetonewsletter.exists %}
-        <li role="none" class="transition-medium ft-sky-hover-400">
-          <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
-            Newsletter
-          </a>
-        </li>
-        {% endif %}
+        {% if user.is_superuser or subscribed_user %}
+                  <li role="none" class="transition-medium ft-sky-hover-400">
+                    <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
+                      Newsletter
+                    </a>
+                  </li>
+                  {% endif %}
     </ul>
 </div>
