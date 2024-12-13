@@ -105,6 +105,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
+                'home.nav_context.newsletter_subscription',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
