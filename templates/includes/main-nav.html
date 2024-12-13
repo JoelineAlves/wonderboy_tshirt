@@ -6,8 +6,6 @@
             </a>
         </li>
 
-        <p>{{ subscribed_user }}</p>
-        
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
@@ -45,7 +43,7 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Special Offer
+                Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
@@ -56,11 +54,12 @@
         </li>
 
         {% if user.is_superuser or subscribed_user %}
-            <li role="none" class="transition-medium ft-sky-hover-400">
-                <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
-                    Newsletter
-                </a>
-            </li>
+        <li>
+          <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'newsletter' %}" id="home-link">
+            Newsletter
+          </a>
+        </li>  
         {% endif %}
+    
     </ul>
 </div>
