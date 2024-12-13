@@ -53,11 +53,11 @@
         </li>
 
         {% if user.is_superuser or subscribed_user %}
-                  <li role="none" class="transition-medium ft-sky-hover-400">
-                    <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
-                      Newsletter
-                    </a>
-                  </li>
-                  {% endif %}
+            <li role="none" class="transition-medium ft-sky-hover-400">
+                <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
+                    Newsletter
+                </a>
+            </li>
+        {% endif %}
     </ul>
 </div>
