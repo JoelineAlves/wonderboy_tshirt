@@ -53,13 +53,11 @@
             </div>
         </li>
 
-        {% if user.is_superuser or subscribed_user %}
         <li class="nav-item d-block d-md-none">
           <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'newsletter' %}" id="home-link">
             Newsletter
           </a>
         </li>  
-        {% endif %}
     
     </ul>
 </div>
