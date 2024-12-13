@@ -52,7 +52,7 @@
             </div>
         </li>
 
-        {% if user.is_superuser or (user.is_authenticated and user.subscribetonewsletter.exists) %}
+        {% if user.is_superuser or user.is_authenticated and user.subscribetonewsletter.exists %}
         <li role="none" class="transition-medium ft-sky-hover-400">
           <a href="{% url 'newsletter' %}" role="menuitem" aria-label="Newsletter">
             Newsletter
