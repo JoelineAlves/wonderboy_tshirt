@@ -1,0 +1,7 @@
+[{"model": "newsletter.newsletters", "pk": 1, "fields": {"title": "Winter Offers", "content": "Check out our amazing winter offers on fitness products!", "is_published": true, "date_created": "2024-12-13T00:00:00Z", "date_updated": "2024-12-13T00:00:00Z", "image": "", "image_url": "https://example.com/winter_offer.jpg"}}]
+
+
+
+
+
+

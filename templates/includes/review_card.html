@@ -1,0 +1,50 @@
+<div class="bg-slate-600 bd-radius-2 pad-2 transition-slow shadow-hover-1 sh-sky-300">
+    <!-- Display the username of the person who wrote the review -->
+    <p class="ft-primary-1" aria-label="Username">{{ review.username }}</p>
+    
+    <!-- Display the review date -->
+    <p aria-label="Review date">{{ review.date }}</p>
+    
+    <hr> <!-- Separator line -->
+    
+    <!-- Display the title of the review -->
+    <h5 class="ft-weight-700">{{ review.title }}</h5>
+    
+    <!-- Display the content of the review -->
+    <p>{{ review.review }}</p>
+    
+    <div class="flex-row align-center justify-between">
+        <!-- Display the rating of the review -->
+        <div class="flex-row gap-2 align-center">
+            <p class="ft-weight-700" aria-label="Rating">Rating: {{ review.rating }}</p>
+            <div class="flex-row gap-1">
+                <!-- Display the stars based on the rating -->
+                {% for star in review.stars %}
+                    <i class="fas fa-star ft-amber-400" aria-hidden="true"></i>
+                {% endfor %}
+                <!-- Display the half-star if it exists -->
+                {% if review.half_star %}
+                    <i class="fas fa-star-half-alt ft-amber-400" aria-hidden="true"></i>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Edit and Delete buttons, visible only for the review's author -->
+        <div class="flex-row gap-2">
+            {% if request.user.username == review.username %}
+                <!-- Link to edit the review -->
+                <a href="{% url 'edit_review' review.id %}" 
+                    class="btn bg-amber-400 bd-radius-2 ft-black bd-width-0 btn-md" 
+                    title="Edit Review" aria-label="Edit Review">
+                    Edit
+                </a>
+                <!-- Link to delete the review -->
+                <a href="{% url 'delete_review' review.id %}" 
+                    class="btn bg-red-400 bd-radius-2 ft-black bd-width-0 btn-md" 
+                    title="Delete Review" aria-label="Delete Review">
+                    Delete
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
