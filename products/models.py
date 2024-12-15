@@ -1,8 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User  # Importing Django's built-in User model
 
 
 class Category(models.Model):
-
     class Meta:
         verbose_name_plural = 'Categories'
         
@@ -29,3 +29,18 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductReview(models.Model):
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    review = models.TextField()
+    rating = models.PositiveIntegerField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-date']  # Orders reviews by the most recent date first
+
+    def __str__(self):
+        return f"Review for {self.product.name} by {self.user.username}"
