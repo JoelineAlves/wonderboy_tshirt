@@ -70,6 +70,8 @@ def product_detail(request, product_id):
     # Get the reviews for the product
     reviews = ProductReview.objects.filter(product=product)
 
+    print(reviews)
+
     # Add the product and reviews to the context
     context = {
         'product': product,
