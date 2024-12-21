@@ -6,6 +6,7 @@
     <div class="flex-row-wrap gap-2 align-center justify-between pad-2">
       <h1>Edit Review</h1>
       <div class="flex-row gap-2">
+        <!-- Link para voltar à página do produto -->
         <a href="{% url 'product_detail' product.id %}" class="btn bg-sky-400 bd-radius-2 ft-black bd-width-0 btn-md">
           Back To Product
         </a>
@@ -13,8 +14,9 @@
     </div>
     <hr>
     <p>
-      Add a review for {{ product.name }}.
+      Edit your review for {{ product.name }}.
     </p>
+    <!-- Formulário de edição do review -->
     <form method="POST" class="flex-col gap-2">
       {% csrf_token %}
       {{ form.as_p }}

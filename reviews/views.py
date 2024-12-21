@@ -62,7 +62,11 @@ def edit_review(request, review_id):
         form = ProductReviewForm(instance=review)
 
     template = 'reviews/edit_review.html'
-    context = {'form': form, 'review': review}
+    context = {
+        'form': form,
+        'review': review,
+        'product': review.product  # Passando o produto para o template
+    }
     return render(request, template, context)
 
 # Delete a review
