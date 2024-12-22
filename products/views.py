@@ -80,7 +80,7 @@ def product_detail(request, product_id):
 
     # Render the page with the context
     #return render(request, 'products/product_detail.html', context)
-    return render(request, 'product_detail.html', {'product': product, 'reviews': reviews})
+    return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews})
 
 
 @login_required
