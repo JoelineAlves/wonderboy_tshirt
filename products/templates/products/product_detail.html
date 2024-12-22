@@ -123,6 +123,10 @@
                 </div>
             </div>
             <hr>
+
+            <p>Reviews count: {{ reviews|length }}</p>
+
+            
             <div class="flex-col gap-2 overflow-container">
                 {% if reviews %}
                     {% for review in reviews %}
