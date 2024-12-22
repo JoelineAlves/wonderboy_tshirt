@@ -73,13 +73,14 @@ def product_detail(request, product_id):
     print(reviews)
 
     # Add the product and reviews to the context
-    context = {
-        'product': product,
-        'reviews': product.reviews.all(),  # Now you pass the reviews to the template
-    }
+    #context = {
+        #'product': product,
+        #'reviews': product.reviews.all(),  # Now you pass the reviews to the template
+    #}
 
     # Render the page with the context
-    return render(request, 'products/product_detail.html', context)
+    #return render(request, 'products/product_detail.html', context)
+    return render(request, 'product_detail.html', {'product': product, 'reviews': reviews})
 
 
 @login_required
