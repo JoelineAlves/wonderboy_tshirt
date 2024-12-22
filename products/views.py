@@ -75,7 +75,7 @@ def product_detail(request, product_id):
     # Add the product and reviews to the context
     context = {
         'product': product,
-        'reviews': reviews,  # Now you pass the reviews to the template
+        'reviews': product.reviews.all(),  # Now you pass the reviews to the template
     }
 
     # Render the page with the context
