@@ -126,10 +126,6 @@
 
             <p>Reviews count: {{ reviews|length }}</p>
 
-            <h2>Debug Reviews</h2>
-            <p>{{ reviews }}</p>
-
-            
             <div class="flex-col gap-2 overflow-container">
                 {% if reviews %}
                     {% for review in reviews %}
@@ -156,3 +152,4 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}
+

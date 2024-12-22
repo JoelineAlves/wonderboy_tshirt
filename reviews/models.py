@@ -5,13 +5,13 @@ from math import floor
 
 class ProductReview(models.Model):
     """
-    Model representing a review for a product.
+    Modelo representando uma avaliação de produto.
     """
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_reviews_from_reviews')  # Alterado o related_name
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
     title = models.CharField(max_length=100)
     review = models.TextField()
-    rating = models.DecimalField(max_digits=2, decimal_places=1)  # Rating between 1.0 and 5.0
+    rating = models.DecimalField(max_digits=2, decimal_places=1)  # Rating entre 1.0 e 5.0
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -9,7 +9,7 @@ from django.contrib import messages
 # List all reviews for a specific product
 def all_reviews(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    reviews = ProductReview.objects.filter(product=product)
+    reviews = product.product_reviews_from_reviews.all()  # Usando o relacionamento reverso
 
     for review in reviews:
         review.stars = range(int(review.rating))
@@ -81,4 +81,5 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Your review has been deleted.')
     return redirect('product_detail', product_id=product_id)
+
 

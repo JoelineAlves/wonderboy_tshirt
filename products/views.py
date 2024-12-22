@@ -67,19 +67,12 @@ def product_detail(request, product_id):
     # Retrieve the product based on the id
     product = get_object_or_404(Product, pk=product_id)
 
-    # Get the reviews for the product
-    reviews = ProductReview.objects.filter(product=product)
+    # Get the reviews for the product (from the 'reviews' app)
+    reviews = product.product_reviews_from_reviews.all()  # Usando a relação reversa do app reviews
 
     print(reviews)
 
-    # Add the product and reviews to the context
-    #context = {
-        #'product': product,
-        #'reviews': product.reviews.all(),  # Now you pass the reviews to the template
-    #}
-
     # Render the page with the context
-    #return render(request, 'products/product_detail.html', context)
     return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews})
 
 
@@ -149,3 +142,4 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+

@@ -32,12 +32,18 @@ class Product(models.Model):
 
 
 class ProductReview(models.Model):
-    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    """
+    Modelo representando uma avaliação de produto.
+    """
+    product = models.ForeignKey(Product, related_name='product_reviews_from_products', on_delete=models.CASCADE)  # Alterado o related_name
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     review = models.TextField()
     rating = models.PositiveIntegerField()
     date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         ordering = ['-date']  # Orders reviews by the most recent date first

@@ -1,9 +1,9 @@
 <div class="bg-slate-600 bd-radius-2 pad-2 transition-slow shadow-hover-1 sh-sky-300">
     <!-- Display the username of the person who wrote the review -->
-    <p class="ft-primary-1" aria-label="Username">{{ review.username }}</p>
+    <p class="ft-primary-1" aria-label="Username">{{ review.user.username }}</p>
     
-    <!-- Display the review date -->
-    <p aria-label="Review date">{{ review.date }}</p>
+    <!-- Display the review date, formatted -->
+    <p aria-label="Review date">{{ review.date|date:"F j, Y" }}</p>
     
     <hr> <!-- Separator line -->
     
@@ -31,7 +31,7 @@
 
         <!-- Edit and Delete buttons, visible only for the review's author -->
         <div class="flex-row gap-2">
-            {% if request.user.username == review.username %}
+            {% if request.user == review.user %}
                 <!-- Link to edit the review -->
                 <a href="{% url 'edit_review' review.id %}" 
                     class="btn bg-amber-400 bd-radius-2 ft-black bd-width-0 btn-md" 
@@ -48,3 +48,4 @@
         </div>
     </div>
 </div>
+
