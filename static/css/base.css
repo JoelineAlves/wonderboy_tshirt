@@ -10,6 +10,11 @@ body {
     font-family: 'Lato';
 }
 
+.navbar {
+    background-color: #333;  /* Defina uma cor sólida ou outra imagem para a navbar */
+    color: grey;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
