@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'xf#t310-pu@8&*su-)(gpg^2i!9()$eeg(%o2
 DEBUG=True
 
 ALLOWED_HOSTS = [
-    '8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu117.gitpod.io',
+    '8000-joelinealve-wonderboyts-5ce7zyiia00.ws.codeinstitute-ide.net',
     'wonderboytshirt-90045f83868e.herokuapp.com',
 ]
 

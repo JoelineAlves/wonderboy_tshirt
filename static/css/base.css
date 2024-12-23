@@ -264,11 +264,15 @@ a.category-badge > span.badge:hover {
 Sticky Footer container
 ----------------------------------------
 */
-.sticky-footer {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  height: 100vh;
-}
+footer {
+    background-color: #1e293b; /* cor de fundo */
+    padding: 20px 0;
+    position: relative; /* Alinha o footer na parte inferior do conteúdo */
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+  }
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
