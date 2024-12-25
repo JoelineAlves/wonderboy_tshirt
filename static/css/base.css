@@ -1,18 +1,80 @@
-html {
-    height: 100%;
-}
-
 body {
-    background: url('/media/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: calc(100vh - 164px);
-    color: #555;
-    font-family: 'Lato';
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(88, 86, 86); /* Cor de fundo padrão */
 }
 
+/* Garantir altura total da página */
+html, body {
+    height: 100%; /* Altura total da página */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adicionar a imagem de fundo ao main */
+body.homepage main {
+    background-image: url('/media/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body.default-page main {
+    background-color: #363636; /* Ou qualquer estilo que desejar */
+}
+
+/* Garantir fundo sólido para o header */
+header {
+    background: none; /* Remove qualquer fundo herdado */
+    z-index: 1000; /* Garante que o header fique acima do fundo */
+}
+
+/* Estilizar a Navbar */
 .navbar {
-    background-color: #333;  /* Defina uma cor sólida ou outra imagem para a navbar */
-    color: grey;
+    background-color: black; /* Fundo sólido para navbar */
+    color: rgb(68, 66, 66);
+}
+
+.navbar .nav-link {
+    color: white; /* Links brancos */
+}
+
+.navbar .nav-link:hover {
+    color: #FFD700; /* Amarelo no hover */
+}
+
+/* Estilizar o banner de entrega */
+#delivery-banner {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#topnav, #delivery-banner, .navbar {
+    background-color: white; /* Ou outra cor desejada para isolar a navbar */
+}
+
+/* Estilizar o botão "Shop Now" */
+#shop-now {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 40px; /* Espaço abaixo do botão */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#shop-now:hover {
+    background-color: #FFD700; /* Amarelo no hover */
+    color: black;
 }
 
 /* from Bulma */
@@ -266,18 +328,132 @@ a.category-badge > span.badge:hover {
     border-radius: 0;
 }
 
-Sticky Footer container
-----------------------------------------
-*/
 footer {
-    background-color: #1e293b; /* cor de fundo */
+    background-color: #2b2c2c; /* Fundo do rodapé */
+    color: #fff; /* Cor do texto */
+    padding: 40px 0; /* Espaçamento interno maior */
+}
+
+/* Organizar as seções com grid */
+footer .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Layout de Grid para as seções */
+footer .grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Colunas únicas em telas pequenas */
+    gap: 20px; /* Espaçamento entre as seções */
+}
+
+/* Ajustes para telas médias e grandes (mínimo 768px) */
+@media (min-width: 768px) {
+    footer .grid {
+        grid-template-columns: 1fr 1fr 1fr; /* 3 colunas em telas médias e grandes */
+    }
+}
+
+/* Estilo das seções */
+footer .footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+footer .footer-section h4 {
+    font-size: 1.25rem;
+    color: #4b4a46; /* Cor dourada */
+}
+
+footer .footer-section p,
+footer .footer-section ul {
+    font-size: 0.875rem; /* Texto menor */
+    color: #ccc; /* Cor do texto */
+}
+
+footer .footer-section a {
+    color: #302f2d; /* Links amarelos */
+    text-decoration: none;
+}
+
+footer .footer-section a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+/* Botão de inscrição */
+footer .btn {
+    background-color: #363631;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}
+
+footer .btn:hover {
+    background-color: #20201e;
+}
+
+/* Estilo para o rodapé inferior */
+footer .footer-bottom {
+    background-color: #111;
     padding: 20px 0;
-    position: relative; /* Alinha o footer na parte inferior do conteúdo */
-    bottom: 0;
-    width: 100%;
+    color: #ccc;
+    display: flex;
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 20px; /* Adiciona um espaço entre os textos */
     text-align: center;
-    z-index: 1;
-  }
+    width: 100%; /* Garante que ocupe toda a largura */
+    box-sizing: border-box; /* Para garantir que a largura 100% seja corretamente aplicada */
+}
+
+/* Impede quebra de linha no texto */
+footer .footer-bottom p {
+    font-size: 0.875rem;
+    margin: 0; /* Remove margens automáticas para evitar quebras de linha */
+    white-space: nowrap; /* Impede a quebra de linha no texto */
+}
+
+/* Ajuste de margem para garantir que o texto fique centralizado corretamente */
+footer .footer-bottom .created-by {
+    color: #b4b4b3;
+    white-space: nowrap; /* Garante que o texto "created by" não quebre em duas linhas */
+}
+
+footer .footer-bottom .created-by:hover {
+    text-decoration: underline;
+}
+
+/* Estilo dos ícones de redes sociais */
+footer .social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    background-color: #555758;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    background-color: #a09f9d;
+}
+
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {

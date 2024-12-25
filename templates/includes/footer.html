@@ -1,89 +1,72 @@
-<footer class="bg-slate-900 pad-4 flex-col">
-    <div class="container width-90 breakpoint-lg margin-auto">
-      <div class="grid tracks-fixed track-size-300 justify-center gap-2">
-        <!-- Section 1 -->
-        <div class="flex-col gap-2" aria-labelledby="about-us">
-          <p id="about-us" class="ft-size-2xl ft-sky-400">About Us</p>
-          <p class="ft-size-sm">
-            My Fitness provides a service for all your fitness equipment needs.
-          </p>
-        </div>
-        <!-- Section 2 -->
-        <div class="flex-col gap-2" aria-labelledby="contact-us">
-          <p id="contact-us" class="ft-size-2xl ft-sky-400">Contact Us</p>
-          <ul class="flex-col gap-2 ft-size-sm">
-            <li>
-              <p class="ft-sky-hover-300">
-                Email: <a href="mailto:example@email.com">example@email.com</a>
-              </p>
-            </li>
-            <li>
-              <p class="ft-sky-hover-300">
-                Phone: <a href="tel:0123456789">0123456789</a>
-              </p>
-            </li>
-            <li>
-              <p class="ft-sky-hover-300">
-                Address: 123 Example Street, Example City, EX1 2PL
-              </p>
-            </li>
-          </ul>
-        </div>
-        <!-- Section 4-->
-        <div class="flex-col gap-2" aria-labelledby="newsletter">
-          <p id="newsletter" class="ft-size-2xl ft-sky-400">Newsletter</p>
-          <p class="ft-size-sm">
-            Sign up to our newsletter to receive the latest news and offers.
-          </p>
-          <form action="{% url 'subscribe_to_newsletter' %}" class="flex-row gap-1" method="post">
-            {% csrf_token %}
-            <input type="email" name="email" id="email" required
-              class="bd-width-0 bg-slate-600 pad-inline-2 bd-radius-2 shadow-focus-1 sh-sky-400 transition-medium"
-              placeholder="Enter your email" aria-label="Email">
-            <button type="submit" class="btn bg-sky-400 bd-width-0 ft-black bd-radius-2 pad-inline-1"
-              aria-label="Subscribe to Newsletter">
-              Subscribe
-            </button>
-          </form>
-          <div class="flex-row align-center gap-2">
-            <a href="https://www.facebook.com"
-              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
-              target="_blank" aria-label="Facebook">
-              <i class="fab fa-facebook ft-size-lg"></i>
-            </a>
-            <a href="https://www.twitter.com"
-              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
-              target="_blank" aria-label="Twitter">
-              <i class="fab fa-twitter ft-size-lg"></i>
-            </a>
-            <a href="https://www.instagram.com"
-              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
-              target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram ft-size-lg"></i>
-            </a>
-            <a href="https://www.youtube.com"
-              class="btn btn-icon bg-slate-600 transition-medium shadow-hover-1 sh-sky-400 bd-radius-2 bd-width-0"
-              target="_blank" aria-label="YouTube">
-              <i class="fab fa-youtube ft-size-lg"></i>
-            </a>
-          </div>
+<footer class="bg-slate-900 pad-4">
+  <!-- Primeira parte do rodapé com as seções (About Us, Contact Us, Newsletter) -->
+  <div class="container width-90 breakpoint-lg margin-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Seção 1 - Sobre nós -->
+      <div class="footer-section" aria-labelledby="about-us">
+        <p id="about-us" class="ft-size-2xl ft-sky-400">About Us</p>
+        <p class="ft-size-sm">
+          My Fitness provides a service for all your fitness equipment needs.
+        </p>
+      </div>
+
+      <!-- Seção 2 - Contato -->
+      <div class="footer-section" aria-labelledby="contact-us">
+        <p id="contact-us" class="ft-size-2xl ft-sky-400">Contact Us</p>
+        <ul class="ft-size-sm">
+          <li><a href="mailto:example@email.com" class="ft-sky-hover-300">Email: example@email.com</a></li>
+          <li><a href="tel:0123456789" class="ft-sky-hover-300">Phone: 0123456789</a></li>
+          <li class="ft-sky-hover-300">Address: 123 Example Street, Example City, EX1 2PL</li>
+        </ul>
+      </div>
+
+      <!-- Seção 3 - Newsletter -->
+      <div class="footer-section" aria-labelledby="newsletter">
+        <p id="newsletter" class="ft-size-2xl ft-sky-400">Newsletter</p>
+        <p class="ft-size-sm">Sign up to our newsletter to receive the latest news and offers.</p>
+        <form action="{% url 'subscribe_to_newsletter' %}" method="post" class="flex flex-col gap-2">
+          {% csrf_token %}
+          <input type="email" name="email" id="email" required
+            class="bg-slate-600 text-white p-2 rounded-md"
+            placeholder="Enter your email" aria-label="Email">
+          <button type="submit" class="btn bg-sky-400 text-black rounded-md p-2"
+            aria-label="Subscribe to Newsletter">Subscribe</button>
+        </form>
+
+        <!-- Ícones de redes sociais -->
+        <div class="flex gap-2">
+          <a href="https://www.facebook.com" class="btn btn-icon bg-slate-600 p-2 rounded-full"
+            target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook ft-size-lg"></i>
+          </a>
+          <a href="https://www.twitter.com" class="btn btn-icon bg-slate-600 p-2 rounded-full"
+            target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter ft-size-lg"></i>
+          </a>
+          <a href="https://www.instagram.com" class="btn btn-icon bg-slate-600 p-2 rounded-full"
+            target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram ft-size-lg"></i>
+          </a>
+          <a href="https://www.youtube.com" class="btn btn-icon bg-slate-600 p-2 rounded-full"
+            target="_blank" aria-label="YouTube">
+            <i class="fab fa-youtube ft-size-lg"></i>
+          </a>
         </div>
       </div>
     </div>
-    <div class="container width-100 bg-slate-950 pad-4">
-      <!-- Section 1 -->
-      <div class="flex-row-wrap gap-2 align-center justify-center">
-        <div class="flex-row align-center justify-center">
-          <p class="ft-size-sm">
-            &copy; 2024 Wonderbot T-shirt. All rights reserved.
-          </p>
-        </div>
-        <div class="flex-row align-center justify-center gap-1">
-          <p class="ft-light-2 ft-size-sm">
-            Website created by
-            <span class="ft-sky-300">Joeline Alves</span>
-          </p>
-        </div>
-      </div>
+  </div>
+
+  <!-- Rodapé inferior (direitos autorais e créditos) -->
+  <div class="footer-bottom">
+    <div class="flex justify-between items-center gap-4">
+      <p class="ft-size-sm">&copy; 2024 Wonderbot T-shirt. All rights reserved.</p>
+      <p class="ft-light-2 ft-size-sm">
+        Website created by <span class="ft-sky-300">Joeline Alves</span>
+      </p>
     </div>
-  </footer>
+  </div>
+</footer>
+
+
+
+
