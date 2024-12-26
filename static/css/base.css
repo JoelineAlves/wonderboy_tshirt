@@ -1,9 +1,17 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Lato', sans-serif;
-    background-color: rgb(88, 86, 86); /* Cor de fundo padrão */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da página */
+    margin: 0; /* Remove margens padrão do navegador */
+    padding: 0; /* Remove padding do body */
 }
+
+/* Conteúdo principal deve ocupar o espaço disponível */
+main {
+    flex: 1; /* Faz com que o conteúdo principal ocupe o máximo de espaço possível */
+    padding: 20px; /* Espaçamento interno opcional */
+}
+
 
 /* Garantir altura total da página */
 html, body {
@@ -30,21 +38,23 @@ header {
     z-index: 1000; /* Garante que o header fique acima do fundo */
 }
 
-/* Estilizar a Navbar */
+/* Estilizando a Navbar */
 .navbar {
-    background-color: black; /* Fundo sólido para navbar */
-    color: rgb(68, 66, 66);
+    background-color: black !important; /* Fundo sólido para navbar */
 }
 
+/* Estilizando os links na Navbar */
 .navbar .nav-link {
-    color: white; /* Links brancos */
+    color: white !important; /* Links brancos */
+    transition: color 0.3s ease !important; /* Transição suave de cor */
 }
 
+/* Efeito de hover nos links da Navbar */
 .navbar .nav-link:hover {
-    color: #FFD700; /* Amarelo no hover */
+    color: #0f0f0f !important; /* Cor dourada no hover */
 }
 
-/* Estilizar o banner de entrega */
+/* Estilizando o banner de entrega */
 #delivery-banner {
     background-color: black;
     color: white;
@@ -53,8 +63,29 @@ header {
     font-size: 16px;
 }
 
-#topnav, #delivery-banner, .navbar {
-    background-color: white; /* Ou outra cor desejada para isolar a navbar */
+/* Garantir que a navbar tenha fundo preto */
+#topnav, #delivery-banner {
+    background-color: black !important; /* Fundo preto para isolar a navbar */
+}
+
+/* Para garantir que o menu de navegação e dropdowns funcionem corretamente */
+.navbar-toggler {
+    border-color: white;
+}
+
+.navbar-toggler-icon {
+    background-color: white; /* Ícone do menu de navegação */
+}
+
+/* Estilo para os itens do dropdown */
+.navbar .dropdown-item {
+    color: black !important; /* Cor do texto do item dropdown */
+}
+
+/* Hover nos itens do dropdown */
+.navbar .dropdown-item:hover {
+    color: #FFD700 !important; /* Cor dourada no hover do dropdown */
+    background-color: black !important; /* Fundo escuro no hover do dropdown */
 }
 
 /* Estilizar o botão "Shop Now" */
@@ -332,6 +363,7 @@ footer {
     background-color: #2b2c2c; /* Fundo do rodapé */
     color: #fff; /* Cor do texto */
     padding: 40px 0; /* Espaçamento interno maior */
+    width: 100%; /* Garante que o rodapé ocupe toda a largura */
 }
 
 /* Organizar as seções com grid */
@@ -452,8 +484,6 @@ footer .social-icons a {
 footer .social-icons a:hover {
     background-color: #a09f9d;
 }
-
-
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
