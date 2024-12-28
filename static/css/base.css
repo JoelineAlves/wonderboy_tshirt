@@ -40,7 +40,7 @@ header {
 
 /* Estilizando a Navbar */
 .navbar {
-    background-color: black !important; /* Fundo sólido para navbar */
+    background-color: rgb(80, 77, 77) !important; /* Fundo sólido para navbar */
 }
 
 /* Estilizando os links na Navbar */
@@ -79,7 +79,7 @@ header {
 
 /* Estilo para os itens do dropdown */
 .navbar .dropdown-item {
-    color: black !important; /* Cor do texto do item dropdown */
+    color: rgb(17, 16, 16) !important; /* Cor do texto do item dropdown */
 }
 
 /* Hover nos itens do dropdown */
@@ -98,7 +98,7 @@ header {
     font-size: 18px;
     text-transform: uppercase;
     margin-top: 20px;
-    margin-bottom: 40px; /* Espaço abaixo do botão */
+    /*margin-bottom: 40px; /* Espaço abaixo do botão */
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -362,11 +362,15 @@ a.category-badge > span.badge:hover {
 footer {
     background-color: #2b2c2c; /* Fundo do rodapé */
     color: #fff; /* Cor do texto */
-    padding: 40px 0; /* Espaçamento interno maior */
-    width: 100%; /* Garante que o rodapé ocupe toda a largura */
+    padding: 0; /* Removido o espaçamento interno */
+    position: relative; /* Rodapé fixado no final da página */
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    z-index: 10;
 }
 
-/* Organizar as seções com grid */
+/* Organizar as seções com flexbox */
 footer .container {
     display: flex;
     flex-direction: column;
@@ -374,20 +378,20 @@ footer .container {
     align-items: center;
     max-width: 1200px;
     margin: auto;
-    padding: 0 20px;
+    padding: 20px; /* Espaçamento interno */
 }
 
 /* Layout de Grid para as seções */
 footer .grid {
     display: grid;
-    grid-template-columns: 1fr; /* Colunas únicas em telas pequenas */
+    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
     gap: 20px; /* Espaçamento entre as seções */
 }
 
 /* Ajustes para telas médias e grandes (mínimo 768px) */
 @media (min-width: 768px) {
     footer .grid {
-        grid-template-columns: 1fr 1fr 1fr; /* 3 colunas em telas médias e grandes */
+        grid-template-columns: 1fr 1fr 1fr; /* 3 colunas para telas maiores */
     }
 }
 
@@ -397,11 +401,12 @@ footer .footer-section {
     flex-direction: column;
     gap: 10px;
     text-align: left;
+    margin: 0 auto; /* Centraliza o conteúdo */
 }
 
 footer .footer-section h4 {
     font-size: 1.25rem;
-    color: #4b4a46; /* Cor dourada */
+    color: #FFD700; /* Cor dourada */
 }
 
 footer .footer-section p,
@@ -411,12 +416,14 @@ footer .footer-section ul {
 }
 
 footer .footer-section a {
-    color: #302f2d; /* Links amarelos */
+    color: #FFD700; /* Links amarelos */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 footer .footer-section a:hover {
     text-decoration: underline; /* Sublinhado ao passar o mouse */
+    color: #fff; /* Altera a cor para branco */
 }
 
 /* Botão de inscrição */
@@ -427,6 +434,7 @@ footer .btn {
     color: #000;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 footer .btn:hover {
@@ -436,7 +444,7 @@ footer .btn:hover {
 /* Estilo para o rodapé inferior */
 footer .footer-bottom {
     background-color: #111;
-    padding: 20px 0;
+    padding: 10px 0;
     color: #ccc;
     display: flex;
     justify-content: center; /* Centraliza os itens horizontalmente */
@@ -479,11 +487,26 @@ footer .social-icons a {
     margin: 5px;
     color: #fff;
     text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 footer .social-icons a:hover {
     background-color: #a09f9d;
+    transform: scale(1.1); /* Aumenta o ícone levemente */
 }
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    footer .footer-section {
+        text-align: center; /* Centraliza o texto em telas pequenas */
+    }
+
+    footer .footer-bottom p {
+        white-space: normal; /* Permite que o texto quebre em várias linhas */
+    }
+}
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
