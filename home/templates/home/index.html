@@ -12,20 +12,30 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">
-                    The new collections are here
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                    </h4>
-                </div>
-            </div>
+<section>
+  <div class="container view-height-70 width-100 hero-bg">
+    <div class="hero-overlay">
+      <div class="hero-content container height-100 width-80 margin-auto breakpoint-md">
+        <div class="flex-col height-80 gap-3 justify-center align-start pad-2">
+          <p class="ft-size-6xl ft-sky-400">
+            Wonderboy T-shirt
+          </p>
+          <p>
+            Welcome to wonderboy t-shirt.
+            <br>
+            We provide the best style.
+            <br>
+            Shop now and get 10% off your first order when you join today.
+          </p>
+          <a href="{% url 'products' %}" id="shop-now">
+            Shop Now
+            <i class="fas fa-arrow-right"></i>
+          </a>        
         </div>
+      </div>
     </div>
+  </div>
+</section>
 {% endblock %}
 
 

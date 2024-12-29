@@ -20,12 +20,94 @@ html, body {
     flex-direction: column;
 }
 
-/* Adicionar a imagem de fundo ao main */
-body.homepage main {
-    background-image: url('/media/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Estilo do Fundo da Hero Section */
+.hero-bg {
+    background-image: url('/media/hero-img-1.jpg'); /* Imagem de fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-size: cover; /* Ajusta a imagem ao tamanho do container */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    height: 70vh; /* Altura da seção */
+    width: 100%; /* Largura total */
+    position: relative;
+    z-index: 0; /* Camada base */
+}
+
+/* Sobreposição da Hero Section */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #646464 30%, #51515211); /* Gradiente transparente */
+    z-index: 1; /* Camada acima do fundo */
+}
+
+/* Conteúdo da Hero Section */
+.hero-content {
+    z-index: 10; /* Camada acima da sobreposição */
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: flex-start; /* Alinha o conteúdo à esquerda */
+    height: 100%; /* Ocupa toda a altura do container */
+    padding: 2rem; /* Espaçamento interno */
+}
+
+/* Estilo do Título e Parágrafos */
+p.ft-size-6xl {
+    font-size: 2.5rem; /* Tamanho grande para o título */
+    color: #e5e6e7; /* Cor azul clara */
+    font-weight: bold;
+}
+
+p {
+    font-size: 1rem; /* Tamanho padrão dos parágrafos */
+    color: #ffffff; /* Cor branca */
+    margin: 0.5rem 0; /* Espaçamento vertical */
+}
+
+/* Estilo do Botão Shop Now */
+#shop-now {
+    display: inline-block;
+    background-color: black; /* Fundo padrão do botão */
+    color: white; /* Texto branco */
+    border: none; /* Sem borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 18px; /* Tamanho do texto */
+    text-transform: uppercase; /* Letras maiúsculas */
+    margin-top: 20px; /* Espaçamento superior */
+    cursor: pointer; /* Indicador de botão ao passar o mouse */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+    font-weight: 600; /* Texto em negrito */
+    border-radius: 8px; /* Bordas arredondadas */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+/* Hover do Botão */
+#shop-now:hover {
+    background-color: #FFD700; /* Fundo amarelo ao passar o mouse */
+    color: black; /* Texto preto no hover */
+}
+
+/* Estilo Responsivo */
+@media (max-width: 768px) {
+    .hero-content {
+        align-items: center; /* Centraliza o conteúdo em telas menores */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    #shop-now {
+        width: 100%; /* Botão ocupa a largura total em dispositivos menores */
+    }
+
+    p.ft-size-6xl {
+        font-size: 2rem; /* Ajusta o tamanho do título em dispositivos menores */
+    }
+
+    p {
+        font-size: 0.875rem; /* Ajusta o tamanho dos parágrafos */
+    }
 }
 
 body.default-page main {
@@ -98,9 +180,10 @@ header {
     font-size: 18px;
     text-transform: uppercase;
     margin-top: 20px;
-    /*margin-bottom: 40px; /* Espaço abaixo do botão */
     cursor: pointer;
     transition: background-color 0.3s;
+    font-weight: 600;
+    border-radius: 8px;
 }
 
 #shop-now:hover {
