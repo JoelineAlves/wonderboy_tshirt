@@ -1,61 +1,58 @@
-<footer class="bg-slate-900 pad-4">
-  <!-- Primeira parte do rodapé com as seções -->
-  <div class="container width-90 breakpoint-lg margin-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <!-- Sobre nós -->
-      <div class="footer-section" aria-labelledby="about-us">
-        <h4 id="about-us">About Us</h4>
-        <p>My Fitness provides a service for all your fitness equipment needs.</p>
+<footer class="bg-footer py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!--About Us-->
+        <p class="text-white">ABOUT US</p>
+        <p class="text-white">
+          Welcome to Wonderboy T-Shirt, your ultimate destination for unique and personalized apparel!
+          At our online store, we offer an exciting range of custom-designed t-shirts, sweaters, and hoodies to help you stand out and express your individuality.
+        </p>
       </div>
-
-      <!-- Contato -->
-      <div class="footer-section" aria-labelledby="contact-us">
-        <h4 id="contact-us">Contact Us</h4>
-        <ul>
-          <li><a href="mailto:example@email.com">Email: example@email.com</a></li>
-          <li><a href="tel:0123456789">Phone: 0123456789</a></li>
-          <li>Address: 123 Example Street, Example City, EX1 2PL</li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="footer-section" aria-labelledby="newsletter">
-        <h4 id="newsletter">Newsletter</h4>
-        <p>Sign up to our newsletter to receive the latest news and offers.</p>
-        <form action="{% url 'subscribe_to_newsletter' %}" method="post">
-          {% csrf_token %}
-          <input type="email" name="email" id="email" required
-            class="bg-slate-600 text-white p-2 rounded-md"
-            placeholder="Enter your email">
-          <button type="submit" class="btn bg-sky-400 text-black rounded-md p-2">Subscribe</button>
-        </form>
-        <!-- Redes sociais -->
-        <div class="social-icons">
-          <a href="https://www.facebook.com">
-            <i class="fab fa-facebook"></i>
+       <!--Social--> 
+      <div class="col">
+        <p class="text-white">FOLLOW US</p>
+          <a target="_blank" href="https://www.facebool.co.uk/">
+          <i class="fab fa-facebook fa-2x p-3 text-light" aria-hidden="true"></i>
+          <span class="sr-only">Facebook</span>
           </a>
-          <a href="https://www.twitter.com">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://www.instagram.com">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.youtube.com">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </div>
-      </div>
+          <a target="_blank" href="https://www.youtube.co.uk/">
+            <i class="fab fa-youtube fa-2x p-3 text-light" aria-hidden="true"></i>
+            <span class="sr-only">Youtube</span>
+            </a>
+          <a target="_blank" href="https://www.pinterest.co.uk/">
+            <i class="fab fa-pinterest fa-2x p-3 text-light" aria-hidden="true"></i>
+            <span class="sr-only">Pinterest</span>
+            </a>
+          <a target="_blank" href="https://www.instagram.com/">
+          <i class="fab fa-instagram fa-2x p-3 text-light" aria-hidden="true"></i>
+          <span class="sr-only">Instagram</span>
+        </a>
+       </div>
+      <div class="col">
+        <!--Links-->
+        <p class="text-white">LINKS</p>
+        <a href="">
+          <p class="text-white ">Terms and Conditions</p>
+      </a>
+        <a href="">
+          <p class="text-white ">Privacy Policy</p>
+      </a>
+      </div> 
     </div>
   </div>
-
-  <!-- Rodapé inferior -->
-  <div class="footer-bottom">
-    <p>&copy; 2024 Wonderbot T-shirt. All rights reserved.</p>
-    <p class="created-by">
-      Website created by <span>Joeline Alves</span>
-    </p>
+  <!--Copyright--> 
+  <div class="d-flex flex-row justify-content-center">
+    <p class="text-white">© Wonderboy T-shirt <span id="current-year"></span></p>
   </div>
 </footer>
+{% block postloadjs %}
+<script>
+  // Update copyright to current year 
+  const currentYear = document.querySelector("#current-year");
+  currentYear.innerText = new Date().getFullYear();
+</script>
+{% endblock %}
 
 
 

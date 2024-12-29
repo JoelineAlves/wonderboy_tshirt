@@ -1,195 +1,15 @@
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da página */
-    margin: 0; /* Remove margens padrão do navegador */
-    padding: 0; /* Remove padding do body */
-}
-
-/* Conteúdo principal deve ocupar o espaço disponível */
-main {
-    flex: 1; /* Faz com que o conteúdo principal ocupe o máximo de espaço possível */
-    padding: 20px; /* Espaçamento interno opcional */
-}
-
-
-/* Garantir altura total da página */
-html, body {
-    height: 100%; /* Altura total da página */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Estilo do Fundo da Hero Section */
-.hero-bg {
-    background-image: url('/media/hero-img-1.jpg'); /* Imagem de fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-size: cover; /* Ajusta a imagem ao tamanho do container */
-    background-repeat: no-repeat; /* Não repete a imagem */
-    height: 70vh; /* Altura da seção */
-    width: 100%; /* Largura total */
-    position: relative;
-    z-index: 0; /* Camada base */
-}
-
-/* Sobreposição da Hero Section */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+html {
     height: 100%;
-    background: linear-gradient(to right, #646464 30%, #51515211); /* Gradiente transparente */
-    z-index: 1; /* Camada acima do fundo */
 }
 
-/* Conteúdo da Hero Section */
-.hero-content {
-    z-index: 10; /* Camada acima da sobreposição */
-    display: flex;
-    flex-direction: column; /* Alinha o conteúdo verticalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: flex-start; /* Alinha o conteúdo à esquerda */
-    height: 100%; /* Ocupa toda a altura do container */
-    padding: 2rem; /* Espaçamento interno */
+body {
+    background: url('/media/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'Lato';
 }
 
-/* Estilo do Título e Parágrafos */
-p.ft-size-6xl {
-    font-size: 2.5rem; /* Tamanho grande para o título */
-    color: #e5e6e7; /* Cor azul clara */
-    font-weight: bold;
-}
-
-p {
-    font-size: 1rem; /* Tamanho padrão dos parágrafos */
-    color: #ffffff; /* Cor branca */
-    margin: 0.5rem 0; /* Espaçamento vertical */
-}
-
-/* Estilo do Botão Shop Now */
-#shop-now {
-    display: inline-block;
-    background-color: black; /* Fundo padrão do botão */
-    color: white; /* Texto branco */
-    border: none; /* Sem borda */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 18px; /* Tamanho do texto */
-    text-transform: uppercase; /* Letras maiúsculas */
-    margin-top: 20px; /* Espaçamento superior */
-    cursor: pointer; /* Indicador de botão ao passar o mouse */
-    transition: background-color 0.3s, color 0.3s; /* Transição suave */
-    font-weight: 600; /* Texto em negrito */
-    border-radius: 8px; /* Bordas arredondadas */
-    text-decoration: none; /* Remove o sublinhado */
-}
-
-/* Hover do Botão */
-#shop-now:hover {
-    background-color: #FFD700; /* Fundo amarelo ao passar o mouse */
-    color: black; /* Texto preto no hover */
-}
-
-/* Estilo Responsivo */
-@media (max-width: 768px) {
-    .hero-content {
-        align-items: center; /* Centraliza o conteúdo em telas menores */
-        text-align: center; /* Centraliza o texto */
-    }
-
-    #shop-now {
-        width: 100%; /* Botão ocupa a largura total em dispositivos menores */
-    }
-
-    p.ft-size-6xl {
-        font-size: 2rem; /* Ajusta o tamanho do título em dispositivos menores */
-    }
-
-    p {
-        font-size: 0.875rem; /* Ajusta o tamanho dos parágrafos */
-    }
-}
-
-body.default-page main {
-    background-color: #363636; /* Ou qualquer estilo que desejar */
-}
-
-/* Garantir fundo sólido para o header */
-header {
-    background: none; /* Remove qualquer fundo herdado */
-    z-index: 1000; /* Garante que o header fique acima do fundo */
-}
-
-/* Estilizando a Navbar */
-.navbar {
-    background-color: rgb(80, 77, 77) !important; /* Fundo sólido para navbar */
-}
-
-/* Estilizando os links na Navbar */
-.navbar .nav-link {
-    color: white !important; /* Links brancos */
-    transition: color 0.3s ease !important; /* Transição suave de cor */
-}
-
-/* Efeito de hover nos links da Navbar */
-.navbar .nav-link:hover {
-    color: #0f0f0f !important; /* Cor dourada no hover */
-}
-
-/* Estilizando o banner de entrega */
-#delivery-banner {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    font-size: 16px;
-}
-
-/* Garantir que a navbar tenha fundo preto */
-#topnav, #delivery-banner {
-    background-color: black !important; /* Fundo preto para isolar a navbar */
-}
-
-/* Para garantir que o menu de navegação e dropdowns funcionem corretamente */
-.navbar-toggler {
-    border-color: white;
-}
-
-.navbar-toggler-icon {
-    background-color: white; /* Ícone do menu de navegação */
-}
-
-/* Estilo para os itens do dropdown */
-.navbar .dropdown-item {
-    color: rgb(17, 16, 16) !important; /* Cor do texto do item dropdown */
-}
-
-/* Hover nos itens do dropdown */
-.navbar .dropdown-item:hover {
-    color: #FFD700 !important; /* Cor dourada no hover do dropdown */
-    background-color: black !important; /* Fundo escuro no hover do dropdown */
-}
-
-/* Estilizar o botão "Shop Now" */
-#shop-now {
-    display: inline-block;
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: 600;
-    border-radius: 8px;
-}
-
-#shop-now:hover {
-    background-color: #FFD700; /* Amarelo no hover */
-    color: black;
-}
 
 /* from Bulma */
 .icon {
@@ -202,6 +22,7 @@ header {
 
 .logo-font {
     text-transform: uppercase;
+    font-weight:600;
 }
 
 .main-logo-link {
@@ -217,12 +38,6 @@ header {
 .btn-black {
     background: black;
     color: white;
-}
-
-.btn-outline-black {
-    background: white;
-    color: black !important; /* use important to override link colors for <a> elements */
-    border: 1px solid black;
 }
 
 .btn-outline-black:hover,
@@ -246,6 +61,11 @@ header {
     color: #000 !important;
 }
 
+.text-white{
+    color: #fff !important;
+}
+
+
 .border-black {
     border: 1px solid black !important;
 }
@@ -260,7 +80,7 @@ header {
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: white;
+	background: #a8a8aa;
 	z-index: -1;
 }
 
@@ -281,6 +101,14 @@ a.category-badge > span.badge:hover {
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+
+.bg-footer{
+    background-color: #4d4e4e !important;
+}
+
+input[name='q']::placeholder {
+    color: #aab7c4;
 }
 
 /* ------------------------------- bootstrap toasts */
@@ -314,7 +142,7 @@ a.category-badge > span.badge:hover {
 
 /* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
-    border-bottom-color: #007bff !important;
+    border-bottom-color: #8a8c8d !important;
 }
 
 .arrow-secondary {
@@ -322,7 +150,7 @@ a.category-badge > span.badge:hover {
 }
 
 .arrow-success {
-    border-bottom-color: #28a745 !important;
+    border-bottom-color: #636463 !important;
 }
 
 .arrow-danger {
@@ -441,155 +269,6 @@ a.category-badge > span.badge:hover {
     border-color: #dc3545;
     border-radius: 0;
 }
-
-footer {
-    background-color: #2b2c2c; /* Fundo do rodapé */
-    color: #fff; /* Cor do texto */
-    padding: 0; /* Removido o espaçamento interno */
-    position: relative; /* Rodapé fixado no final da página */
-    width: 100%;
-    bottom: 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
-    z-index: 10;
-}
-
-/* Organizar as seções com flexbox */
-footer .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px; /* Espaçamento interno */
-}
-
-/* Layout de Grid para as seções */
-footer .grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
-    gap: 20px; /* Espaçamento entre as seções */
-}
-
-/* Ajustes para telas médias e grandes (mínimo 768px) */
-@media (min-width: 768px) {
-    footer .grid {
-        grid-template-columns: 1fr 1fr 1fr; /* 3 colunas para telas maiores */
-    }
-}
-
-/* Estilo das seções */
-footer .footer-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: left;
-    margin: 0 auto; /* Centraliza o conteúdo */
-}
-
-footer .footer-section h4 {
-    font-size: 1.25rem;
-    color: #FFD700; /* Cor dourada */
-}
-
-footer .footer-section p,
-footer .footer-section ul {
-    font-size: 0.875rem; /* Texto menor */
-    color: #ccc; /* Cor do texto */
-}
-
-footer .footer-section a {
-    color: #FFD700; /* Links amarelos */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer .footer-section a:hover {
-    text-decoration: underline; /* Sublinhado ao passar o mouse */
-    color: #fff; /* Altera a cor para branco */
-}
-
-/* Botão de inscrição */
-footer .btn {
-    background-color: #363631;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-footer .btn:hover {
-    background-color: #20201e;
-}
-
-/* Estilo para o rodapé inferior */
-footer .footer-bottom {
-    background-color: #111;
-    padding: 10px 0;
-    color: #ccc;
-    display: flex;
-    justify-content: center; /* Centraliza os itens horizontalmente */
-    align-items: center; /* Alinha os itens verticalmente */
-    gap: 20px; /* Adiciona um espaço entre os textos */
-    text-align: center;
-    width: 100%; /* Garante que ocupe toda a largura */
-    box-sizing: border-box; /* Para garantir que a largura 100% seja corretamente aplicada */
-}
-
-/* Impede quebra de linha no texto */
-footer .footer-bottom p {
-    font-size: 0.875rem;
-    margin: 0; /* Remove margens automáticas para evitar quebras de linha */
-    white-space: nowrap; /* Impede a quebra de linha no texto */
-}
-
-/* Ajuste de margem para garantir que o texto fique centralizado corretamente */
-footer .footer-bottom .created-by {
-    color: #b4b4b3;
-    white-space: nowrap; /* Garante que o texto "created by" não quebre em duas linhas */
-}
-
-footer .footer-bottom .created-by:hover {
-    text-decoration: underline;
-}
-
-/* Estilo dos ícones de redes sociais */
-footer .social-icons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-footer .social-icons a {
-    background-color: #555758;
-    padding: 10px;
-    border-radius: 50%;
-    margin: 5px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-footer .social-icons a:hover {
-    background-color: #a09f9d;
-    transform: scale(1.1); /* Aumenta o ícone levemente */
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-    footer .footer-section {
-        text-align: center; /* Centraliza o texto em telas pequenas */
-    }
-
-    footer .footer-bottom p {
-        white-space: normal; /* Permite que o texto quebre em várias linhas */
-    }
-}
-
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
