@@ -80,7 +80,7 @@ body {
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: #a8a8aa;
+	background: rgb(80, 79, 79);
 	z-index: -1;
 }
 
