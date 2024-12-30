@@ -3,40 +3,43 @@
 {% block title %}{{ newsletter.title }}{% endblock %}
 
 {% block content %}
-<div class="container width-60 breakpoint-lg margin-auto pad-2 flex-col gap-2">
-  <div class="flex-row-wrap gap-2 align-center justify-between">
-    <h1>Newsletters</h1>
-    <!-- Check if user is superuser -->
-    {% if user.is_superuser %}
-    <a href="{% url 'create_newsletter' %}" class="btn btn-md bg-sky-400 ft-slate-900 bd-radius-1 bd-width-0">Create
-      Newsletter</a>
-    {% endif %}
-  </div>
-  <hr>
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+         <div class="col">
+             <hr>
+             <h2 class ="logo-font mb-4">Newsletters</h2>
+             <!-- Check if user is superuser -->
+             {% if user.is_superuser %}
+             <a href="{% url 'create_newsletter' %}" class="btn btn-md bg-sky-400 ft-slate-900 bd-radius-1 bd-width-0">Create
+             Newsletter</a>
+             {% endif %}
+          </div>
+             <hr>
 
-  {% for letter in newsletters %}
+            {% for letter in newsletters %}
 
-  <div class="flex-col gap-2">
-    <h2 class="ft-sky-300">{{ letter.title }}</h2>
-    {% if letter.image %}
-    <img class="newsletter-img" src="{{ letter.image.url }}" alt="{{ letter.title }}" class="bd-radius-1">
-    {% else %}
-    <img class="newsletter-img" src="{{ letter.image_url }}" alt="{{ letter.title }}" class="bd-radius-1">
-    {% endif %}
-    <div class="flex-row-wrap justify-between gap-3">
-      <p>{{ letter.content }}</p>
-      <div class="flex-row align-center gap-2">
-        <p>{{ letter.date_published }}</p>
-        {% if user.is_superuser %}
-        <a href="{% url 'edit_newsletter' letter.id %}"
+          <div class="flex-col gap-2">
+          <h3 class="ft-sky-300">{{ letter.title }}</h3>
+          {% if letter.image %}
+          <img class="newsletter-img" src="{{ letter.image.url }}" alt="{{ letter.title }}" class="bd-radius-1">
+          {% else %}
+          <img class="newsletter-img" src="{{ letter.image_url }}" alt="{{ letter.title }}" class="bd-radius-1">
+          {% endif %}
+          <div class="flex-row-wrap justify-between gap-3">
+          <p>{{ letter.content }}</p>
+          <div class="flex-row align-center gap-2">
+          <p>{{ letter.date_published }}</p>
+          {% if user.is_superuser %}
+          <a href="{% url 'edit_newsletter' letter.id %}"
           class="btn btn-md bg-amber-400 ft-slate-900 bd-radius-1 bd-width-0">Edit</a>
-        <a href="{% url 'delete_newsletter' letter.id %}"
+          <a href="{% url 'delete_newsletter' letter.id %}"
           class="btn btn-md bg-red-400 ft-slate-900 bd-radius-1 bd-width-0">Delete</a>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-  <hr>
+          {% endif %}
+        </div>
+     </div>
+   </div>
+   <hr>
   {% endfor %}
 </div>
 
