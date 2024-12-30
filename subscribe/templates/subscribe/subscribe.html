@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-3 mx-5">
+        <!--blog heading-->
+        <hr>
+            <h2 class="logo-font mb-4">Sign up to our newsletter</h2>
+            <p>Join our community of health enthusiasts and let us help you to make informed choices for a balanced and energised life. 
+              By signing up, you'll gain exclusive access to personalised tips from certified nutritionists, the latest updates on our health products, 
+              and special offers tailored just for you.</p>
+        <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col my-4">
+      <div class="card">
+        <div class="card-body">
+          <p>Subscribe now and embark on a journey towards a happier, healthier you with Nutritionist!</p>
+          <form method="POST" action="{% url 'subscribe' %}">
+              {% csrf_token %}
+              {{ subscribe_form|crispy }}
+            <button class="btn btn-dark text-uppercase" type="submit">
+              Subscribe 
+              <span class="icon">
+                  <i class="fas fa-arrow-right"></i>
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock %}
