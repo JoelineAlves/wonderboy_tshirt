@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="overlay"></div>
+<div class="container" style="padding-top: 5rem;"> <!-- Adicionado padding no topo -->
   <div class="row">
     <div class="col text-center mt-3 mx-5">
-        <!--blog heading-->
+        <!--review heading-->
         <hr>
-            <h2 class="logo-font mb-4">Add a Review for {{ product.name }}</h2>
+            <h2 class="logo-font mb-4" style="margin-top: 3rem;">Add a Review for {{ product.name }}</h2>
             <p class="lead">Add your feedback and help others make informed decisions!</p>
-        <hr>
     </div>
   </div>
   <div class="row">
@@ -32,3 +32,4 @@
   </div>
 </div>
 {% endblock %}
+

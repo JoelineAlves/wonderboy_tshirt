@@ -1,14 +1,42 @@
-html {
-    height: 100%;
+html, body {
+    height: 100%; /* Certifica que o html e body ocupam toda a altura da janela */
+    margin: 0;
 }
 
 body {
-    background: url('/media/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: calc(100vh - 164px);
-    color: #555;
-    font-family: 'Lato';
+    background: url('/media/background.jpg') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover; /* Garante que a imagem cobre todo o fundo */
+    min-height: 100vh; /* Garante altura mínima */
+    color: #0a0a0a;
+    font-family: 'Lato', sans-serif;
 }
+
+
+.navbar {
+    margin-bottom: 0.5rem; /* Reduz o espaçamento inferior */
+    padding: 0.5rem 1rem; /* Reduz o espaçamento interno */
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+    height: auto; /* Garante que a altura seja dinâmica */
+    background-color: #4d4e4e /* Cor de fundo (opcional) */
+}
+
+.navbar a, 
+.navbar .nav-link {
+    padding: 0.25rem 0.5rem; /* Reduz o espaçamento interno dos links */
+    font-size: 0.85rem; /* Tamanho menor para o texto */
+}
+
+.navbar-brand {
+    font-size: 1rem; /* Reduz o tamanho do logotipo */
+    padding: 0; /* Remove espaçamentos extras */
+    margin-right: 1rem;
+}
+
+.navbar-toggler {
+    padding: 0.3rem 0.3rem; /* Reduz o tamanho do botão de toggler */
+}
+
 
 
 /* from Bulma */
@@ -23,6 +51,7 @@ body {
 .logo-font {
     text-transform: uppercase;
     font-weight:600;
+    margin-top: 2rem; 
 }
 
 .main-logo-link {
@@ -80,7 +109,7 @@ body {
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: rgb(199, 197, 197);
+	background: rgb(207, 203, 203);
 	z-index: -1;
 }
 
