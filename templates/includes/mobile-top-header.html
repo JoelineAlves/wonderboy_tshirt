@@ -48,7 +48,7 @@
     <!-- Newsletter -->
     {% if user.is_superuser or subscribed_user %}
       <li class="list-inline-item">
-        <a class="text-black nav-link d-block d-lg-none" href="{% url 'newsletter' %}">
+        <a class="text-black nav-link d-block d-lg-none" href="{% url 'subscribe' %}">
           <div class="text-center">
             <div><i class="fas fa-envelope fa-lg"></i></div>
             <p class="my-0">Newsletter</p>
