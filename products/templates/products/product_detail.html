@@ -3,19 +3,22 @@
 
 {% block page_header %}
     <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
+        <div class="row d-flex justify-content-between align-items-center">
+             <div class="col">
+                 <!-- Exibe o nome do produto no lugar de "Product Details" -->
+                 <h2 class="logo-font">{{ product.name }}</h2>
+            </div>
+            <div class="col-auto">
+                <!-- Botão "Back to Products" no canto superior direito -->
+                <a href="{% url 'products' %}" class="btn btn-md bg-grey-400 bd-radius-1 ft-slate-900" aria-label="Back to products">
+                    Back to products
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
-<!-- Button "Back to Home" -->
-    <div class="container text-center mb-3">
-        <a href="{% url 'home' %}" class="btn btn-md bg-sky-400 bd-radius-1 ft-slate-900" aria-label="Back to home">
-            Back
-        </a>
-    </div>
     <div class="overlay"></div>
     <div class="container-fluid">
         <div class="row">
