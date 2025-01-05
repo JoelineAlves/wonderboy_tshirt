@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Your Favorite Products
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+    <h1>Your Favorite Products</h1>
+    <ul>
+        {% for favorite in favorites %}
+            <li>
+                <a href="{% url 'product_detail' favorite.product.id %}">
+                    {{ favorite.product.name }}
+                </a>
+                <a href="{% url 'toggle_favorite' favorite.product.id %}" class="remove-favorite">Remove</a>
+            </li>
+        {% empty %}
+            <p>You haven't added any products to your favorites yet.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
