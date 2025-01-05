@@ -232,6 +232,8 @@ The font used across the site was ui sans serif with system ui as a fallback.
 
 * Allow the user to select the quantity of the product to be added to the shopping bag.
 
+* Allow the user to choose the size of the product before adding it to the cart.
+
 * A "Keep Shopping" button is available to navigate back to the product list.
 
 * An "Add to Bag" button is provided to add the selected quantity of the product to the shopping bag.
