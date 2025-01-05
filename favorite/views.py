@@ -23,9 +23,11 @@ def toggle_favorite(request, product_id):
 # View to list all the user's favorite products
 @login_required
 def favorite_list(request):
+    print("favorite_list view was called!")  # Debug
     favorites = Favorite.objects.filter(user=request.user)
     print(f"Favorites for user {request.user}: {favorites}")  # Debug
     return render(request, 'favorite/favorite_list.html', {'favorites': favorites})
+
 
 
 
