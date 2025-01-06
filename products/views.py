@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+from favorite.models import Favorite
 from .models import Product, Category
 from .forms import ProductForm
 from .models import Product, ProductReview
@@ -67,13 +68,15 @@ def product_detail(request, product_id):
     # Retrieve the product based on the id
     product = get_object_or_404(Product, pk=product_id)
 
+    is_favorite = Favorite.objects.filter(user=request.user, product=product).exists()
+
     # Get the reviews for the product (from the 'reviews' app)
     reviews = product.product_reviews_from_reviews.all()  # Usando a relação reversa do app reviews
 
     print(reviews)
 
     # Render the page with the context
-    return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews})
+    return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews, 'is_favorite': is_favorite,})
 
 
 @login_required

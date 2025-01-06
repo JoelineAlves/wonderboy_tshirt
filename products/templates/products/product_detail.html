@@ -60,21 +60,20 @@
                     <p class="mt-3">{{ product.description }}</p>
 
                     <!-- Favorite Toggle Button -->
-                    <form action="{% url 'toggle_favorite' product.id %}" method="POST" class="mb-3">
-                        {% csrf_token %}
-                        {% if product in user.favorites.all %}
-                            <!-- Botão para remover dos favoritos -->
-                            <button type="submit" class="btn btn-danger rounded-0 text-uppercase">
-                                Remove from Favorites
+                    <div class="favorite-icon mt-3">
+                        <form method="POST" action="{% url 'toggle_favorite' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link p-0">
+                                {% if is_favorite %}
+                                    <!-- Ícone cheio (favorito) -->
+                                    <i class="fa fa-heart fs-3 text-danger"></i>
+                                {% else %}
+                                    <!-- Ícone vazio (não favorito) -->
+                                    <i class="fa fa-heart fs-3 text-black-50"></i>
+                                {% endif %}
                             </button>
-                        {% else %}
-                            <!-- Botão para adicionar aos favoritos -->
-                            <button type="submit" class="btn btn-outline-primary rounded-0 text-uppercase">
-                                Add to Favorites
-                            </button>
-                        {% endif %}
-                    </form>
-
+                        </form>
+                    </div>
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">

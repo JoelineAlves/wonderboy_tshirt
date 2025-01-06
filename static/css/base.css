@@ -146,6 +146,21 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+.favorite-icon button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.favorite-icon i {
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.favorite-icon i:hover {
+    transform: scale(1.2);
+}
+
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
