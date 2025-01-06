@@ -155,9 +155,11 @@ A slate color palette was used as the main background and foreground colors with
 
 #### Typography
 
-The font used across the site was ui sans serif with system ui as a fallback.
+The font used across the site is Lato, with sans-serif as the fallback. This clean and modern typography ensures readability and enhances the overall user experience.
 
-[Back to top ⇧](#myfitness)
+
+
+[Back to top ⇧](#wonderboytshirt)
 
 ## Features
 
@@ -170,7 +172,7 @@ The font used across the site was ui sans serif with system ui as a fallback.
 
 
 #### Header
-![MyFitness header image](/assets/readme_images/header-img.png)
+![Wonderboytshirt header image](/assets/readme_images/header-img.png)
 
 * The header contains the main logo, navigation links and search product functionality.
 
@@ -178,11 +180,11 @@ The font used across the site was ui sans serif with system ui as a fallback.
 
 * The navigation links allow the shopper access to all sections to facilitate navigation across the website. It also has a hover effect that changes color to provide feedback to the shopper for a better user experience.
 
-* The shopping bag icon changes, reflecting the current status. The current shopping amount is displayed for the shopper.
+* The shopping bag icon is prominently displayed on the website. If a product has been added to the shopping bag, the total value of the items is dynamically displayed to the buyer, ensuring a seamless shopping experience and keeping the customer informed at all times.
 
 
 #### Search Bar
-![MyFitness search bar image](/assets/readme_images/searchbar.png)
+![Wonderboytshirt search bar image](/assets/readme_images/searchbar.png)
 
 * The search bar allows the user to search the website for products using specific keywords.
 
@@ -190,17 +192,23 @@ The font used across the site was ui sans serif with system ui as a fallback.
 
 
 #### Footer
-![MyFitness footer image](/assets/readme_images/footer-img.png)
+![Wonderboytshirt footer image](/assets/readme_images/footer-img.png)
 
-* The footer contains business information as well as links to navigate the site and reach various social media platforms.
+* "About Us" Section: Offers a brief description of the brand and its mission, highlighting personalized products such as t-shirts, hoodies, and other unique fashion items.
 
-* A newsletter registration form has been located at the footer allowing the shopper to subscribe across the whole website.
+* Payments Processing: Explains how payments are securely handled through the Stripe system, ensuring a smooth and 
+  trustworthy shopping experience.
 
-* A small about section is also located in the footer section.
+* Useful Links: Includes direct links to important pages like "Terms and Conditions" and "Privacy Policy," making it easy 
+  for users to access essential information.
+
+* Social Media Connections: Provides quick access to the brand's social media platforms, such as Facebook, Instagram,    and  YouTube, allowing users to stay updated with the latest news and promotions.
+
+* Copyright and Branding: Features a copyright notice for Wonderboy T-Shirt, adding a professional and informative touch.
 
 ### Home Page
 
-![MyFitness hero image](/assets/readme_images/hero-img.png)
+![Wonderboytshirt hero image](/assets/readme_images/hero-img.png)
 * Hero section contains links to the shopping poage and sign up page
 
 
