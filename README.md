@@ -1,12 +1,12 @@
-# MyFitness
+# Wonderbotshirt
 
 
-![MyFitness mockup images](/assets/readme_images/mockup-img.png)
+![Wonderboytshirt mockup images](/assets/readme_images/mockup-img.png)
 
 
-My Fitness is an e-commerce website offering a range of fitness products.
+Wonderboy T-Shirt is an e-commerce platform specializing in a wide range of custom-designed hoodies, t-shirts, and sweaters.
 
-The main goal of the website is to offer users a range of sports and fitness equipment.
+The primary purpose of the site is to offer users unique, high-quality apparel that reflects their personal style and individuality.
 
 Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/).
 
@@ -62,15 +62,15 @@ Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/
 
 #### Project Goals
 
-* Responsive design to make the website accessible on different screen sizes.
+* Responsive Design: Ensures the website is accessible and functions seamlessly across various screen sizes and devices.
 
-* Structure is easy to understand and navigates effortlessly for an easy shopping experience.
+* User-Friendly Navigation: A well-structured layout allows customers to browse and shop effortlessly, enhancing their overall experience.
 
-* The website design and colors are appealing to the customers.
+* Appealing Visuals: The website’s design and color scheme are carefully curated to attract and engage customers.
 
-* Customers are offered the opportunity to register an account.
+* Account Registration: Offers customers the option to create an account for a more personalized shopping experience.
 
-* Easy shopping process to create a pleaseant experince for the customer.
+* Streamlined Shopping Process: A simple and efficient shopping process ensures a pleasant and hassle-free experience for all users.
 
 #### User Goals
 
@@ -85,6 +85,8 @@ Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/
 * As a shopper, I want to be able to search for products using specific keywords.
 
 * As a shopper, I want to easily select the quantity of products to be purchased.
+
+* As a buyer, I want to easily select the size of the products to be purchased.
 
 * As a shopper, I want to easily view the current purchase amount.
 
@@ -108,7 +110,6 @@ Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/
 
 * As a registered shopper, I want to easily log in and out from my account.
 
-* As a registered shopper, I want to be able to recover access to my account in case I forget my password.
 
 * As a registered shopper, I want to have a personalized profile page where I can keep my contact information updated and see my past orders.
 
@@ -126,7 +127,7 @@ Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/
 
 **Epic 6 - Newsletter Subscription**
 
-* As a site admin, I want shoppers to be able to provide their contact information to be able to reach out to them with information and offers.
+* As a site administrator, I want buyers to have the ability to provide their contact emails so we can keep them informed about new updates, promotions, and exclusive offers.
 
 #### Database Model
 
@@ -151,7 +152,7 @@ Profile | ![Desktop profile wireframe image](/assets/readme_images/profile-deskt
 
 ![Color scheme image](/assets/readme_images/color-palette.png)
 
-A slate color palette was used as the main background and foreground colors with a sky blue palette used as the primary color.
+The website features a sleek slate color palette as the main background and foreground, complemented by shades of gray as the primary accent colors. This combination creates a clean and modern aesthetic.
 
 #### Typography
 
