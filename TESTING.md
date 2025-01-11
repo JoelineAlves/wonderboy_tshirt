@@ -284,10 +284,10 @@ Product Edit Link | Clicking the link redirects to the edit product page. | Pass
 Product Delete Link | Clicking the link deletes the product from the database. | Pass |
 Decrease Quantity Button | Decreases the quantity on the input form. | Pass |
 Increase Quantity Button | Increases the quantity on the input form. | Pass |
+Select Size Button | Select the size on the input form. | Pass |
 Keep Shopping Button | Clicking the button redirects to the products page. | Pass |
 Add To Bag Button | Clicking the button adds the specified quantity of the product to the shopping bag. | Pass |
 Reviews Link | Clicking the link toggle the product reviews. | Pass |
-Sort By Selector | Sort by functionality sort the reviews depending on the selection. | Pass |
 Review Edit Link | Clicking the link redirects to the edit review page. | Pass |
 Review Delete Link | Clicking the link delete the review from the database. | Pass |
 Leave A Review Button | Clicking the button redirects to the add review page. | Pass |
@@ -317,6 +317,7 @@ Element | Expected Outcome | Pass/Fail |
 --- | --- | --- |
 Decrease Quantity Button | Decreases the quantity on the input form. | Pass |
 Increase Quantity Button | Increases the quantity on the input form. | Pass |
+Select Size Button | Select the size on the input form. | Pass |
 Update Link | Clicking the link update the product quantity on the shopping bag. | Pass
 Delete Link | Clicking the link removed the product from the shopping bag. | Pass
 Keep Shopping Button | Clicking the button redirects to the products page. | Pass |
