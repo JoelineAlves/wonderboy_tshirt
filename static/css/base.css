@@ -1,36 +1,35 @@
 html, body {
-    height: 100%; /* Certifica que o html e body ocupam toda a altura da janela */
+    height: 100%; 
     margin: 0;
 }
 
 body {
     background: url('/media/background.jpg') no-repeat center center;
     background-attachment: scroll;
-    background-size: cover; /* Garante que a imagem cobre todo o fundo */
+    background-size: cover; 
     height: auto;
-    /*min-height: 100vh; /* Garante altura mínima */
     color: #0a0a0a;
     font-family: 'Lato', sans-serif;
 }
 
 
 .navbar {
-    margin-bottom: 0.5rem; /* Reduz o espaçamento inferior */
-    padding: 0.5rem 1rem; /* Reduz o espaçamento interno */
-    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
-    height: auto; /* Garante que a altura seja dinâmica */
-    background-color: #4d4e4e /* Cor de fundo (opcional) */
+    margin-bottom: 0.5rem; 
+    padding: 0.5rem 1rem; 
+    font-size: 0.9rem; 
+    height: auto; 
+    background-color: #4d4e4e 
 }
 
 .navbar a, 
 .navbar .nav-link {
-    padding: 0.25rem 0.5rem; /* Reduz o espaçamento interno dos links */
-    font-size: 0.85rem; /* Tamanho menor para o texto */
+    padding: 0.25rem 0.5rem; 
+    font-size: 0.85rem; 
 }
 
 .navbar-brand {
-    font-size: 1rem; /* Reduz o tamanho do logotipo */
-    padding: 0; /* Remove espaçamentos extras */
+    font-size: 1rem; 
+    padding: 0; 
     margin-right: 1rem;
 }
 
@@ -43,6 +42,12 @@ body {
     padding-top: 0; /* Remove padding superior */
 }
 
+.error-page-wrapper {
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    padding: 2rem;
+  }
 
 
 /* from Bulma */

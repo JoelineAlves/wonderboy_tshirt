@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-3 mx-5">
+      <div class="error-page-wrapper flex-col align-center-justify-center">
+        <h1>404 - Page Not Found</h1>
+        <p>Sorry, but the page you were looking for could not be found.</p>
+        <a href="{% url 'home' %}" class="btn btn-md bg-sky-400 ft-slate-900 bd-radius-1 bd-width-0">Home</a>
+      </div>
+    </div>
+  </div>       
+</div>  
+
+{% include 'includes/footer.html' %}
+{% endblock %}
