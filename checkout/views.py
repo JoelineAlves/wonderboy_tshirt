@@ -168,6 +168,18 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+    subject = render_to_string('emails/order_confirmation_subject.html', {'order': order}).strip()
+    message = render_to_string('emails/order_confirmation_body.html', {'order': order, 'contact_email': contact_email})
+
+    # Enviar o e-mail
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,  # O e-mail de envio configurado no settings.py
+        [order.email],  # O e-mail do cliente
+        fail_silently=False,
+    )        
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')

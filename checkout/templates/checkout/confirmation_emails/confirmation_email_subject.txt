@@ -1,1 +1,1 @@
-Wonderbot T-shirt Confirmation for Order Number {{ order.order_number }}
+Wonderboy T-shirt Confirmation for Order Number {{ order.order_number }}
