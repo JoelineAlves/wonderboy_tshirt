@@ -169,8 +169,8 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    subject = render_to_string('checkout/confirmation_email_subject.txt', {'order': order}).strip()
-    message = render_to_string('checkout/confirmation_email_body.txt', {'order': order, 'contact_email': contact_email})
+    subject = render_to_string('checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order}).strip()
+    message = render_to_string('checkout/confirmation_emails/confirmation_email_body.txt', {'order': order, 'contact_email': contact_email})
 
     # Enviar o e-mail
     send_mail(
