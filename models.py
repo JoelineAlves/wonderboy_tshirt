@@ -186,6 +186,16 @@ class DjangoSite(models.Model):
         db_table = 'django_site'
 
 
+class FavoriteFavorite(models.Model):
+    product = models.ForeignKey('ProductsProduct', models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'favorite_favorite'
+        unique_together = (('user', 'product'),)
+
+
 class NewsletterNewsletters(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -233,6 +243,19 @@ class ProductsProduct(models.Model):
         db_table = 'products_product'
 
 
+class ProductsProductreview(models.Model):
+    title = models.CharField(max_length=100)
+    review = models.TextField()
+    rating = models.PositiveIntegerField()
+    date = models.DateTimeField()
+    product = models.ForeignKey(ProductsProduct, models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'products_productreview'
+
+
 class ProfilesUserprofile(models.Model):
     default_phone_number = models.CharField(max_length=20, blank=True, null=True)
     default_country = models.CharField(max_length=2, blank=True, null=True)
@@ -246,6 +269,19 @@ class ProfilesUserprofile(models.Model):
     class Meta:
         managed = False
         db_table = 'profiles_userprofile'
+
+
+class ReviewsProductreview(models.Model):
+    title = models.CharField(max_length=100)
+    review = models.TextField()
+    rating = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    date = models.DateTimeField()
+    product = models.ForeignKey(ProductsProduct, models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'reviews_productreview'
 
 
 class SocialaccountSocialaccount(models.Model):
@@ -297,3 +333,13 @@ class SocialaccountSocialtoken(models.Model):
         managed = False
         db_table = 'socialaccount_socialtoken'
         unique_together = (('app', 'account'),)
+
+
+class SubscribeSubscriber(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.CharField(unique=True, max_length=100)
+    date_subscribed = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'subscribe_subscriber'

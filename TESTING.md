@@ -2,7 +2,7 @@
 
 [Back to the README.md file](/README.md)  
 
-[View the live website here](https://my-fitness-7a85d9b108b0.herokuapp.com/)  
+[View the live website here](https://wonderboytshirt-90045f83868e.herokuapp.com/)  
 
 ## Table of Contents
 
@@ -176,19 +176,19 @@ Lighthouse in Chrome DevTools has been used to confirm that the colors and fonts
 
 Page | Lighthouse Report |
 | --- | --- |
-| Home | ![Home Lighthouse Report](/assets/testing_images/home-page-lighthouse.png) |
-| Products | ![Products Lighthouse Report](/assets/testing_images/products-lighthouse.png) |
-| Product Details | ![Product Details Lighthouse Report](/assets/testing_images/product-detail-lighthouse.png) |
-| Add Product | ![Add Product Lighthouse Report](/assets/testing_images/add-product-lighthouse.png) |
-| Edit Product | ![Edit Product Lighthouse Report](/assets/testing_images/edit-product-lighthouse.png) |
-| Shopping Bag !| ![Shopping Bag Lighthouse Report](/assets/testing_images/bag-lighthouse.png) |
-| Checkout | ![Checkout Lighthouse Report](/assets/testing_images/checkout-lighthouse.png) |
-| Checkout Success | ![Checkout Success Lighthouse Report](/assets/testing_images/checkout-success-lighthouse.png) |
-| Profile | ![Profile Lighthouse Report](/assets/testing_images/profile-page-lighthouse.png) |
-| Reviews | ![Reviews Lighthouse Report](/assets/testing_images/reviews-lighthouse.png) |
-| Add Review | ![Add Review Lighthouse Report](/assets/testing_images/add-review-lighthouse.png) |
-| Edit Review | ![Edit Review Lighthouse Report](/assets/testing_images/edit-review-lighthouse.png) |
-| Delete Review | ![Delete Review Lighthouse Report](/assets/testing_images/delete-review-lighthouse.png) |
+| Home | ![Home Lighthouse Report]() |
+| Products | ![Products Lighthouse Report]() |
+| Product Details | ![Product Details Lighthouse Report]() |
+| Add Product | ![Add Product Lighthouse Report]() |
+| Edit Product | ![Edit Product Lighthouse Report]() |
+| Shopping Bag !| ![Shopping Bag Lighthouse Report]() |
+| Checkout | ![Checkout Lighthouse Report]() |
+| Checkout Success | ![Checkout Success Lighthouse Report]() |
+| Profile | ![Profile Lighthouse Report]() |
+| Reviews | ![Reviews Lighthouse Report]() |
+| Add Review | ![Add Review Lighthouse Report]() |
+| Edit Review | ![Edit Review Lighthouse Report]() |
+| Delete Review | ![Delete Review Lighthouse Report]() |
 
 
 The low score on the best practices seems to be coming from the cookies.

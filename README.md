@@ -8,7 +8,7 @@ Wonderboy T-Shirt is an e-commerce platform specializing in a wide range of cust
 
 The primary purpose of the site is to offer users unique, high-quality apparel that reflects their personal style and individuality.
 
-Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/).
+Visit the deployed website [here](https://wonderboytshirt-90045f83868e.herokuapp.com/).
 
 ## Table of Contents
 
@@ -119,21 +119,29 @@ Visit the deployed website [here](https://my-fitness-7a85d9b108b0.herokuapp.com/
 
 * As a registered shopper, I want to be able to leave product reviews and rate the products.
 
-**Epic 5 - Product Admin**
+**Epic 5 - Product Favourites**
+
+As a user, I want to be able to add products to my favourites, so that I can easily view the products I have marked as favourites later.
+
+As a user, I want to be able to remove products from my favourites, so that I can keep my favourites list up-to-date with only the products I am interested in.
+
+
+
+**Epic 6 - Product Admin**
 
 * As a site admin, I want to be able to add and update products.
 
 * As a site admin, I want to be able to remove product no longer available.
 
-**Epic 6 - Newsletter Subscription**
+**Epic 7 - Newsletter Subscription**
 
 * As a site administrator, I want buyers to have the ability to provide their contact emails so we can keep them informed about new updates, promotions, and exclusive offers.
 
 #### Database Model
 
-The database model has been designed using [drawsql](https://drawsql.app/). The type of database being used for the is relational database being managed using SQLite3 during development and deployed using [PostgreSQL](https://www.postgresql.org/).
+The database model has been designed using [dbdiagram.io](https://dbdiagram.io/). The type of database being used for the is relational database being managed using SQLite3 during development and deployed using [PostgreSQL](https://www.postgresql.org/).
 
-![MyFitness Database Model](assets/readme_images/sql-tables.png)
+![Wonderboy T-shirt Database Model](assets/readme_images/sql-tables.png)
 
 #### Wireframes
 
@@ -141,16 +149,16 @@ The database model has been designed using [drawsql](https://drawsql.app/). The 
 
 Page | Desktop Version | Mobile Version
 --- | --- | ---
-Home | ![Desktop home wireframe image](/assets/readme_images/homepage-desktop-wireframe.png) | ![Mobile home wireframe image](/assets/readme_images/homepage-mobile-wireframe.png)
-Products | ![Desktop products wireframe image](/assets/readme_images/products-wireframe-desktop.png) | ![Mobile products wireframe image](/assets/readme_images/product-detail-wireframe-mobile.png)
-Product Details | ![Desktop product details wireframe image](/assets/readme_images/product-detail-wireframe-desktop.png) | ![Mobile product details wireframe image](/assets/readme_images/product-detail-wireframe-mobile.png)
-Shopping Bag | ![Desktop shopping bag wireframe image](/assets/readme_images/bag-desktop-wireframe.png) | ![Mobile shopping bag wireframe image](/assets/readme_images/bag-mobile-wireframe.png)
-Checkout | ![Desktop checkout wireframe image](/assets/readme_images/checkout-desktop-wireframe.png) | ![Mobile checkout wireframe image](/assets/readme_images/checkout-mobile-wireframe.png)
-Profile | ![Desktop profile wireframe image](/assets/readme_images/profile-desktop-wireframe.png) | ![Mobile profile wireframe image](/assets/readme_images/profile-mobile-wireframe.png)
+Home | ![Desktop home wireframe image]() | ![Mobile home wireframe image]()
+Products | ![Desktop products wireframe image]() | ![Mobile products wireframe image]()
+Product Details | ![Desktop product details wireframe image]() | ![Mobile product details wireframe image]()
+Shopping Bag | ![Desktop shopping bag wireframe image]() | ![Mobile shopping bag wireframe image]()
+Checkout | ![Desktop checkout wireframe image]() | ![Mobile checkout wireframe image]()
+Profile | ![Desktop profile wireframe image]() | ![Mobile profile wireframe image]()
 
 #### Color Scheme
 
-![Color scheme image](/assets/readme_images/color-palette.png)
+![Color scheme image]()
 
 The website features a sleek slate color palette as the main background and foreground, complemented by shades of gray as the primary accent colors. This combination creates a clean and modern aesthetic.
 
@@ -173,7 +181,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 #### Header
-![Wonderboytshirt header image](/assets/readme_images/header-img.png)
+![Wonderboytshirt header image]()
 
 * The header contains the main logo, navigation links and search product functionality.
 
@@ -185,7 +193,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 #### Search Bar
-![Wonderboytshirt search bar image](/assets/readme_images/searchbar.png)
+![Wonderboytshirt search bar image]()
 
 * The search bar allows the user to search the website for products using specific keywords.
 
@@ -193,7 +201,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 #### Footer
-![Wonderboytshirt footer image](/assets/readme_images/footer-img.png)
+![Wonderboytshirt footer image]()
 
 * "About Us" Section: Offers a brief description of the brand and its mission, highlighting personalized products such as t-shirts, hoodies, and other unique fashion items.
 
@@ -209,12 +217,12 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 ### Home Page
 
-![Wonderboytshirt hero image](/assets/readme_images/hero-img.png)
+![Wonderboytshirt hero image]()
 * Hero section contains links to the shopping poage and sign up page
 
 
 ### Products Page
-![Wonderboytshirt products page image](/assets/readme_images/products-desktop.png)
+![Wonderboytshirt products page image]()
 
 * Display all the products currently available or filtered on a specific category.
 
@@ -231,7 +239,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Product Details Page
-![Wonderboytshirt product details page image](/assets/readme_images/product-detail-desktop.png)
+![Wonderboytshirt product details page image]()
 
 * A products navigation bar is available in case the shopper wants to return to the products list.
 
@@ -261,23 +269,23 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 ### Products Admin
 
 #### Add Product
-![Wonderboytshirt add product image](/assets/readme_images/add-product-form.png)
+![Wonderboytshirt add product image]()
 
 * Provide a form for the site admin to be able to add new products to the store.
 
 #### Edit Product
-![Wonderboytshirt edit product image](/assets/readme_images/edit-product-form.png)
+![Wonderboytshirt edit product image]()
 
 * Provide a pre-filled form that allows the site admin to update products in the store.
 
 #### Delete Product
-![Wonderboytshirt delete product image](/assets/readme_images/delete-product-form.png)
+![Wonderboytshirt delete product image]()
 
 * Provide a page to delete a product.
 
 
 ### Shopping Bag Page
-![Wonderboytshirt shopping bag page image](/assets/readme_images/bag-desktop.png)
+![Wonderboytshirt shopping bag page image]()
 
 * A message alerts the user if the free delivery threshold has not been reached, displaying the remaining amount needed 
   to qualify for free delivery.
@@ -294,7 +302,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Checkout Page
-![Wonderboytshirt checkout page image](/assets/readme_images/checkout-desktop.png)
+![Wonderboytshirt checkout page image]()
 
 * Provide a checkout form for the shopper to complete the purchase, including the necessary contact, shipping, and 
   payment information.
@@ -314,7 +322,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Checkout Success Page
-![Wonderboytshirt checkout success page image](/assets/readme_images/checkout-success-page.png)
+![Wonderboytshirt checkout success page image]()
 
 *Display the order and shopper information, allowing the shopper to confirm that the details are correct.
 
@@ -325,14 +333,14 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Profile Page
-![Wonderboytshirt profile page image](/assets/readme_images/profile-page.png)
+![Wonderboytshirt profile page image]()
 
 * Provide a form that allows the registered shopper to update their default information.
 
 * A section displaying the order history is available, showing all past orders for the registered shopper.
 
 ### Reviews Page
-![Wonderboytshirt reviews page image](/assets/readme_images/reviews-page.png)
+![Wonderboytshirt reviews page image]()
 
 * Display the reviews the registered shopper has provided and the review's information.
 
@@ -344,14 +352,14 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 ### Reviews Admin
 
 #### Add Review
-![Wonderboytshirt add review page image](/assets/readme_images/add-review-page.png)
+![Wonderboytshirt add review page image]()
 
 * Display the product being reviewed.
 
 * Provide a form that allows the registered shopper to add a review for the product.
 
 #### Edit Review
-![Wonderboytshirt edit review page image](/assets/readme_images/edit-review-page.png)
+![Wonderboytshirt edit review page image]()
 
 * Provide a pre-filled form for the registered shopper to update their existing reviews..
 
@@ -360,9 +368,9 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 Page | Purpose | Image |
 --- | --- | --- |
-Sign Up | Allow the shopper to sign up an account for the website. | ![Wonderboytshirt Sign Up Page](/assets/readme_images/sign-up-page.png) |
-Sign In | Allow the registered shopper to sign in with their account. | ![Wonderboytshirt Sign In Page](/assets/readme_images/sign-in-page.png) |
-Sign Out | Allow the registered shopper to sign out from their account. | ![Wonderboytshirt Sign Out Page](/assets/readme_images/accounts-sign-out-page.png) |
+Sign Up | Allow the shopper to sign up an account for the website. | ![Wonderboytshirt Sign Up Page]() |
+Sign In | Allow the registered shopper to sign in with their account. | ![Wonderboytshirt Sign In Page]() |
+Sign Out | Allow the registered shopper to sign out from their account. | ![Wonderboytshirt Sign Out Page]() |
 
 
 
@@ -793,14 +801,14 @@ Create a custom_storages.py file in your project's root directory, and inside it
 
 Page | Desktop | Mobile |
 --- | --- | --- |
-| Home | ![Desktop Home Page image](/assets/readme_images/homepage-desktop.png) | ![Mobile Home Page image ](/assets/readme_images/homepage-mobile.png) |
-| Products | ![Desktop Products Page image](/assets/readme_images/products-desktop.png) | ![Mobile Products Page image ](/assets/readme_images/products-mobile.png) |
-| Product Details | ![Desktop Product Details Page image](/assets/readme_images/product-detail-desktop.png) | ![Mobile Product Details Page image ](/assets/readme_images/product-detail-mobile.png) |
-| Shopping Bag | ![Desktop Shopping Bag Page image](/assets/readme_images/bag-desktop.png) | ![Mobile Shopping Bag Page image ](/assets/readme_images/bag-mobile.png) |
-| Checkout | ![Desktop Checkout Page image](/assets/readme_images/checkout-desktop.png) | ![Mobile Checkout Page image ](/assets/readme_images/checkout-mobile.png) |
-| Checkout Success | ![Desktop Checkout Success Page image](/assets/readme_images/checkout-success-page.png) | ![Mobile Checkout Page image ](/assets/readme_images/checkout-success-mobile.png) |
-| Profile | ![Desktop Profile Page image](/assets/readme_images/profile-page-desktop.png) | ![Mobile Profile Page image ](/assets/readme_images/profile-page-mobile.png) |
-| Reviews | ![Desktop Reviews Page image](/assets/readme_images/reviews-desktop-page.png) | ![Mobile Reviews Page image ](/assets/readme_images/reviews-page-mobile.png) |
+| Home | ![Desktop Home Page image]() | ![Mobile Home Page image ]() |
+| Products | ![Desktop Products Page image]() | ![Mobile Products Page image ]() |
+| Product Details | ![Desktop Product Details Page image]() | ![Mobile Product Details Page image ]() |
+| Shopping Bag | ![Desktop Shopping Bag Page image]() | ![Mobile Shopping Bag Page image ]() |
+| Checkout | ![Desktop Checkout Page image]() | ![Mobile Checkout Page image ]() |
+| Checkout Success | ![Desktop Checkout Success Page image]() | ![Mobile Checkout Page image ]() |
+| Profile | ![Desktop Profile Page image]() | ![Mobile Profile Page image ]() |
+| Reviews | ![Desktop Reviews Page image]() | ![Mobile Reviews Page image ]() |
 
 
 
@@ -836,6 +844,14 @@ Although I configured STATIC_ROOT in my settings.py, I encountered issues with u
 Fortunately, this turned out to be a simple issue. I just needed to update the on_delete option for the foreign key in my review model. I changed: on_delete=models.SET_NULL to: on_delete=models.CASCADE.
 After making this change, I ran the migration, and the issue was resolved.
 
+**My Favourites Page Was Appearing Empty Even After Adding Products to Favourites**
+
+This issue was a bit tricky at first, but I eventually identified the root cause. The problem stemmed from the fact that the favourites were not being properly listed in the template. After reviewing the code, I realized that the necessary logic to display the favourites was missing in the template file. Once I added the correct template logic to list the favourite products, the issue was resolved.
+
+**Product Reviews Not Appearing After Adding, Despite Being Present in the Database**
+
+During testing, I encountered an issue where the product reviews I was adding were not appearing after refreshing the page, even though I could see the reviews when checking the database using the shell command. After some investigation, I realized the issue was due to the missing import of the review model in the product reviews file. Once I added the necessary import, the reviews started displaying correctly on the page.
+
 
 
 
@@ -848,6 +864,10 @@ After making this change, I ran the migration, and the issue was resolved.
 * My Family, for their unconditional love and patience, help and continued support through the whole course. Without their support I will not  been able to finish this project.
 
 * My tutor, Marcel, for his support, feedback and guidance throughout this project. 
+
+* I would like to express my gratitude to my friend, Dorivaldo, for his invaluable support and for creating and designing the products.
+
+* I would like to thank my friend, Ricardo, for his assistance in resolving CSS issues in my project, particularly for his help with challenges I encountered.
 
 * Code Institute and Slack community for their support and providing me with the necessary knowledge to complete this project.
 
