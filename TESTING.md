@@ -11,7 +11,6 @@
 3. [Accessibility](#accessibility)
 4. [Tools Testing](#tools-testing)
 5. [Manual Testing](#manual-testing)
-6. [Unit Testing](#unit-testing)
 
 ***
 
@@ -379,7 +378,3 @@ Element | Expected Outcome | Pass/Fail |
 Edit Review Form | Review gets updated when submitting the form. | Pass |
 Cancel Button | Clicking the button redirects to the products page. | Pass |
 
-
-## Unit Testing
-
-Unit tests were written for views on the favorites and reviews app, practicing test-driven development on those methods.
