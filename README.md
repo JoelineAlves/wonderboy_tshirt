@@ -1,7 +1,7 @@
 # Wonderbotshirt
 
 
-![Wonderboytshirt mockup images](/assets/readme_images/mockup-img.png)
+![Wonderboytshirt mockup images]()
 
 
 Wonderboy T-Shirt is an e-commerce platform specializing in a wide range of custom-designed hoodies, t-shirts, and sweaters.

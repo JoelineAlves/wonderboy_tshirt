@@ -5,11 +5,9 @@
     <div class="container header-container">
         <div class="row d-flex justify-content-between align-items-center">
              <div class="col">
-                 <!-- Exibe o nome do produto no lugar de "Product Details" -->
                  <h2 class="logo-font">{{ product.name }}</h2>
             </div>
             <div class="col-auto">
-                <!-- Botão "Back to Products" no canto superior direito -->
                 <a href="{% url 'products' %}" class="btn btn-md bg-grey-400 bd-radius-1 ft-slate-900" aria-label="Back to products">
                     Back to products
                 </a>
@@ -59,16 +57,13 @@
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
 
-                    <!-- Favorite Toggle Button -->
                     <div class="favorite-icon mt-3">
                         <form method="POST" action="{% url 'toggle_favorite' product.id %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-link p-0">
                                 {% if is_favorite %}
-                                    <!-- Ícone cheio (favorito) -->
                                     <i class="fa fa-heart fs-3 text-danger"></i>
                                 {% else %}
-                                    <!-- Ícone vazio (não favorito) -->
                                     <i class="fa fa-heart fs-3 text-black-50"></i>
                                 {% endif %}
                             </button>

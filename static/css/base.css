@@ -34,12 +34,12 @@ body {
 }
 
 .navbar-toggler {
-    padding: 0.3rem 0.3rem; /* Reduz o tamanho do botão de toggler */
+    padding: 0.3rem 0.3rem; 
 }
 
 #free-delivery-banner {
-    margin-top: 0; /* Remove margem superior do banner */
-    padding-top: 0; /* Remove padding superior */
+    margin-top: 0; 
+    padding-top: 0; 
 }
 
 .error-page-wrapper {

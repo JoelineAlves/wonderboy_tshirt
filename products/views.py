@@ -68,12 +68,16 @@ def product_detail(request, product_id):
     # Retrieve the product based on the id
     product = get_object_or_404(Product, pk=product_id)
 
-    is_favorite = Favorite.objects.filter(user=request.user, product=product).exists()
+    # Check if the user is authenticated before checking favorites
+    if request.user.is_authenticated:
+        is_favorite = Favorite.objects.filter(user=request.user, product=product).exists()
+    else:
+        is_favorite = False  # Unauthenticated users cannot have favorites
 
     # Get the reviews for the product (from the 'reviews' app)
     reviews = product.product_reviews_from_reviews.all()  # Usando a relação reversa do app reviews
 
-    print(reviews)
+    
 
     # Render the page with the context
     return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews, 'is_favorite': is_favorite,})

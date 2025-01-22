@@ -9,7 +9,7 @@ from django.contrib import messages
 # List all reviews for a specific product
 def all_reviews(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    reviews = product.product_reviews_from_reviews.all()  # Usando o relacionamento reverso
+    reviews = product.product_reviews_from_reviews.all()  
 
     for review in reviews:
         review.stars = range(int(review.rating))
@@ -65,7 +65,7 @@ def edit_review(request, review_id):
     context = {
         'form': form,
         'review': review,
-        'product': review.product  # Passando o produto para o template
+        'product': review.product  
     }
     return render(request, template, context)
 

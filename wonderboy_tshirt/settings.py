@@ -36,8 +36,7 @@ ALLOWED_HOSTS = [
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://wonderboytshirt-90045f83868e.herokuapp.com',  # Domínio de produção no Heroku
-    #'https://8000-joelinealve-wonderboyts-jt9ni93l583.ws-eu116.gitpod.io',  # Domínio de desenvolvimento no Gitpod
+    'https://wonderboytshirt-90045f83868e.herokuapp.com',  
     'https://8000-joelinealve-wonderboyts-5ce7zyiia00.ws.codeinstitute-ide.net',
 ]
 

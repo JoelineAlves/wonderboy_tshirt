@@ -26,13 +26,11 @@ class ProductReviewForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
 
-        # Define classes reutilizáveis para os campos
         common_classes = (
             'bg-slate-600 bd-radius-1 transition-fast shadow-focus-1 '
             'sh-sky-300 bd-width-0 width-100 pad-inline-1 ft-serif'
         )
 
-        # Customizar atributos de cada campo
         self.fields['title'].widget.attrs.update({
             'placeholder': 'Title...',
             'class': common_classes,
@@ -46,7 +44,6 @@ class ProductReviewForm(forms.ModelForm):
             'class': common_classes,
         })
 
-        # Remover rótulos para exibir apenas os placeholders
         for field_name in self.fields:
             self.fields[field_name].label = False
 

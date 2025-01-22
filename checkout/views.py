@@ -149,8 +149,8 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    # Defina o e-mail de contato aqui
-    contact_email = 'wonderboytshirtmilestone@gmail.com'  # Substitua com seu e-mail real de suporte
+    # Set the contact email here
+    contact_email = 'wonderboytshirtmilestone@gmail.com'  
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -176,12 +176,11 @@ def checkout_success(request, order_number):
     subject = render_to_string('checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order}).strip()
     message = render_to_string('checkout/confirmation_emails/confirmation_email_body.txt', {'order': order, 'contact_email': contact_email})
 
-    # Enviar o e-mail
     send_mail(
         subject,
         message,
-        settings.DEFAULT_FROM_EMAIL,  # O e-mail de envio configurado no settings.py
-        [order.email],  # O e-mail do cliente
+        settings.DEFAULT_FROM_EMAIL,  
+        [order.email],  
         fail_silently=False,
     )        
 
