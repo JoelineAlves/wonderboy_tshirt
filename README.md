@@ -469,7 +469,10 @@ Sign Out | Allow the registered shopper to sign out from their account. | ![Wond
 
 ## Testing
 
-The testing documentation can be found [here]().
+## Testing
+
+The **testing documentation** was conducted and can be found in the file `TESTING.md` in the project's root directory.
+
 
 
 [Back to top ⇧](#Wonderboytshirt)
