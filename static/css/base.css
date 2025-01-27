@@ -37,9 +37,16 @@ body {
     padding: 0.3rem 0.3rem; 
 }
 
-#free-delivery-banner {
-    margin-top: 0; 
-    padding-top: 0; 
+#delivery-banner {
+    margin: 0; 
+    padding: 0; 
+}
+
+#delivery-banner h4 {
+    font-size: 14px; 
+    height: auto; 
+    line-height: 1.2; 
+    padding: 5px; 
 }
 
 .error-page-wrapper {
