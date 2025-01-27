@@ -38,25 +38,33 @@ body {
 }
 
 #delivery-banner {
-    margin: 0 !important; /* Remove margens */
-    padding: 0 !important; /* Remove preenchimento */
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 #delivery-banner .col {
-    background-color: black !important; /* Força o fundo preto */
-    color: white !important; /* Força a cor branca */
+    padding: 0 !important; /* Remove padding das colunas Bootstrap */
+    margin: 0 !important; /* Remove possíveis margens */
+    max-width: 100% !important; /* Garante que a largura ocupe todo o espaço */
 }
 
 #delivery-banner h4 {
-    font-size: 14px !important; /* Define tamanho de fonte */
-    height: auto !important; /* Remove altura fixa */
-    line-height: 1.2 !important; /* Define espaçamento entre linhas */
-    padding: 5px !important; /* Adiciona preenchimento interno */
-    font-weight: 600 !important; /* Torna o texto semibold */
-    display: flex !important; /* Mantém o comportamento flexível */
+    font-size: 14px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+    padding: 5px !important;
+    font-weight: 600 !important; /* Negrito */
+    display: flex !important;
     justify-content: center !important; /* Centraliza horizontalmente */
     align-items: center !important; /* Centraliza verticalmente */
+    color: white !important; /* Garante a cor branca */
+    background-color: black !important; /* Garante o fundo preto */
 }
+
+#delivery-banner h4 i {
+    margin-right: 5px !important; /* Adiciona espaçamento entre o ícone e o texto */
+}
+
 
 
 .error-page-wrapper {
