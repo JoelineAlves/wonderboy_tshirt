@@ -38,16 +38,26 @@ body {
 }
 
 #delivery-banner {
-    margin: 0; 
-    padding: 0; 
+    margin: 0 !important; /* Remove margens */
+    padding: 0 !important; /* Remove preenchimento */
+}
+
+#delivery-banner .col {
+    background-color: black !important; /* Força o fundo preto */
+    color: white !important; /* Força a cor branca */
 }
 
 #delivery-banner h4 {
-    font-size: 14px; 
-    height: auto; 
-    line-height: 1.2; 
-    padding: 5px; 
+    font-size: 14px !important; /* Define tamanho de fonte */
+    height: auto !important; /* Remove altura fixa */
+    line-height: 1.2 !important; /* Define espaçamento entre linhas */
+    padding: 5px !important; /* Adiciona preenchimento interno */
+    font-weight: 600 !important; /* Torna o texto semibold */
+    display: flex !important; /* Mantém o comportamento flexível */
+    justify-content: center !important; /* Centraliza horizontalmente */
+    align-items: center !important; /* Centraliza verticalmente */
 }
+
 
 .error-page-wrapper {
     height: 100%;
