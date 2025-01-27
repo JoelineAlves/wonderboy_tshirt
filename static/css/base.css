@@ -38,8 +38,23 @@ body {
 }
 
 #delivery-banner {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0; /* Remove qualquer margem residual */
+    padding: 0; /* Remove padding adicional */
+    width: 100%; /* Garante que ocupa toda a largura */
+    background-color: black; /* Fundo preto */
+    color: white; /* Texto branco */
+}
+
+#delivery-banner h4 {
+    margin: 0; /* Remove margem do elemento h4 */
+    padding: 10px; /* Espaçamento interno */
+    display: flex; /* Alinhamento flex */
+    justify-content: center; /* Centraliza conteúdo horizontalmente */
+    align-items: center; /* Centraliza conteúdo verticalmente */
+    font-size: 14px; /* Tamanho do texto */
+    font-weight: 600; /* Negrito */
+    line-height: 1.2; /* Altura da linha */
+    color: white; /* Garante que o texto é branco */
 }
 
 #delivery-banner .col {
@@ -48,18 +63,6 @@ body {
     max-width: 100% !important; /* Garante que a largura ocupe todo o espaço */
 }
 
-#delivery-banner h4 {
-    font-size: 14px !important;
-    height: auto !important;
-    line-height: 1.2 !important;
-    padding: 5px !important;
-    font-weight: 600 !important; /* Negrito */
-    display: flex !important;
-    justify-content: center !important; /* Centraliza horizontalmente */
-    align-items: center !important; /* Centraliza verticalmente */
-    color: white !important; /* Garante a cor branca */
-    background-color: black !important; /* Garante o fundo preto */
-}
 
 #delivery-banner h4 i {
     margin-right: 5px !important; /* Adiciona espaçamento entre o ícone e o texto */
