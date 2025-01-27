@@ -38,31 +38,17 @@ body {
 }
 
 #delivery-banner {
-    margin: 0; /* Remove qualquer margem residual */
-    padding: 0; /* Remove padding adicional */
-    width: 100%; /* Garante que ocupa toda a largura */
-    background-color: black; /* Fundo preto */
-    color: white; /* Texto branco */
+    margin: 0; 
+    padding: 0; 
+    
 }
 
 #delivery-banner h4 {
-    margin: 0; /* Remove margem do elemento h4 */
-    padding: 10px; /* Espaçamento interno */
-    display: flex; /* Alinhamento flex */
-    justify-content: center; /* Centraliza conteúdo horizontalmente */
-    align-items: center; /* Centraliza conteúdo verticalmente */
-    font-size: 14px; /* Tamanho do texto */
-    font-weight: 600; /* Negrito */
+    height: auto;
+    padding: 5px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho do tefont-weight: 600; /* Negrito */
     line-height: 1.2; /* Altura da linha */
-    color: white; /* Garante que o texto é branco */
 }
-
-#delivery-banner .col {
-    padding: 0 !important; /* Remove padding das colunas Bootstrap */
-    margin: 0 !important; /* Remove possíveis margens */
-    max-width: 100% !important; /* Garante que a largura ocupe todo o espaço */
-}
-
 
 #delivery-banner h4 i {
     margin-right: 5px !important; /* Adiciona espaçamento entre o ícone e o texto */
