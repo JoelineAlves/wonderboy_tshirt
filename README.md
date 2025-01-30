@@ -181,19 +181,19 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 #### Header
-![Wonderboytshirt header image]()
+![Wonderboytshirt header image](assets/readme_images/header.png)
 
-* The header contains the main logo, navigation links and search product functionality.
+* The header contains the main logo, navigation links, and product search functionality.
 
-* The main logo works as a link to the home page.
+* The main logo acts as a link to the homepage, allowing users to easily return to the main page.
 
-* The navigation links allow the shopper access to all sections to facilitate navigation across the website. It also has a hover effect that changes color to provide feedback to the shopper for a better user experience.
+* The navigation links provide shoppers with access to all sections of the website, ensuring easy navigation. Additionally, the navbar includes different tabs to help customers find products based on their categories, offering an intuitive and well-organized shopping experience. The links feature a hover effect that changes color, providing visual feedback to enhance the user experience.
 
-* The shopping bag icon is prominently displayed on the website. If a product has been added to the shopping bag, the total value of the items is dynamically displayed to the buyer, ensuring a seamless shopping experience and keeping the customer informed at all times.
+* The shopping bag icon is prominently displayed on the website. Whenever a product is added to the shopping cart, the total value of the items is dynamically updated, keeping customers informed in real time and ensuring a seamless shopping experience. 
 
 
 #### Search Bar
-![Wonderboytshirt search bar image]()
+![Wonderboytshirt search bar image](assets/readme_images/search_bar.png)
 
 * The search bar allows the user to search the website for products using specific keywords.
 
@@ -201,15 +201,14 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 #### Footer
-![Wonderboytshirt footer image]()
+![Wonderboytshirt footer image](assets/readme_images/footer.png)
 
 * "About Us" Section: Offers a brief description of the brand and its mission, highlighting personalized products such as t-shirts, hoodies, and other unique fashion items.
 
 * Payments Processing: Explains how payments are securely handled through the Stripe system, ensuring a smooth and 
   trustworthy shopping experience.
 
-* Useful Links: Includes direct links to important pages like "Terms and Conditions" and "Privacy Policy," making it easy 
-  for users to access essential information.
+* Contact Us: Includes the email, phone number and address for user to get to access us.
 
 * Social Media Connections: Provides quick access to the brand's social media platforms, such as Facebook, Instagram,    and  YouTube, allowing users to stay updated with the latest news and promotions.
 
@@ -217,12 +216,12 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 ### Home Page
 
-![Wonderboytshirt hero image]()
-* Hero section contains links to the shopping poage and sign up page
+![Wonderboytshirt hero image](assets/readme_images/hero_page.png)
+* Hero section contains links to the shopping page.
 
 
 ### Products Page
-![Wonderboytshirt products page image]()
+![Wonderboytshirt products detail page image](assets/readme_images/product_detail_page.png)
 
 * Display all the products currently available or filtered on a specific category.
 
@@ -230,7 +229,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 * Display the quantity of products currently being displayed.
 
-* Provides a product navigation bar to allow the shopper to filter products per category.
+* A back button is available to the shopper can easily come back to the all products.
 
 * Provides sorting functionality to sort products by price, rating, name or category.
 
