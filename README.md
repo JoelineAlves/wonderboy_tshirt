@@ -238,7 +238,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Product Details Page
-![Wonderboytshirt product details page image]()
+![Wonderboytshirt product details page image](assets/readme_images/product_detail.png)
 
 * A products navigation bar is available in case the shopper wants to return to the products list.
 
@@ -259,26 +259,26 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 * All reviews for the product are displayed in the reviews section at the bottom of the page.
 
-* Sorting functionality allows the shopper to sort reviews either by date or rating.
+* The "Count Section for Reviews" displays the total number of product reviews.
 
-* A link to leave a review is available at the bottom of the reviews section.
+* A link to leave a review is available at the bottom of the reviews section, "Add Review".
 
 * Provide edit and delete links for the logged-in shopper to manage their own reviews.
 
 ### Products Admin
 
 #### Add Product
-![Wonderboytshirt add product image]()
+![Wonderboytshirt add product image](assets/readme_images/add_product_form.png)
 
 * Provide a form for the site admin to be able to add new products to the store.
 
 #### Edit Product
-![Wonderboytshirt edit product image]()
+![Wonderboytshirt edit product image](assets/readme_images/edit_product_form.png)
 
 * Provide a pre-filled form that allows the site admin to update products in the store.
 
 #### Delete Product
-![Wonderboytshirt delete product image]()
+![Wonderboytshirt delete product image](assets/readme_images/add_product_form.png)
 
 * Provide a page to delete a product.
 
