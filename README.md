@@ -278,13 +278,13 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 * Provide a pre-filled form that allows the site admin to update products in the store.
 
 #### Delete Product
-![Wonderboytshirt delete product image](assets/readme_images/add_product_form.png)
+![Wonderboytshirt delete product image](assets/readme_images/delete_product.png)
 
 * Provide a page to delete a product.
 
 
 ### Shopping Bag Page
-![Wonderboytshirt shopping bag page image]()
+![Wonderboytshirt shopping bag page image](assets/readme_images/shopping_bag.png)
 
 * A message alerts the user if the free delivery threshold has not been reached, displaying the remaining amount needed 
   to qualify for free delivery.
@@ -301,7 +301,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Checkout Page
-![Wonderboytshirt checkout page image]()
+![Wonderboytshirt checkout page image](assets/readme_images/checkout_page.png)
 
 * Provide a checkout form for the shopper to complete the purchase, including the necessary contact, shipping, and 
   payment information.
@@ -321,18 +321,16 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Checkout Success Page
-![Wonderboytshirt checkout success page image]()
+![Wonderboytshirt checkout success page image](assets/readme_images/checkout_success.png)
 
 *Display the order and shopper information, allowing the shopper to confirm that the details are correct.
 
 *Additionally, inform the shopper that a confirmation email has been sent to the provided email address with the same 
  information.
 
-*A link to the organizations we encourage shoppers to support is provided at the bottom of the page.
-
 
 ### Profile Page
-![Wonderboytshirt profile page image]()
+![Wonderboytshirt profile page image](assets/readme_images/profile_page.png)
 
 * Provide a form that allows the registered shopper to update their default information.
 
