@@ -10,32 +10,34 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="text-muted">Delete a Product</h4>
-                    <a href="{% url 'products' %}" class="btn btn-dark bd-radius-1" aria-label="Back to products">
-                        Back to products
-                    </a>
+    <div style="padding-top: 210px;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="text-muted">Delete a Product</h4>
+                        <a href="{% url 'products' %}" class="btn btn-dark bd-radius-1" aria-label="Back to products">
+                            Back to products
+                        </a>
+                    </div>
+                    <hr>
                 </div>
-                <hr>
             </div>
-        </div>
 
-        <div class="my-4">
-            <p class="fs-4 fw-bold">Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
-        </div>
+            <div class="my-4">
+                <p class="fs-4 fw-bold">Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
+            </div>
 
-        <div class="flex-col gap-2 pad-2 width-100">
-            <form class="flex-row justify-between" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-lg bg-red-400 ft-black bd-radius-2 bd-width-0">
-                    Delete
-                </button>
-            </form>
+            <div class="flex-col gap-2 pad-2 width-100">
+                <form class="flex-row justify-between" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-lg btn-dark ft-black bd-radius-2 bd-width-0">
+                        Delete
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
