@@ -152,5 +152,5 @@ def delete_product(request, product_id):
         messages.success(request, 'Product deleted!')
         return redirect(reverse('products'))
 
-    return render(request, "delete_product.html", {"product": product})
+    return render(request, "products/delete_product.html", {"product": product})
 
