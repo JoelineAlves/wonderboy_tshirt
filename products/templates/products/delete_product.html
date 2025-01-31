@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">Product Management</h2>
+                <h5 class="text-muted">Delete a Product</h5>
+                <hr>
+            </div>
+        </div>
+        <div class="col-auto">
+            <a href="{% url 'products' %}" class="btn btn-md btn-dark bd-radius-1 ft-slate-900" aria-label="Back to products">
+                Back to products
+            </a>
+        </div>
+        <hr>
+        <div class="flex-col gap-2 pad-2 width-100">
+          <p class="ft-light-2">Are you sure you want to delete {{ product.name }}?</p>
+          <form class="flex-row justify-between" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-lg bg-red-400 ft-black bd-radius-2 bd-width-0">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
+{% endblock %}
