@@ -13,23 +13,26 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12">
                 <hr>
-                <h2 class="logo-font mb-4">Product Management</h2>
-                <h5 class="text-muted">Delete a Product</h5>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="text-muted">Delete a Product</h4>
+                    <a href="{% url 'products' %}" class="btn btn-dark bd-radius-1" aria-label="Back to products">
+                        Back to products
+                    </a>
+                </div>
                 <hr>
             </div>
         </div>
-        
-            <a href="{% url 'products' %}" class="btn btn-md btn-dark bd-radius-1 ft-slate-900" aria-label="Back to products">
-                Back to products
-            </a>
+
+        <div class="my-4">
+            <p class="fs-4 fw-bold">Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
+        </div>
 
         <div class="flex-col gap-2 pad-2 width-100">
-            <p class="ft-light-2">Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
-            <form class="flex-row justify-between" method="POST" action="{% url 'delete_product' product.id %}">
+            <form class="flex-row justify-between" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-lg btn-dark ft-black bd-radius-2 bd-width-0">
+                <button type="submit" class="btn btn-lg bg-red-400 ft-black bd-radius-2 bd-width-0">
                     Delete
                 </button>
             </form>
@@ -37,12 +40,4 @@
     </div>
 {% endblock %}
 
-{% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-    </script>
-{% endblock %}
+
