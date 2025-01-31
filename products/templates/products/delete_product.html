@@ -20,22 +20,25 @@
                 <hr>
             </div>
         </div>
+        
         <div class="col-auto">
             <a href="{% url 'products' %}" class="btn btn-md btn-dark bd-radius-1 ft-slate-900" aria-label="Back to products">
                 Back to products
             </a>
         </div>
+
         <hr>
+
         <div class="flex-col gap-2 pad-2 width-100">
-          <p class="ft-light-2">Are you sure you want to delete {{ product.name }}?</p>
-          <form class="flex-row justify-between" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-lg bg-red-400 ft-black bd-radius-2 bd-width-0">
-              Delete
-            </button>
-          </form>
+            <p class="ft-light-2">Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
+            <form class="flex-row justify-between" method="POST" action="{% url 'delete_product' product.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-lg bg-red-400 ft-black bd-radius-2 bd-width-0">
+                    Delete
+                </button>
+            </form>
         </div>
-      </div>
+    </div>
 {% endblock %}
 
 {% block postloadjs %}
