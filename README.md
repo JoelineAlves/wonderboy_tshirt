@@ -221,7 +221,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 
 ### Products Page
-![Wonderboytshirt products detail page image](assets/readme_images/product_detail.png)
+![Wonderboytshirt products detail page image](assets/readme_images/product_page.png)
 
 * Display all the products currently available or filtered on a specific category.
 
