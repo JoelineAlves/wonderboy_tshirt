@@ -17,27 +17,21 @@
         <div class="card-body">
           <p class="mb-3">Provide a review for the product:</p>
           <form method="POST" action="{% url 'add_review' product.id %}">
-            {% csrf_token %}
-        
-            {{ form.non_field_errors }} <!-- Exibe erros do formulário -->
-            
-            <div class="mb-3">
-                <label for="id_review" class="form-label">Write your review</label>
-                <textarea name="review" id="id_review" class="form-control w-100" style="height: 150px;" placeholder="Write your review here..."></textarea>
-            </div>
-        
-            <button class="btn btn-warning text-dark text-uppercase fw-bold mt-3" type="submit">
-                Add Review
-                <span class="icon">
-                    <i class="fas fa-arrow-right"></i>
-                </span>
+              {% csrf_token %}
+              {{ form.as_p }}
+            <button class="btn btn-warning text-dark text-uppercase fw-bold" type="submit">
+              Add Review
+              <span class="icon">
+                  <i class="fas fa-arrow-right"></i>
+              </span>
             </button>
-        </form>            
+          </form>
         </div>
       </div>
     </div>  
   </div>
 </div>
 {% endblock %}
+
 
 
