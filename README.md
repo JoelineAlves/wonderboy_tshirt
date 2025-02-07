@@ -866,7 +866,7 @@ During testing, I encountered an issue where the product reviews I was adding we
 
 ## Acknowledgements
 
-* My Family, for their unconditional love and patience, help and continued support through the whole course. Without their support I will not  been able to finish this project.
+* My Family, for their unconditional love and patience, help and continued support through the whole course. Without their support I would not  been able to finish this project.
 
 * My tutor, Marcel, for his support, feedback and guidance throughout this project. 
 

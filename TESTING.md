@@ -175,19 +175,18 @@ Lighthouse in Chrome DevTools has been used to confirm that the colors and fonts
 
 Page | Lighthouse Report |
 | --- | --- |
-| Home | ![Home Lighthouse Report]() |
-| Products | ![Products Lighthouse Report]() |
-| Product Details | ![Product Details Lighthouse Report]() |
-| Add Product | ![Add Product Lighthouse Report]() |
-| Edit Product | ![Edit Product Lighthouse Report]() |
-| Shopping Bag !| ![Shopping Bag Lighthouse Report]() |
-| Checkout | ![Checkout Lighthouse Report]() |
-| Checkout Success | ![Checkout Success Lighthouse Report]() |
-| Profile | ![Profile Lighthouse Report]() |
-| Reviews | ![Reviews Lighthouse Report]() |
-| Add Review | ![Add Review Lighthouse Report]() |
-| Edit Review | ![Edit Review Lighthouse Report]() |
-| Delete Review | ![Delete Review Lighthouse Report]() |
+| Home | ![Home Lighthouse Report](assets/testing_images/lighthouse_home.png) |
+| Products | ![Products Lighthouse Report](assets/testing_images/lighthouse_product.png) |
+| Product Details | ![Product Details Lighthouse Report](assets/testing_images/lighthouse_product_detail.png) |
+| Add Product | ![Add Product Lighthouse Report](assets/testing_images/lighthouse_addproduct.png) |
+| Edit Product | ![Edit Product Lighthouse Report](assets/testing_images/lighthouse_editproduct.png) |
+| Shopping Bag !| ![Shopping Bag Lighthouse Report](assets/testing_images/lighthouse_shopping_bag.png) |
+| Checkout | ![Checkout Lighthouse Report](assets/testing_images/lighthouse_checkout.png) |
+| Checkout Success | ![Checkout Success Lighthouse Report](assets/testing_images/lighthouse_checkout_success.png) |
+| Profile | ![Profile Lighthouse Report](assets/testing_images/lighthouse_profile.png) |
+| Reviews | ![Reviews Lighthouse Report](assets/testing_images/lighthouse_reviews.png) |
+| Add Review | ![Add Review Lighthouse Report](assets/testing_images/lighthouse_add_review.png) |
+| Edit Review | ![Edit Review Lighthouse Report](assets/testing_images/lighthouse_edit_review.png) |
 
 
 The low score on the best practices seems to be coming from the cookies.
