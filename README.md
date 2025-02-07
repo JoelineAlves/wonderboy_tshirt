@@ -370,7 +370,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 Page | Purpose | Image |
 --- | --- | --- |
 Sign Up | Allow the shopper to sign up an account for the website. | ![Wonderboytshirt Sign Up Page](assets/readme_images/sing_up_page.png) |
-Sign In | Allow the registered shopper to sign in with their account. | ![Wonderboytshirt Sign In Page](assets/readme_images/sing_in_page) |
+Sign In | Allow the registered shopper to sign in with their account. | ![Wonderboytshirt Sign In Page](assets/readme_images/sing_in_page.png) |
 Sign Out | Allow the registered shopper to sign out from their account. | ![Wonderboytshirt Sign Out Page](assets/readme_images/sing_out_page.png) |
 
 
@@ -808,7 +808,7 @@ Page | Desktop | Mobile |
 | Home | ![Desktop Home Page image](assets/readme_images/home_page.png) | ![Mobile Home Page image ]() |
 | Products | ![Desktop Products Page image](assets/readme_images/product_page.png) | ![Mobile Products Page image ]() |
 | Product Details | ![Desktop Product Details Page image](assets/readme_images/product_detail.png) | ![Mobile Product Details Page image ]() |
-| Shopping Bag | ![Desktop Shopping Bag Page image]assets/readme_images/checkout_success.png(assets/readme_images/shopping_bag.png) | ![Mobile Shopping Bag Page image ]() |
+| Shopping Bag | ![Desktop Shopping Bag Page image](assets/readme_images/shopping_bag.png) | ![Mobile Shopping Bag Page image ]() |
 | Checkout | ![Desktop Checkout Page image](assets/readme_images/checkout_page.png) | ![Mobile Checkout Page image ]() |
 | Checkout Success | ![Desktop Checkout Success Page image](assets/readme_images/checkout_success.png) | ![Mobile Checkout Page image ]() |
 | Profile | ![Desktop Profile Page image](assets/readme_images/profile_page.png) | ![Mobile Profile Page image ]() |
@@ -855,6 +855,7 @@ This issue was a bit tricky at first, but I eventually identified the root cause
 **Product Reviews Not Appearing After Adding, Despite Being Present in the Database**
 
 During testing, I encountered an issue where the product reviews I was adding were not appearing after refreshing the page, even though I could see the reviews when checking the database using the shell command. After some investigation, I realized the issue was due to the missing import of the review model in the product reviews file. Once I added the necessary import, the reviews started displaying correctly on the page.
+
 
 
 
