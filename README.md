@@ -337,26 +337,26 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 * A section displaying the order history is available, showing all past orders for the registered shopper.
 
 ### Reviews Page
-![Wonderboytshirt reviews page image]()
+![Wonderboytshirt reviews page image](assets/readme_images/reviews_page.png)
 
 * Display the reviews the registered shopper has provided and the review's information.
 
 * Links to edit and delete the reviews are present for each review.
 
-* A link to view all reviews is provided.
+* A link to go back to products are display.
 
 
 ### Reviews Admin
 
 #### Add Review
-![Wonderboytshirt add review page image]()
+![Wonderboytshirt add review page image](assets/readme_images/reviews_page.png)
 
 * Display the product being reviewed.
 
 * Provide a form that allows the registered shopper to add a review for the product.
 
 #### Edit Review
-![Wonderboytshirt edit review page image]()
+![Wonderboytshirt edit review page image](assets/readme_images/reviews_page.png)
 
 * Provide a pre-filled form for the registered shopper to update their existing reviews..
 
