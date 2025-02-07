@@ -179,6 +179,13 @@ input[name='q']::placeholder {
     transform: scale(1.2);
 }
 
+form input, form textarea {
+    background-color: #555;
+    color: white;
+    border: 1px solid #777;
+}
+
+
 
 /* ------------------------------- bootstrap toasts */
 
@@ -222,6 +229,12 @@ input[name='q']::placeholder {
     flex-direction: column; /* Column layout */
     gap: 12px; /* Space between elements */
 }
+
+.review-card textarea {
+    height: 150px;
+    width: 100%;
+}
+
 
 /* Username */
 .username {
