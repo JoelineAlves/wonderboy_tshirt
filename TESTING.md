@@ -94,10 +94,6 @@
 * All-auth has been implemented to handle user authentication, allowing the user to register an account.
 
 
-#### As a frequent shopper, I want to receive a confirmation once my account has been registered to make sure the information entered was correctly.
-
-* A confirmation is sent to the registered email address in order to validate it.
-
 
 #### As a registered shopper, I want to easily log in and out from my account.
 
@@ -246,7 +242,7 @@ My Account Icon - Login Link | Clicking the link redirects to the account sign i
 My Account Icon - Logout link | Clicking the link redirects to the account sign out page. | Pass |
 My Account Icon - Product Management Link | Clicking the link redirects to the add product page. | Pass |
 My Account Icon - My Profile Link | Clicking the link redirects to the profile page. | Pass |
-My Account Icon - My Reviews Link | Clicking the link redirects to the reviews page. | Pass |
+My Account Icon - My Favourites Link | Clicking the link redirects to the favourites page. | Pass |
 Shopping Cart Icon | Clicking the link redirects to the shopping cart. | Pass |
 Search Bar | Clicking the link redirects to the products page and display the matching products. | Pass |
 Facebook Icon | Clicking the link open the business Facebook page on a separate tab. | Pass |
@@ -258,7 +254,6 @@ Newsletter Form | Email address gets registered to the database when submitting 
 Element | Expected Outcome | Pass/Fail |
 --- | --- | --- |
 Categories Links | Clicking any of the links will redirect to the products page and filter the products on that category. | Pass |
-Down Arrow Link | Clicking the link redirects to about section in the home page. | Pass |
 
 
 #### Products Page
@@ -331,13 +326,6 @@ Login Link | Clicking the link redirects to the account sign in page. | Pass |
 Register Link | Clicking the link redirects to the account sign up page. | Pass |
 Save Information Check | Checking the box update the user's profile information during the checkout process. | Pass |
 Adjust Bag Link | Clicking the link redirects to shopping bag page. | Pass |
-
-
-#### Checkout Success Page
-
-Element | Expected Outcome | Pass/Fail |
---- | --- | --- |
-Want To Help? Button | Clicking the button redirects to the organizations page. | Pass |
 
 
 #### Profile Page
