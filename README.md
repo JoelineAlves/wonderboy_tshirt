@@ -158,7 +158,7 @@ Profile | ![Desktop profile wireframe image]() | ![Mobile profile wireframe imag
 
 #### Color Scheme
 
-![Color scheme image]()
+![Color scheme image](assets/readme_images/color_pallete.jpeg)
 
 The website features a sleek slate color palette as the main background and foreground, complemented by shades of gray as the primary accent colors. This combination creates a clean and modern aesthetic.
 
@@ -349,25 +349,29 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 ### Reviews Admin
 
 #### Add Review
-![Wonderboytshirt add review page image](assets/readme_images/reviews_page.png)
+![Wonderboytshirt add review page image](assets/readme_images/add_review.png)
 
 * Display the product being reviewed.
 
 * Provide a form that allows the registered shopper to add a review for the product.
 
-#### Edit Review
-![Wonderboytshirt edit review page image](assets/readme_images/reviews_page.png)
+* A link to go back to products are display.
 
-* Provide a pre-filled form for the registered shopper to update their existing reviews..
+#### Edit Review
+![Wonderboytshirt edit review page image](assets/readme_images/edit_review.png)
+
+* Provide a pre-filled form for the registered shopper to update their existing reviews.
+
+* A link to go back to products are display.
 
 
 ### Accounts Pages
 
 Page | Purpose | Image |
 --- | --- | --- |
-Sign Up | Allow the shopper to sign up an account for the website. | ![Wonderboytshirt Sign Up Page]() |
-Sign In | Allow the registered shopper to sign in with their account. | ![Wonderboytshirt Sign In Page]() |
-Sign Out | Allow the registered shopper to sign out from their account. | ![Wonderboytshirt Sign Out Page]() |
+Sign Up | Allow the shopper to sign up an account for the website. | ![Wonderboytshirt Sign Up Page](assets/readme_images/sing_up_page.png) |
+Sign In | Allow the registered shopper to sign in with their account. | ![Wonderboytshirt Sign In Page](assets/readme_images/sing_in_page) |
+Sign Out | Allow the registered shopper to sign out from their account. | ![Wonderboytshirt Sign Out Page](assets/readme_images/sing_out_page.png) |
 
 
 
@@ -801,14 +805,14 @@ Create a custom_storages.py file in your project's root directory, and inside it
 
 Page | Desktop | Mobile |
 --- | --- | --- |
-| Home | ![Desktop Home Page image]() | ![Mobile Home Page image ]() |
-| Products | ![Desktop Products Page image]() | ![Mobile Products Page image ]() |
-| Product Details | ![Desktop Product Details Page image]() | ![Mobile Product Details Page image ]() |
-| Shopping Bag | ![Desktop Shopping Bag Page image]() | ![Mobile Shopping Bag Page image ]() |
-| Checkout | ![Desktop Checkout Page image]() | ![Mobile Checkout Page image ]() |
-| Checkout Success | ![Desktop Checkout Success Page image]() | ![Mobile Checkout Page image ]() |
-| Profile | ![Desktop Profile Page image]() | ![Mobile Profile Page image ]() |
-| Reviews | ![Desktop Reviews Page image]() | ![Mobile Reviews Page image ]() |
+| Home | ![Desktop Home Page image](assets/readme_images/home_page.png) | ![Mobile Home Page image ]() |
+| Products | ![Desktop Products Page image](assets/readme_images/product_page.png) | ![Mobile Products Page image ]() |
+| Product Details | ![Desktop Product Details Page image](assets/readme_images/product_detail.png) | ![Mobile Product Details Page image ]() |
+| Shopping Bag | ![Desktop Shopping Bag Page image]assets/readme_images/checkout_success.png(assets/readme_images/shopping_bag.png) | ![Mobile Shopping Bag Page image ]() |
+| Checkout | ![Desktop Checkout Page image](assets/readme_images/checkout_page.png) | ![Mobile Checkout Page image ]() |
+| Checkout Success | ![Desktop Checkout Success Page image](assets/readme_images/checkout_success.png) | ![Mobile Checkout Page image ]() |
+| Profile | ![Desktop Profile Page image](assets/readme_images/profile_page.png) | ![Mobile Profile Page image ]() |
+| Reviews | ![Desktop Reviews Page image](assets/readme_images/reviews_page.png) | ![Mobile Reviews Page image ]() |
 
 
 
@@ -865,9 +869,9 @@ During testing, I encountered an issue where the product reviews I was adding we
 
 * My tutor, Marcel, for his support, feedback and guidance throughout this project. 
 
-* I would like to express my gratitude to my friend, Dorivaldo, for his invaluable support and for creating and designing the products.
+* I would like to express my gratitude to my friend, Dorivaldo Butte, for his invaluable support and for creating and designing the products.
 
-* I would like to thank my friend, Ricardo, for his assistance in resolving CSS issues in my project, particularly for his help with challenges I encountered.
+* I would like to thank my friend, Ricardo Soares, for his assistance in resolving CSS issues in my project, particularly for his help with challenges I encountered.
 
 * Code Institute and Slack community for their support and providing me with the necessary knowledge to complete this project.
 
