@@ -3,6 +3,13 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """
+    Form for placing an order.  
+
+    This form is based on the Order model and includes fields for capturing  
+    the customer's personal and delivery details, such as name, contact  
+    information, and address.  
+    """  
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number',

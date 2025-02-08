@@ -3,6 +3,14 @@ from .models import Subscriber
 
 
 class SubscribeForm(forms.ModelForm):
+    """
+    Form for subscribing users by collecting their name and email.
+
+    Attributes:
+        Meta:
+            model (Subscriber): Specifies that the form is based on the Subscriber model.
+            fields (tuple): Specifies the fields to be included in the form ('name', 'email').
+    """
     class Meta:
         model = Subscriber
         fields = ('name', 'email',)
@@ -11,18 +19,15 @@ class SubscribeForm(forms.ModelForm):
         """Add placeholders, classes, autofocus, and ARIA attributes."""
         super().__init__(*args, **kwargs)
 
-        # Placeholders
         placeholders = {
             'name': 'Name',
             'email': 'Email',
         }
 
-        # Autofocus and ARIA attributes
         self.fields['name'].widget.attrs['autofocus'] = True
         self.fields['name'].widget.attrs['aria-label'] = 'Name'
         self.fields['email'].widget.attrs['aria-label'] = 'Email'
 
-        # Placeholder, class, and label adjustments
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'

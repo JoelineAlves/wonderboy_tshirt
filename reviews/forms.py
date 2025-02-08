@@ -4,13 +4,21 @@ from .models import ProductReview
 
 class ProductReviewForm(forms.ModelForm):
     """
-    A form for submitting product reviews, including a text review and a rating.
+    A form for submitting product reviews, including a title, text review, and a rating.
+
+    This form allows users to submit feedback about a product, with a title,
+    a detailed review, and a rating score between 1 and 5.
     """
 
     class Meta:
         """
-        Meta options for the ProductReviewForm.
-        Specifies the model and fields to include in the form.
+        Defines metadata for the ProductReviewForm.
+
+        Attributes:
+            model (Model): Specifies that the form is based on the ProductReview model.
+            fields (list): Includes only 'title', 'review', and 'rating' for submission.
+            widgets (dict): Customizes field appearances, including placeholders
+                            and input constraints for better user experience.
         """
         model = ProductReview
         fields = ['title', 'review', 'rating']
@@ -22,7 +30,14 @@ class ProductReviewForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Initialize the form with custom attributes and placeholders for the fields.
+        Initializes the form with custom attributes and styling.
+
+        This method dynamically applies CSS classes and placeholders to improve
+        the form's usability and appearance.
+
+        Args:
+            *args: Positional arguments passed to the parent class.
+            **kwargs: Keyword arguments passed to the parent class.
         """
         super().__init__(*args, **kwargs)
 
@@ -44,12 +59,23 @@ class ProductReviewForm(forms.ModelForm):
             'class': common_classes,
         })
 
+        # Remove default field labels to simplify UI
         for field_name in self.fields:
             self.fields[field_name].label = False
 
     def clean_rating(self):
         """
-        Validate the rating field to ensure it is between 1 and 5.
+        Validates the rating field to ensure it is within the allowed range.
+
+        This method is automatically called by Django Forms before saving
+        the form data. If the rating is not between 1 and 5, it raises a
+        ValidationError.
+
+        Returns:
+            int: The cleaned rating value.
+
+        Raises:
+            forms.ValidationError: If the rating is not within the valid range.
         """
         rating = self.cleaned_data.get('rating')
         if rating is None or not (1 <= rating <= 5):

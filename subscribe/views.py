@@ -4,32 +4,34 @@ from .forms import SubscribeForm
 
 
 def subscribe(request):
-    # Check if the form has been submitted
+    """
+    Handle user subscription form submission.
+
+    If the request method is POST, validate the submitted form data. 
+    If valid, save the subscription, display a success message, 
+    and reset the form. Otherwise, show the form again.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: Renders the subscription page with the form.
+    """
     if request.method == 'POST':
-        # Create a SubscribeForm instance with the submitted data
         subscribe_form = SubscribeForm(request.POST)
 
-        # Check if the form is valid
         if subscribe_form.is_valid():
-            # Save the form data to the database
-            subscribe = subscribe_form.save()
-
-            # Display a success message to the user
+            subscribe_form.save()
             messages.success(request, 'You have successfully subscribed!')
 
-            # Optionally, you can clear the form after successful submission
             subscribe_form = SubscribeForm()
     else:
-        # If the form has not been submitted, create an empty SubscribeForm
         subscribe_form = SubscribeForm()
 
-    # Set the template file for rendering
     template = 'subscribe/subscribe.html'
-
-    # Prepare the context to be passed to the template
     context = {
         'subscribe_form': subscribe_form,
     }
 
-    # Render the template with the provided context
     return render(request, template, context)
+

@@ -1,3 +1,10 @@
+"""
+Views for managing products in the store.
+
+These views handle product listing, searching, sorting, 
+viewing product details, adding, editing, and deleting products.
+"""
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -5,16 +12,23 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from favorite.models import Favorite
-from .models import Product, Category
+from .models import Product, Category, ProductReview
 from .forms import ProductForm
-from .models import Product, ProductReview
 
-
-# Create your views here.
 
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
+    """
+    Display all products with support for sorting, filtering, and searching.
 
+    Query Parameters:
+        - sort: Field to sort by (e.g., 'name', 'category').
+        - direction: Sorting direction ('asc' or 'desc').
+        - category: Filter products by category.
+        - q: Search term to filter products by name or description.
+
+    Returns:
+        Renders the 'products.html' template with filtered product data.
+    """
     products = Product.objects.all()
     query = None
     categories = None
@@ -63,29 +77,34 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product details """
+    """
+    Display details of a specific product, including reviews and favorite status.
 
-    # Retrieve the product based on the id
+    Args:
+        product_id (int): The ID of the product to display.
+
+    Returns:
+        Renders 'product_detail.html' with product information, reviews, and favorite status.
+    """
     product = get_object_or_404(Product, pk=product_id)
 
-    # Check if the user is authenticated before checking favorites
-    if request.user.is_authenticated:
-        is_favorite = Favorite.objects.filter(user=request.user, product=product).exists()
-    else:
-        is_favorite = False  # Unauthenticated users cannot have favorites
+    is_favorite = Favorite.objects.filter(user=request.user, product=product).exists() if request.user.is_authenticated else False  
+    reviews = product.product_reviews_from_products.all()
 
-    # Get the reviews for the product (from the 'reviews' app)
-    reviews = product.product_reviews_from_reviews.all()  # Usando a relação reversa do app reviews
-
-    
-
-    # Render the page with the context
-    return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews, 'is_favorite': is_favorite,})
+    return render(request, 'products/product_detail.html', {'product': product, 'reviews': reviews, 'is_favorite': is_favorite})
 
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
+    """
+    Add a new product to the store.
+
+    Only accessible to superusers.
+
+    Returns:
+        - Redirects to the product detail page if successful.
+        - Renders 'add_product.html' with the form if validation fails.
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -111,7 +130,18 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
+    """
+    Edit an existing product in the store.
+
+    Only accessible to superusers.
+
+    Args:
+        product_id (int): The ID of the product to be edited.
+
+    Returns:
+        - Redirects to the product detail page if successful.
+        - Renders 'edit_product.html' with the form if validation fails.
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -140,7 +170,18 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
+    """
+    Delete a product from the store.
+
+    Only accessible to superusers.
+
+    Args:
+        product_id (int): The ID of the product to be deleted.
+
+    Returns:
+        - Redirects to the product list page if successful.
+        - Renders 'delete_product.html' to confirm deletion.
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -153,4 +194,5 @@ def delete_product(request, product_id):
         return redirect(reverse('products'))
 
     return render(request, "products/delete_product.html", {"product": product})
+
 
