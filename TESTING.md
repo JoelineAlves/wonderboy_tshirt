@@ -145,10 +145,13 @@
 ## Code Validation
 
 ### HTML
+![W3C CSS Validator image](assets/testing_images/css_validation.png)
 
 * [W3C Markup Validator](https://validator.w3.org/) found no errors on my HTNL files.
 
 ### CSS
+![W3C CSS Validator image](assets/testing_images/css_validation.png)
+
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) found no errors on my CSS files.
 
 ### Python
