@@ -22,14 +22,17 @@
   <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
   <button type="submit">{% trans "Sign Up" %}</button>
 
-  <!-- Exibe ajuda da senha corretamente -->
+  <!-- Exibe ajuda da senha corretamente sem ul -->
   {% if form.password1.help_text %}
     <div id="id_password1_helptext" class="form-text text-muted">
-      {{ form.password1.help_text|safe }}
+      {% for item in form.password1.help_text.splitlines %}  <!-- Divide por linhas -->
+        <p>{{ item }}</p>  <!-- Usa <p> para evitar <ul> -->
+      {% endfor %}
     </div>
   {% endif %}
 </form>
 {% endblock %}
+
 
 
 
