@@ -19,9 +19,9 @@
   {% endif %}
   <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
   <button type="submit">{% trans "Sign Up" %}</button>
-  <small id="id_password1_helptext" class="form-text text-muted d-none">
+  <div id="id_password1_helptext" class="form-text text-muted d-none">
     {% trans "Your password must be at least 8 characters long." %}
-  </small>
+  </div>
 </form>
 
 {% endblock %}
