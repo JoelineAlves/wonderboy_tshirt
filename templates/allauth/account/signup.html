@@ -13,7 +13,30 @@
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
-  {{ form|crispy }}
+
+  <!-- Renderiza todos os campos normalmente, exceto senha -->
+  {% for field in form %}
+    {% if field.name != "password1" %}
+      {{ field|as_crispy_field }}
+    {% endif %}
+  {% endfor %}
+
+  <!-- Renderiza o campo de senha manualmente -->
+  <div class="mb-3">
+    <label for="{{ form.password1.id_for_label }}" class="form-label">
+      {{ form.password1.label }}
+    </label>
+    {{ form.password1 }}
+    
+    <!-- Exibe corretamente o help_text -->
+    {% if form.password1.help_text %}
+      <div id="id_password1_helptext" class="form-text text-muted">
+        {% for item in form.password1.help_text.splitlines %}
+          <p>{{ item }}</p>  <!-- Usa <p> para evitar <ul> -->
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 
   {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
@@ -21,17 +44,9 @@
 
   <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
   <button type="submit">{% trans "Sign Up" %}</button>
-
-  <!-- Exibe ajuda da senha corretamente sem ul -->
-  {% if form.password1.help_text %}
-    <div id="id_password1_helptext" class="form-text text-muted">
-      {% for item in form.password1.help_text.splitlines %}  <!-- Divide por linhas -->
-        <p>{{ item }}</p>  <!-- Usa <p> para evitar <ul> -->
-      {% endfor %}
-    </div>
-  {% endif %}
 </form>
 {% endblock %}
+
 
 
 
