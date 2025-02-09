@@ -22,13 +22,7 @@
   </div>
   <div class="mb-3">
     {{ form.password1|as_crispy_field }}
-    {% if form.password1.help_text %}
-      <div id="id_password1_helptext" class="form-text text-muted">
-        {% for text in form.password1.help_text.splitlines %}
-          <p>{{ text|striptags }}</p>
-        {% endfor %}
-      </div>
-    {% endif %}
+    {# Removemos a exibição do help_text aqui #}
   </div>
   <div class="mb-3">
     {{ form.password2|as_crispy_field }}
@@ -42,6 +36,7 @@
   <button type="submit" class="btn btn-primary">{% trans "Sign Up" %}</button>
 </form>
 {% endblock %}
+
 
 
 
