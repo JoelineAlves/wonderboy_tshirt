@@ -14,7 +14,6 @@
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
 
-  {# Renderiza os campos de forma personalizada #}
   <div class="mb-3">
     {{ form.email|as_crispy_field }}
   </div>
@@ -25,7 +24,9 @@
     {{ form.password1|as_crispy_field }}
     {% if form.password1.help_text %}
       <div id="id_password1_helptext" class="form-text text-muted">
-        {{ form.password1.help_text|striptags }} {# Remove tags <ul> e <li> #}
+        {% for text in form.password1.help_text.splitlines %}
+          <p>{{ text|striptags }}</p>
+        {% endfor %}
       </div>
     {% endif %}
   </div>
