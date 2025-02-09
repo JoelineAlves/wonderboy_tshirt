@@ -22,18 +22,17 @@
   <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
   <button type="submit">{% trans "Sign Up" %}</button>
 
-  <!-- Exibe ajuda da senha corretamente -->
+  <!-- Exibe a ajuda da senha de forma correta -->
   {% if form.password1.help_text %}
     <div id="id_password1_helptext" class="form-text text-muted">
       <ul>
-        {% for help_text in form.password1.help_text|striptags|linebreaksbr|safe|split:"<br />" %}  
-          <li>{{ help_text }}</li>  
+        {% for help_text in form.password1.help_text.splitlines %}
+          <li>{{ help_text }}</li>
         {% endfor %}
       </ul>
     </div>
   {% endif %}
 </form>
-
 {% endblock %}
 
 
