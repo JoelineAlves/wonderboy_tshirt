@@ -145,7 +145,6 @@
 ## Code Validation
 
 ### HTML
-![W3C CSS Validator image](assets/testing_images/css_validation.png)
 
 * [W3C Markup Validator](https://validator.w3.org/) I identified an error, which I successfully resolved by updating the ID names in both the mobile and base HTML templates.
 

@@ -46,6 +46,9 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <p class="mt-2">
     <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   </p>
+  <small id="id_password_helptext" class="form-text text-muted d-none">
+    {% trans "Your password must be at least 8 characters long." %}
+  </small>
 </form>
 
 {% endblock %}
