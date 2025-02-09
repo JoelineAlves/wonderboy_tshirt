@@ -26,7 +26,7 @@
   {% if form.password1.help_text %}
     <div id="id_password1_helptext" class="form-text text-muted">
       <ul>
-        {% for help_text in form.password1.help_text.splitlines %}  
+        {% for help_text in form.password1.help_text|striptags|linebreaksbr|safe|split:"<br />" %}  
           <li>{{ help_text }}</li>  
         {% endfor %}
       </ul>
@@ -35,6 +35,7 @@
 </form>
 
 {% endblock %}
+
 
 
 
