@@ -160,9 +160,9 @@ Pylint was utilized consistently during the development process to analyze Pytho
 Additionally, the code was checked for errors using the terminal command python3 -m flake8. This process highlighted several whitespace and indentation issues, which were promptly addressed where possible to ensure clean and maintainable code.
 
 ### Javascript
+![JSHINT Js Validator image](assets/testing_images/js_validation.png)
 
-* [JSHint](https://jshint.com/) found a total of 6 warnings concerning missing or unnecessary semicolons. These warnings were corrected.
-
+* [JSHint](https://jshint.com/) found no erros on my js file.
 
 ## Accessibility
 
