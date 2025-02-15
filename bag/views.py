@@ -3,32 +3,32 @@ from django.contrib import messages
 from products.models import Product
 
 def view_bag(request):
-    """ Renderiza a página do carrinho """
+    """ Renders the shopping bag page """
     return render(request, 'bag/bag.html')
 
 def add_to_bag(request, item_id):
-    """ Adiciona uma quantidade do produto ao carrinho """
+    """ Adds a quantity of the product to the shopping bag """
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    size = request.POST.get('product_size')  # ✅ Garantimos que size sempre existe
+    size = request.POST.get('product_size')  
     bag = request.session.get('bag', {})
 
     if item_id in bag:
         if size in bag[item_id]['items_by_size']:
-            bag[item_id]['items_by_size'][size] += quantity  # ✅ Soma a quantidade
+            bag[item_id]['items_by_size'][size] += quantity  
         else:
             bag[item_id]['items_by_size'][size] = quantity
     else:
         bag[item_id] = {'items_by_size': {size: quantity}}
 
-    messages.success(request, f'Atualizado {product.name} ({size.upper()}) para {bag[item_id]["items_by_size"][size]} no carrinho.')
+    messages.success(request, f'Updated {product.name} ({size.upper()}) to {bag[item_id]["items_by_size"][size]} in the bag.')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
 
 def adjust_bag(request, item_id):
-    """ Ajusta a quantidade de um produto no carrinho """
+    """ Adjusts the quantity of a product in the shopping bag """
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     size = request.POST.get('product_size')  
@@ -36,18 +36,18 @@ def adjust_bag(request, item_id):
 
     if quantity > 0:
         bag[item_id]['items_by_size'][size] = quantity
-        messages.success(request, f'Atualizado {product.name} ({size.upper()}) para {quantity} no carrinho.')
+        messages.success(request, f'Updated {product.name} ({size.upper()}) to {quantity} in the bag.')
     else:
         del bag[item_id]['items_by_size'][size]
         if not bag[item_id]['items_by_size']:
             bag.pop(item_id)
-        messages.success(request, f'Removido {product.name} ({size.upper()}) do carrinho.')
+        messages.success(request, f'Removed {product.name} ({size.upper()}) from the bag.')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
 def remove_from_bag(request, item_id):
-    """ Remove um item do carrinho """
+    """ Removes an item from the shopping bag """
     try:
         product = get_object_or_404(Product, pk=item_id)
         size = request.POST.get('product_size')  
@@ -57,12 +57,13 @@ def remove_from_bag(request, item_id):
         if not bag[item_id]['items_by_size']:
             bag.pop(item_id)
 
-        messages.success(request, f'Removido {product.name} ({size.upper()}) do carrinho.')
+        messages.success(request, f'Removed {product.name} ({size.upper()}) from the bag.')
         request.session['bag'] = bag
         return HttpResponse(status=200)
 
     except Exception as e:
-        messages.error(request, f'Erro ao remover item: {e}')
+        messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
 
 
