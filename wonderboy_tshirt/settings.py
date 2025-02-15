@@ -32,6 +32,7 @@ DEBUG=False
 ALLOWED_HOSTS = [
     '8000-joelinealve-wonderboyts-5ce7zyiia00.ws.codeinstitute-ide.net',
     'wonderboytshirt-90045f83868e.herokuapp.com',
+    '127.0.0.1', 'localhost', 'localhost:8000'
 ]
 
 
