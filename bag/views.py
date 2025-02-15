@@ -8,7 +8,6 @@ def view_bag(request):
 
 def add_to_bag(request, item_id):
     """ Adiciona uma quantidade do produto ao carrinho """
-
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
@@ -30,7 +29,6 @@ def add_to_bag(request, item_id):
 
 def adjust_bag(request, item_id):
     """ Ajusta a quantidade de um produto no carrinho """
-
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     size = request.POST.get('product_size')  
@@ -50,7 +48,6 @@ def adjust_bag(request, item_id):
 
 def remove_from_bag(request, item_id):
     """ Remove um item do carrinho """
-
     try:
         product = get_object_or_404(Product, pk=item_id)
         size = request.POST.get('product_size')  
@@ -67,4 +64,5 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Erro ao remover item: {e}')
         return HttpResponse(status=500)
+
 

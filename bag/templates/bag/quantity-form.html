@@ -1,40 +1,28 @@
-<form class="form update-form" method="POST" action="{% url 'adjust_bag' item_id %}">
+<form class="form update-form" method="POST" action="{% url 'adjust_bag' item.product.id %}">
     {% csrf_token %}
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-prepend">
                 <button class="decrement-qty btn btn-sm btn-black rounded-0"
-                    data-item_id="{{ item_id }}"
-                    data-size="{{ size }}"
-                    id="decrement-qty_{{ item_id }}_{{ size }}">
+                    type="submit" aria-label="Decrement quantity">
                     <span><i class="fas fa-minus fa-sm"></i></span>
                 </button>
             </div>
 
             <input class="form-control form-control-sm qty_input" type="number"
-                name="quantity" value="{{ quantity }}" min="1" max="99"
-                data-item_id="{{ item_id }}"
-                data-size="{{ size }}"
-                id="id_qty_{{ item_id }}_{{ size }}">
+                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                aria-label="Adjust quantity for {{ item.product.name }}">
 
             <div class="input-group-append">
                 <button class="increment-qty btn btn-sm btn-black rounded-0"
-                    data-item_id="{{ item_id }}"
-                    data-size="{{ size }}"
-                    id="increment-qty_{{ item_id }}_{{ size }}">
+                    type="submit" aria-label="Increment quantity">
                     <span><i class="fas fa-plus fa-sm"></i></span>
                 </button>
             </div>
 
-            <input type="hidden" name="product_size" value="{{ size }}">
+            <input type="hidden" name="product_size" value="{{ item.size }}">
         </div>
     </div>
 </form>
 
-<a class="update-link text-info"><small>Atualizar</small></a>
-<a class="remove-item text-danger float-right"
-    id="remove_{{ item_id }}_{{ size }}"
-    data-product_size="{{ size }}">
-    <small>Remover</small>
-</a>
 
