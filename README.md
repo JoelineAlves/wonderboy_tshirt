@@ -149,12 +149,12 @@ The database model has been designed using [dbdiagram.io](https://dbdiagram.io/)
 
 Page | Desktop Version | Mobile Version
 --- | --- | ---
-Home | ![Desktop home wireframe image](assets/readme_images/home_wireframe.png) | ![Mobile home wireframe image]()
-Products | ![Desktop products wireframe image](assets/readme_images/products_wireframe.png) | ![Mobile products wireframe image]()
-Product Details | ![Desktop product details wireframe image](assets/readme_images/productdetails_wireframe.png) | ![Mobile product details wireframe image]()
-Shopping Bag | ![Desktop shopping bag wireframe image](assets/readme_images/shoppingbag_wireframe.png) | ![Mobile shopping bag wireframe image]()
-Checkout | ![Desktop checkout wireframe image](assets/readme_images/Checkout_wireframe.png) | ![Mobile checkout wireframe image]()
-Profile | ![Desktop profile wireframe image](assets/readme_images/profile_wireframe.png) | ![Mobile profile wireframe image]()
+Home | ![Desktop home wireframe image](assets/readme_images/home_wireframe.png) | ![Mobile home wireframe image](assets/readme_images/homemobile_wireframe.png)
+Products | ![Desktop products wireframe image](assets/readme_images/products_wireframe.png) | ![Mobile products wireframe image](assets/readme_images/productmobile_wireframe.png)
+Product Details | ![Desktop product details wireframe image](assets/readme_images/productdetails_wireframe.png) | ![Mobile product details wireframe image](assets/readme_images/productdetails_mobile_wireframe.png)
+Shopping Bag | ![Desktop shopping bag wireframe image](assets/readme_images/shoppingbag_wireframe.png) | ![Mobile shopping bag wireframe image](assets/readme_images/shoppingbag_mobile_wireframe.png)
+Checkout | ![Desktop checkout wireframe image](assets/readme_images/Checkout_wireframe.png) | ![Mobile checkout wireframe image](assets/readme_images/checkoutmobile_wireframe.png)
+Profile | ![Desktop profile wireframe image](assets/readme_images/profile_wireframe.png) | ![Mobile profile wireframe image](assets/readme_images/profilemobile_wireframe.png)
 
 #### Color Scheme
 
