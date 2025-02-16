@@ -158,7 +158,7 @@ Profile | ![Desktop profile wireframe image](assets/readme_images/profile_wirefr
 
 #### Color Scheme
 
-![Color scheme image](assets/readme_images/color_pallete.jpeg)
+![Color scheme image](assets/readme_images/color_pallete.png)
 
 The website features a sleek slate color palette as the main background and foreground, complemented by shades of gray as the primary accent colors. This combination creates a clean and modern aesthetic.
 
