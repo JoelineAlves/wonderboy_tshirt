@@ -4,18 +4,20 @@ from .models import Order
 
 class OrderForm(forms.ModelForm):
     """
-    Form for placing an order.  
+    Form for placing an order.
 
-    This form is based on the Order model and includes fields for capturing  
-    the customer's personal and delivery details, such as name, contact  
-    information, and address.  
-    """  
+    This form is based on the Order model and includes fields for capturing
+    the customer's personal and delivery details, such as name, contact
+    information, and address.
+    """
     class Meta:
         model = Order
-        fields = ('full_name', 'email', 'phone_number',
-                  'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county',)
+        fields = (
+            'full_name', 'email', 'phone_number',
+            'street_address1', 'street_address2',
+            'town_or_city', 'postcode', 'country',
+            'county',
+        )
 
     def __init__(self, *args, **kwargs):
         """
