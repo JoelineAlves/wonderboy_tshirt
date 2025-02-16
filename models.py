@@ -109,9 +109,9 @@ class CheckoutOrder(models.Model):
     street_address2 = models.CharField(max_length=80, blank=True, null=True)
     county = models.CharField(max_length=80, blank=True, null=True)
     date = models.DateTimeField()
-    delivery_cost = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    order_total = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    grand_total = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    delivery_cost = models.DecimalField(max_digits=10, decimal_places=5)
+    order_total = models.DecimalField(max_digits=10, decimal_places=5)
+    grand_total = models.DecimalField(max_digits=10, decimal_places=5)
     original_bag = models.TextField()
     stripe_pid = models.CharField(max_length=254)
     user_profile = models.ForeignKey('ProfilesUserprofile', models.DO_NOTHING, blank=True, null=True)
@@ -124,7 +124,7 @@ class CheckoutOrder(models.Model):
 class CheckoutOrderlineitem(models.Model):
     product_size = models.CharField(max_length=2, blank=True, null=True)
     quantity = models.IntegerField()
-    lineitem_total = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    lineitem_total = models.DecimalField(max_digits=10, decimal_places=5)
     order = models.ForeignKey(CheckoutOrder, models.DO_NOTHING)
     product = models.ForeignKey('ProductsProduct', models.DO_NOTHING)
 
@@ -231,8 +231,8 @@ class ProductsProduct(models.Model):
     sku = models.CharField(max_length=254, blank=True, null=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    rating = models.DecimalField(max_digits=10, decimal_places=5, blank=True, null=True)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    price = models.DecimalField(max_digits=10, decimal_places=5)
+    rating = models.DecimalField(max_digits=10, decimal_places=5, blank=True, null=True)
     image_url = models.CharField(max_length=1024, blank=True, null=True)
     image = models.CharField(max_length=100, blank=True, null=True)
     category = models.ForeignKey(ProductsCategory, models.DO_NOTHING, blank=True, null=True)
@@ -274,7 +274,7 @@ class ProfilesUserprofile(models.Model):
 class ReviewsProductreview(models.Model):
     title = models.CharField(max_length=100)
     review = models.TextField()
-    rating = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    rating = models.DecimalField(max_digits=10, decimal_places=5)
     date = models.DateTimeField()
     product = models.ForeignKey(ProductsProduct, models.DO_NOTHING)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)

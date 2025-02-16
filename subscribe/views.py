@@ -7,8 +7,8 @@ def subscribe(request):
     """
     Handle user subscription form submission.
 
-    If the request method is POST, validate the submitted form data. 
-    If valid, save the subscription, display a success message, 
+    If the request method is POST, validate the submitted form data.
+    If valid, save the subscription, display a success message,
     and reset the form. Otherwise, show the form again.
 
     Args:
@@ -34,4 +34,5 @@ def subscribe(request):
     }
 
     return render(request, template, context)
+
 

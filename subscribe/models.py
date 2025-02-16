@@ -7,9 +7,11 @@ class Subscriber(models.Model):
     Model representing a newsletter subscriber.
 
     Attributes:
-        name (CharField): The name of the subscriber, limited to 100 characters.
+        name (CharField): The name of the subscriber, limited to \
+        100 characters.
         email (EmailField): The unique email address of the subscriber.
-        date_subscribed (DateTimeField): The date and time when the subscription was created.
+        date_subscribed (DateTimeField): The date and time when the \
+        subscription was created.
     """
 
     name = models.CharField(max_length=100)
@@ -20,7 +22,9 @@ class Subscriber(models.Model):
     def __str__(self):
         """
         Returns:
-            str: The subscriber's email address as the string representation of the object.
+            str: The subscriber's email address as the string \
+            representation of the object.
         """
         return self.email
+
 

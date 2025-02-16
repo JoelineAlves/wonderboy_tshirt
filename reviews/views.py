@@ -6,19 +6,22 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 
+
 def all_reviews(request, product_id):
     """
     Display all reviews for a specific product.
 
     Args:
         request (HttpRequest): The HTTP request object.
-        product_id (int): The ID of the product whose reviews are being retrieved.
+        product_id (int): The ID of the product whose reviews \
+        are being retrieved.
 
     Returns:
-        HttpResponse: Renders the template displaying all reviews for the product.
+        HttpResponse: Renders the template displaying all reviews \
+        for the product.
     """
     product = get_object_or_404(Product, id=product_id)
-    reviews = product.product_reviews_from_reviews.all()  
+    reviews = product.product_reviews_from_reviews.all()
 
     # Prepare star ratings for template rendering
     for review in reviews:
@@ -29,6 +32,7 @@ def all_reviews(request, product_id):
     context = {'product': product, 'reviews': reviews}
     return render(request, template, context)
 
+
 @login_required
 def add_review(request, product_id):
     """
@@ -36,10 +40,12 @@ def add_review(request, product_id):
 
     Args:
         request (HttpRequest): The HTTP request object.
-        product_id (int): The ID of the product for which the review is being submitted.
+        product_id (int): The ID of the product for which the review \
+        is being submitted.
 
     Returns:
-        HttpResponseRedirect: Redirects to the product detail page upon successful submission.
+        HttpResponseRedirect: Redirects to the product detail page upon \
+        successful submission.
         HttpResponse: Renders the review form again if validation fails.
     """
     product = get_object_or_404(Product, id=product_id)
@@ -54,14 +60,15 @@ def add_review(request, product_id):
             messages.success(request, 'Your review has been submitted.')
             return redirect('product_detail', product_id=product.id)
         else:
-            messages.error(request, 
-                'There was an error submitting your review. Please try again.')
+            messages.error(request, 'There was an error submitting your \
+            review. Please try again.')
     else:
         form = ProductReviewForm()
 
     template = 'reviews/add_review.html'
     context = {'form': form, 'product': product}
     return render(request, template, context)
+
 
 @login_required
 def edit_review(request, review_id):
@@ -73,9 +80,11 @@ def edit_review(request, review_id):
         review_id (int): The ID of the review to be edited.
 
     Returns:
-        HttpResponseRedirect: Redirects to the product detail page upon successful update.
+        HttpResponseRedirect: Redirects to the product detail page upon \
+        successful update.
         HttpResponse: Renders the edit review form again if validation fails.
-        HttpResponseForbidden: Raises a PermissionDenied error if the user is not the owner of the review.
+        HttpResponseForbidden: Raises a PermissionDenied error if the user \
+        is not the owner of the review.
     """
     review = get_object_or_404(ProductReview, id=review_id)
 
@@ -90,8 +99,8 @@ def edit_review(request, review_id):
             messages.success(request, 'Your review has been updated.')
             return redirect('product_detail', product_id=review.product.id)
         else:
-            messages.error(request, 
-                'There was an error updating your review. Please try again.')
+            messages.error(request, 'There was an error updating your \
+            review. Please try again.')
     else:
         form = ProductReviewForm(instance=review)
 
@@ -99,9 +108,10 @@ def edit_review(request, review_id):
     context = {
         'form': form,
         'review': review,
-        'product': review.product  
+        'product': review.product
     }
     return render(request, template, context)
+
 
 @login_required
 def delete_review(request, review_id):
@@ -113,8 +123,10 @@ def delete_review(request, review_id):
         review_id (int): The ID of the review to be deleted.
 
     Returns:
-        HttpResponseRedirect: Redirects to the product detail page after successful deletion.
-        HttpResponseForbidden: Raises a PermissionDenied error if the user is not the owner of the review.
+        HttpResponseRedirect: Redirects to the product detail page after \
+        successful deletion.
+        HttpResponseForbidden: Raises a PermissionDenied error if the user \
+        is not the owner of the review.
     """
     review = get_object_or_404(ProductReview, id=review_id)
 
@@ -126,6 +138,7 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Your review has been deleted.')
     return redirect('product_detail', product_id=product_id)
+
 
 
 

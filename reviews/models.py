@@ -24,7 +24,7 @@ class ProductReview(models.Model):
     )
     title = models.CharField(max_length=100)
     review = models.TextField()
-    rating = models.DecimalField(max_digits=2, decimal_places=1)  
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -42,15 +42,19 @@ class ProductReview(models.Model):
         Calculate the average rating for a given product.
 
         Args:
-            product (Product): The product for which the average rating is calculated.
+            product (Product): The product for which the average \
+            rating is calculated.
 
         Returns:
-            float: The average rating for the product, rounded to one decimal place,
+            float: The average rating for the product, rounded to \
+            one decimal place,
                    or 0 if no reviews exist.
         """
         reviews = cls.objects.filter(product=product)
         if reviews.exists():
-            total_rating = reviews.aggregate(models.Sum('rating'))['rating__sum']
+            total_rating = reviews.aggregate(
+                models.Sum('rating')
+            )['rating__sum']
             count = reviews.count()
             return round(total_rating / count, 1)
         return 0
@@ -70,7 +74,8 @@ class ProductReview(models.Model):
         """
         Determine if the rating includes a half-star.
 
-        This method is used in templates to conditionally render a half-star icon.
+        This method is used in templates to conditionally render a \
+        half-star icon.
 
         Returns:
             bool: True if the rating includes a half-star, False otherwise.
@@ -86,6 +91,7 @@ class ProductReview(models.Model):
             str: The username of the associated user.
         """
         return self.user.username
+
 
 
 

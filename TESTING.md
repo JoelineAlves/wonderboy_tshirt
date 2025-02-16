@@ -154,10 +154,9 @@
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) found no errors on my CSS files.
 
 ### Python
+![CI Python Linter Validator image](assets/testing_images/python_validation.png)
 
-Pylint was utilized consistently during the development process to analyze Python code and identify potential programming errors.
-
-Additionally, the code was checked for errors using the terminal command python3 -m flake8. This process highlighted several whitespace and indentation issues, which were promptly addressed where possible to ensure clean and maintainable code.
+* [CI Python Linter](https://pep8ci.herokuapp.com/) Code Institute's Python Linter was used to lint my Python code. This process highlighted several whitespace and indentation issues, which were promptly addressed where possible to ensure clean and maintainable code.
 
 ### Javascript
 ![JSHINT Js Validator image](assets/testing_images/js_validation.png)

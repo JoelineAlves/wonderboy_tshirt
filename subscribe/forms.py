@@ -8,8 +8,10 @@ class SubscribeForm(forms.ModelForm):
 
     Attributes:
         Meta:
-            model (Subscriber): Specifies that the form is based on the Subscriber model.
-            fields (tuple): Specifies the fields to be included in the form ('name', 'email').
+            model (Subscriber): Specifies that the form is based on the \
+            Subscriber model.
+            fields (tuple): Specifies the fields to be included in the \
+            form ('name', 'email').
     """
     class Meta:
         model = Subscriber

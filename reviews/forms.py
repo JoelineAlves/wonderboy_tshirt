@@ -4,7 +4,8 @@ from .models import ProductReview
 
 class ProductReviewForm(forms.ModelForm):
     """
-    A form for submitting product reviews, including a title, text review, and a rating.
+    A form for submitting product reviews, including a title, \
+    text review, and a rating.
 
     This form allows users to submit feedback about a product, with a title,
     a detailed review, and a rating score between 1 and 5.
@@ -15,17 +16,25 @@ class ProductReviewForm(forms.ModelForm):
         Defines metadata for the ProductReviewForm.
 
         Attributes:
-            model (Model): Specifies that the form is based on the ProductReview model.
-            fields (list): Includes only 'title', 'review', and 'rating' for submission.
-            widgets (dict): Customizes field appearances, including placeholders
-                            and input constraints for better user experience.
+            model (Model): Specifies that the form is based on the \
+            ProductReview model.
+            fields (list): Includes only 'title', 'review', and 'rating' \
+            for submission.
+            widgets (dict): Customizes field appearances, \
+            including placeholders
+            and input constraints for better user experience.
         """
         model = ProductReview
         fields = ['title', 'review', 'rating']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'review': forms.Textarea(attrs={'rows': 4, 'cols': 15}),
-            'rating': forms.NumberInput(attrs={'min': 1, 'max': 5, 'step': 0.1}),
+            'rating': forms.NumberInput(
+                attrs={
+                    'min': 1,
+                    'step': 0.1
+                }
+            ),
         }
 
     def __init__(self, *args, **kwargs):
