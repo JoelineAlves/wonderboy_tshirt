@@ -151,7 +151,7 @@ Page | Desktop Version | Mobile Version
 --- | --- | ---
 Home | ![Desktop home wireframe image](assets/readme_images/home_wireframe.png) | ![Mobile home wireframe image]()
 Products | ![Desktop products wireframe image](assets/readme_images/products_wireframe.png) | ![Mobile products wireframe image]()
-Product Details | ![Desktop product details wireframe image](assets/readme_images/productsdetails_wireframe.png) | ![Mobile product details wireframe image]()
+Product Details | ![Desktop product details wireframe image](assets/readme_images/productdetails_wireframe.png) | ![Mobile product details wireframe image]()
 Shopping Bag | ![Desktop shopping bag wireframe image](assets/readme_images/shoppingbag_wireframe.png) | ![Mobile shopping bag wireframe image]()
 Checkout | ![Desktop checkout wireframe image](assets/readme_images/Checkout_wireframe.png) | ![Mobile checkout wireframe image]()
 Profile | ![Desktop profile wireframe image](assets/readme_images/profile_wireframe.png) | ![Mobile profile wireframe image]()
