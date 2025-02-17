@@ -149,7 +149,6 @@
             <div class="flex-col gap-2 overflow-container">
                 {% if reviews %}
                     {% for review in reviews %}
-                        <p>{{ review }}</p>
                         {% include 'includes/review_card.html' %}
                     {% endfor %}
                 {% else %}

@@ -16,7 +16,7 @@ class ProductReview(models.Model):
         Product,
         on_delete=models.CASCADE,
         related_name='product_reviews_from_reviews'
-    )  # Updated related_name for clarity
+    )
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

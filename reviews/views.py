@@ -21,9 +21,9 @@ def all_reviews(request, product_id):
         for the product.
     """
     product = get_object_or_404(Product, id=product_id)
-    reviews = product.product_reviews_from_reviews.all()
+    reviews = product.product_reviews_from_products.all()
 
-    # Prepare star ratings for template rendering
+
     for review in reviews:
         review.stars = range(int(review.rating))
         review.half_star = review.rating - int(review.rating) > 0
@@ -88,7 +88,6 @@ def edit_review(request, review_id):
     """
     review = get_object_or_404(ProductReview, id=review_id)
 
-    # Ensure only the review owner can edit the review
     if request.user != review.user:
         raise PermissionDenied
 
@@ -130,7 +129,6 @@ def delete_review(request, review_id):
     """
     review = get_object_or_404(ProductReview, id=review_id)
 
-    # Ensure only the review owner can delete the review
     if request.user != review.user:
         raise PermissionDenied
 
