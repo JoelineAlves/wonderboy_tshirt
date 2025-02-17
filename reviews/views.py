@@ -54,7 +54,10 @@ def add_review(request, product_id):
     if request.method == 'POST':
         print("POST request received")
         form = ProductReviewForm(request.POST)
+        print("Request POST data:", request.POST)
+
         if form.is_valid():
+            print("Form is valid")  # Verifica se o formulário é válido
             review = form.save(commit=False)
             review.product = product
             review.user = request.user
@@ -63,6 +66,7 @@ def add_review(request, product_id):
             print(f"Review data before saving: {review}")
             
             review.save()
+            print("Review saved:", review)
             messages.success(request, 'Your review has been submitted.')
             return redirect('product_detail', product_id=product.id)
         else:
