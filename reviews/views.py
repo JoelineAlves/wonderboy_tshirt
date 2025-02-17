@@ -41,35 +41,42 @@ def add_review(request, product_id):
 
     Args:
         request (HttpRequest): The HTTP request object.
-        product_id (int): The ID of the product for which the review \
+        product_id (int): The ID of the product for which the review
         is being submitted.
 
     Returns:
-        HttpResponseRedirect: Redirects to the product detail page upon \
+        HttpResponseRedirect: Redirects to the product detail page upon
         successful submission.
         HttpResponse: Renders the review form again if validation fails.
     """
     product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
+        print("POST request received")
         form = ProductReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.product = product
             review.user = request.user
+
+            # Verificando os dados da review antes de salvar
+            print(f"Review data before saving: {review}")
+            
             review.save()
             messages.success(request, 'Your review has been submitted.')
             return redirect('product_detail', product_id=product.id)
         else:
-            print(form.errors)
-            messages.error(request, 'There was an error submitting your \
-            review. Please try again.')
+            # Verificando os erros do formulário se a validação falhar
+            print(f"Form errors: {form.errors}")
+            messages.error(request, 'There was an error submitting your review. Please try again.')
     else:
+        print("GET request or another method received")
         form = ProductReviewForm()
 
     template = 'reviews/add_review.html'
     context = {'form': form, 'product': product}
     return render(request, template, context)
+
 
 
 @login_required
