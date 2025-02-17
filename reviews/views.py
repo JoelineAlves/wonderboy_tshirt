@@ -21,7 +21,8 @@ def all_reviews(request, product_id):
         for the product.
     """
     product = get_object_or_404(Product, id=product_id)
-    reviews = product.product_reviews_from_products.all()
+    reviews = product.product_reviews_from_reviews.all()
+
 
 
     for review in reviews:
@@ -60,6 +61,7 @@ def add_review(request, product_id):
             messages.success(request, 'Your review has been submitted.')
             return redirect('product_detail', product_id=product.id)
         else:
+            print(form.errors)
             messages.error(request, 'There was an error submitting your \
             review. Please try again.')
     else:
