@@ -14,8 +14,9 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from favorite.models import Favorite
-from .models import Product, Category, ProductReview
+from .models import Product, Category
 from .forms import ProductForm
+from reviews.models import ProductReview
 
 
 def all_products(request):
