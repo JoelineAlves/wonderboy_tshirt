@@ -82,7 +82,8 @@ def product_detail(request, product_id):
         if request.user.is_authenticated
         else False
     )
-    reviews = product.product_reviews_from_products.all()
+    reviews = product.product_reviews_from_reviews.all()
+
 
     return render(
         request,
