@@ -87,6 +87,11 @@
             var form = $(this).closest('form'); // Encontrar o formulário relacionado
             form.submit(); // Envia o formulário
         });
+        
+        if (isCartPage) {
+            $('.increment-qty').hide(); // Esconde as setas de incremento
+            $('.decrement-qty').hide(); // Esconde as setas de decremento
+        }
     });
 </script>
 
