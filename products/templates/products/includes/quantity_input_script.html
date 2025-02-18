@@ -1,6 +1,6 @@
 <script type="text/javascript">
-    // Função para habilitar/desabilitar os botões com base no valor da quantidade
-    function handleEnableDisable(itemId, size, isProductPage) {
+    // Função para habilitar/desabilitar botões com base no valor da quantidade
+    function handleEnableDisable(itemId, size) {
         var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
         var minusDisabled = currentValue < 2;
         var plusDisabled = currentValue > 98;
@@ -9,11 +9,6 @@
 
         // Atualiza o subtotal após a mudança de quantidade
         updateSubtotal(itemId, size);
-
-        // Se estivermos na página do produto, não submetemos o formulário
-        if (!isProductPage) {
-            return; // Não submete o formulário se estamos na página do produto
-        }
     }
 
     // Função para atualizar o subtotal
@@ -24,96 +19,44 @@
 
         // Atualiza o subtotal na interface
         $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
-
-        // Debug para verificar o valor do subtotal
-        console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
     }
 
-    // Detecta se estamos na página do produto
-    function isProductPage() {
-        return $('body').hasClass('product-page'); // Adiciona uma classe "product-page" no body se for a página do produto
-    }
-
-    // Página do produto
+    // Verificar todos os inputs na página e habilitar/desabilitar corretamente
     $('.qty_input').each(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size, isProductPage());
+        handleEnableDisable(itemId, size);
     });
 
-    // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
+    // Quando o valor do input muda, verifica se os botões devem ser desativados
     $('.qty_input').change(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size, isProductPage());
+        handleEnableDisable(itemId, size);
     });
 
-    // Incrementar quantidade (na página de produto, não submete o form)
+    // Incrementar quantidade
     $('.increment-qty').click(function(e) {
-        e.preventDefault(); // Impede o envio do formulário
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
-
+        $(closestInput).val(currentValue + 1);
+        
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-
-        // Atualiza o estado dos botões e o subtotal
-        handleEnableDisable(itemId, size, isProductPage());
+        handleEnableDisable(itemId, size);
     });
 
-    // Decrementar quantidade (na página de produto, não submete o form)
-    $('.decrement-qty').click(function(e) {
-        e.preventDefault(); // Impede o envio do formulário
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
-
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-
-        // Atualiza o estado dos botões e o subtotal
-        handleEnableDisable(itemId, size, isProductPage());
-    });
-
-    // Página do carrinho
-    $('.increment-qty').click(function(e) {
-        e.preventDefault(); // Impede o envio do formulário
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input');
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
-
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-
-        // Atualiza o estado dos botões e o subtotal
-        handleEnableDisable(itemId, size, false);
-
-        // Envia o formulário para atualizar o backend (somente no carrinho)
-        var form = $(this).closest('form');
-        form.submit(); // Envia o formulário
-    });
-
-    // Decrementar quantidade (somente na página do carrinho, envia o form)
+    // Decrementar quantidade
     $('.decrement-qty').click(function(e) {
         e.preventDefault();
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input');
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
-
+        $(closestInput).val(currentValue - 1);
+        
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-
-        // Atualiza o estado dos botões e o subtotal
-        handleEnableDisable(itemId, size, false);
-
-        // Envia o formulário para atualizar o backend (somente no carrinho)
-        var form = $(this).closest('form');
-        form.submit();
+        handleEnableDisable(itemId, size);
     });
 </script>
 
