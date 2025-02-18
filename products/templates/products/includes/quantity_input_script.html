@@ -64,6 +64,9 @@
             // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
 
+            // Forçar o evento de mudança para atualizar o subtotal
+            $(closestInput).trigger('change');
+
             // Agora vamos enviar o formulário para atualizar no backend
             var form = $(this).closest('form'); // Encontrar o formulário relacionado
             form.submit(); // Envia o formulário
@@ -82,6 +85,9 @@
 
             // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
+
+            // Forçar o evento de mudança para atualizar o subtotal
+            $(closestInput).trigger('change');
 
             // Agora vamos enviar o formulário para atualizar no backend
             var form = $(this).closest('form'); // Encontrar o formulário relacionado
