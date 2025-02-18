@@ -1,6 +1,7 @@
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404
 )
+from django.http import JsonResponse
 from django.contrib import messages
 from products.models import Product
 
@@ -37,7 +38,7 @@ def add_to_bag(request, item_id):
 
 
 def adjust_bag(request, item_id):
-    """Adjusts the quantity of a product in the shopping bag."""
+    """Adjusts the quantity of a product in the shopping bag via AJAX."""
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     size = request.POST.get('product_size')
@@ -45,21 +46,15 @@ def adjust_bag(request, item_id):
 
     if quantity > 0:
         bag[item_id]['items_by_size'][size] = quantity
-        messages.success(
-            request,
-            f'Updated {product.name} ({size.upper()}) to {quantity} in the bag.'
-        )
+        request.session['bag'] = bag
+        subtotal = product.price * quantity  # Calcula o subtotal
+        return JsonResponse({'subtotal': subtotal, 'quantity': quantity})  # Retorna JSON
     else:
         del bag[item_id]['items_by_size'][size]
         if not bag[item_id]['items_by_size']:
             bag.pop(item_id)
-        messages.success(
-            request,
-            f'Removed {product.name} ({size.upper()}) from the bag.'
-        )
-
-    request.session['bag'] = bag
-    return redirect(reverse('view_bag'))
+        request.session['bag'] = bag
+        return JsonResponse({'removed': True})  # Retorna JSON informando remoção
 
 
 def remove_from_bag(request, item_id):
@@ -83,6 +78,7 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
 
 
 
