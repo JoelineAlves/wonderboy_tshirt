@@ -52,6 +52,9 @@
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
 
+        // Atualiza o subtotal imediatamente após a mudança
+        updateSubtotal(itemId, size);
+
         // Agora vamos enviar o formulário para atualizar no backend
         var form = $(this).closest('form'); // Encontrar o formulário relacionado
         form.submit(); // Envia o formulário
@@ -71,6 +74,9 @@
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
 
+        // Atualiza o subtotal imediatamente após a mudança
+        updateSubtotal(itemId, size);
+
         // Agora vamos enviar o formulário para atualizar no backend
         var form = $(this).closest('form'); // Encontrar o formulário relacionado
         form.submit(); // Envia o formulário
@@ -81,8 +87,10 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Garante que o subtotal será atualizado ao digitar
     });
 </script>
+
 
 
 
