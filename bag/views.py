@@ -10,10 +10,9 @@ def view_bag(request):
     bag = request.session.get('bag', {})
     bag_items = []
     total = 0
-    delivery = 5  # Example: fixed delivery fee
+    delivery = 5
     grand_total = 0
 
-    # Loop through items in the bag
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         for size, quantity in item_data['items_by_size'].items():
@@ -26,7 +25,7 @@ def view_bag(request):
                 'sub_total': sub_total,
             })
 
-    grand_total = total + delivery  # Calculate grand total including delivery
+    grand_total = total + delivery
 
     context = {
         'bag_items': bag_items,
@@ -67,14 +66,12 @@ def add_to_bag(request, item_id):
 def adjust_bag(request, item_id):
     """Adjusts the quantity of a product in the shopping bag."""
     product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity', 1))  # Default to 1 if not provided
+    quantity = int(request.POST.get('quantity', 1))
     size = request.POST.get('product_size')
 
-    # Retrieve the shopping bag from the session
     bag = request.session.get('bag', {})
 
     if item_id in bag and size in bag[item_id]['items_by_size']:
-        # Adjust the quantity if valid
         if quantity > 0:
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(
@@ -82,10 +79,10 @@ def adjust_bag(request, item_id):
                 f'Updated {product.name} ({size.upper()}) to {quantity} in the bag.'
             )
         else:
-            # If quantity is zero or less, remove the item
+
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
-                bag.pop(item_id)  # Remove item from bag if no sizes are left
+                bag.pop(item_id)
             messages.success(
                 request,
                 f'Removed {product.name} ({size.upper()}) from the bag.'
@@ -93,7 +90,6 @@ def adjust_bag(request, item_id):
     else:
         messages.error(request, "Item or size not found in bag.")
 
-    # Save the updated bag to the session
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
