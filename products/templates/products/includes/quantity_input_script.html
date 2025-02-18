@@ -6,9 +6,6 @@
         var plusDisabled = currentValue > 98;
         $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
-
-        // Atualiza o subtotal após a mudança de quantidade
-        updateSubtotal(itemId, size);
     }
 
     // Função para atualizar o subtotal
@@ -29,6 +26,7 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal quando a página é carregada ou renderizada
     });
 
     // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
@@ -36,6 +34,7 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal ao mudar o valor manualmente
     });
 
     // Incrementar quantidade
@@ -51,9 +50,7 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
-
-        // Atualiza o subtotal imediatamente após a mudança
-        updateSubtotal(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal imediatamente após a mudança
 
         // Agora vamos enviar o formulário para atualizar no backend
         var form = $(this).closest('form'); // Encontrar o formulário relacionado
@@ -73,9 +70,7 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
-
-        // Atualiza o subtotal imediatamente após a mudança
-        updateSubtotal(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal imediatamente após a mudança
 
         // Agora vamos enviar o formulário para atualizar no backend
         var form = $(this).closest('form'); // Encontrar o formulário relacionado
@@ -90,6 +85,7 @@
         updateSubtotal(itemId, size); // Garante que o subtotal será atualizado ao digitar
     });
 </script>
+
 
 
 
