@@ -28,7 +28,7 @@
         handleEnableDisable(itemId, size);
     });
 
-    // Quando o valor do input muda, verifica se os botões devem ser desativados e atualiza o subtotal
+    // Quando o valor do input muda, verifica se os botões devem ser desativados
     $('.qty_input').change(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
@@ -38,27 +38,28 @@
     // Incrementar quantidade
     $('.increment-qty').click(function(e) {
         e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input');
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
+        $(closestInput).val(currentValue + 1);
         
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size);  // Atualiza o estado dos botões e o subtotal
+        handleEnableDisable(itemId, size);
     });
 
     // Decrementar quantidade
     $('.decrement-qty').click(function(e) {
         e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input');
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
+        $(closestInput).val(currentValue - 1);
         
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size);  // Atualiza o estado dos botões e o subtotal
+        handleEnableDisable(itemId, size);
     });
 </script>
+
 
 
 
