@@ -58,8 +58,8 @@
             var currentValue = parseInt($(closestInput).val());
             $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
 
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
+            var itemId = $(this).closest('form').data('item_id'); // Garantir que pegamos o itemId e tamanho do formulário
+            var size = $(this).closest('form').data('size');
 
             // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
@@ -67,9 +67,10 @@
             // Forçar o evento de mudança para atualizar o subtotal
             $(closestInput).trigger('change');
 
-            // Agora vamos enviar o formulário para atualizar no backend
-            var form = $(this).closest('form'); // Encontrar o formulário relacionado
-            form.submit(); // Envia o formulário
+            // Se estamos na página do carrinho, submete automaticamente o formulário
+            if (isCartPage) {
+                $(this).closest('form').submit();
+            }
         });
 
         // Decrementar quantidade
@@ -80,8 +81,8 @@
             var currentValue = parseInt($(closestInput).val());
             $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
 
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
+            var itemId = $(this).closest('form').data('item_id'); // Garantir que pegamos o itemId e tamanho do formulário
+            var size = $(this).closest('form').data('size');
 
             // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
@@ -89,12 +90,14 @@
             // Forçar o evento de mudança para atualizar o subtotal
             $(closestInput).trigger('change');
 
-            // Agora vamos enviar o formulário para atualizar no backend
-            var form = $(this).closest('form'); // Encontrar o formulário relacionado
-            form.submit(); // Envia o formulário
+            // Se estamos na página do carrinho, submete automaticamente o formulário
+            if (isCartPage) {
+                $(this).closest('form').submit();
+            }
         });
     });
 </script>
+
 
 
 
