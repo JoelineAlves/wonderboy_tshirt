@@ -1,5 +1,4 @@
 <script type="text/javascript">
-
     // Função para habilitar/desabilitar botões com base no valor da quantidade
     function handleEnableDisable(itemId, size) {
         var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
@@ -7,14 +6,19 @@
         var plusDisabled = currentValue > 98;
         $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
+
+        // Atualiza o subtotal após a mudança de quantidade
+        updateSubtotal(itemId, size);
     }
 
     // Função para atualizar o subtotal
     function updateSubtotal(itemId, size) {
         var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-        var price = parseFloat($(`#price_${itemId}_${size}`).data('price'));
+        var price = parseFloat($(`#price_${itemId}`).data('price')); // Assume que o preço do produto está armazenado com data-price
         var subtotal = currentValue * price;
-        $(`#subtotal_${itemId}_${size}`).text(subtotal.toFixed(2)); // Atualiza o subtotal na página
+
+        // Atualiza o subtotal na interface
+        $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
     }
 
     // Verificar todos os inputs na página e habilitar/desabilitar corretamente
@@ -22,15 +26,13 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal inicial
     });
 
-    // Quando o valor do input muda, verifica se os botões devem ser desativados
+    // Quando o valor do input muda, verifica se os botões devem ser desativados e atualiza o subtotal
     $('.qty_input').change(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal quando a quantidade mudar
     });
 
     // Incrementar quantidade
@@ -43,7 +45,6 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal após incrementar
     });
 
     // Decrementar quantidade
@@ -56,9 +57,8 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal após decrementar
     });
-
 </script>
+
 
 
