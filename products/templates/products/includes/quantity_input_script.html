@@ -6,6 +6,9 @@
         var plusDisabled = currentValue > 98;
         $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
+
+        // Atualiza o subtotal após a mudança de quantidade
+        updateSubtotal(itemId, size);
     }
 
     // Função para atualizar o subtotal
@@ -26,7 +29,6 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal quando a página é carregada ou renderizada
     });
 
     // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
@@ -34,7 +36,6 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal ao mudar o valor manualmente
     });
 
     // Incrementar quantidade
@@ -50,11 +51,10 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal imediatamente após a mudança
 
-        // Atualizar no backend sem recarregar a página
+        // Agora vamos enviar o formulário para atualizar no backend
         var form = $(this).closest('form'); // Encontrar o formulário relacionado
-        $.post(form.attr('action'), form.serialize()); // Envia os dados do formulário sem recarregar a página
+        form.submit(); // Envia o formulário
     });
 
     // Decrementar quantidade
@@ -70,19 +70,10 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Atualiza o subtotal imediatamente após a mudança
 
-        // Atualizar no backend sem recarregar a página
+        // Agora vamos enviar o formulário para atualizar no backend
         var form = $(this).closest('form'); // Encontrar o formulário relacionado
-        $.post(form.attr('action'), form.serialize()); // Envia os dados do formulário sem recarregar a página
-    });
-
-    // Atualizar o subtotal ao digitar no input
-    $('.qty_input').on('input', function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-        updateSubtotal(itemId, size); // Garante que o subtotal será atualizado ao digitar
+        form.submit(); // Envia o formulário
     });
 </script>
 
