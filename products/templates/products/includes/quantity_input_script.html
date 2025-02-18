@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    // Função para habilitar/desabilitar os botões com base no valor da quantidade
+    // Função para habilitar/desabilitar botões com base no valor da quantidade
     function handleEnableDisable(itemId, size) {
         var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
         var minusDisabled = currentValue < 2;
@@ -31,7 +31,7 @@
         handleEnableDisable(itemId, size);
     });
 
-    // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
+    // Quando o valor do input muda, verifica se os botões devem ser desativados e atualiza o subtotal
     $('.qty_input').change(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
@@ -40,42 +40,36 @@
 
     // Incrementar quantidade
     $('.increment-qty').click(function(e) {
-        e.preventDefault(); // Impede o envio do formulário
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Corrigido para encontrar o input
         var currentValue = parseInt($(closestInput).val());
         $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
 
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-
-        // Atualiza o estado dos botões e o subtotal
-        handleEnableDisable(itemId, size);
-
-        // Agora vamos enviar o formulário para atualizar no backend
-        var form = $(this).closest('form'); // Encontrar o formulário relacionado
-        form.submit(); // Envia o formulário
+        handleEnableDisable(itemId, size);  // Atualiza o estado dos botões e o subtotal
     });
 
     // Decrementar quantidade
     $('.decrement-qty').click(function(e) {
-        e.preventDefault(); // Impede o envio do formulário
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Corrigido para encontrar o input
         var currentValue = parseInt($(closestInput).val());
         $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
 
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-
-        // Atualiza o estado dos botões e o subtotal
+        handleEnableDisable(itemId, size);  // Atualiza o estado dos botões e o subtotal
+    });
+    
+    // Atualização do subtotal ao digitar no input (setas)
+    $('.qty_input').on('input', function() {
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
         handleEnableDisable(itemId, size);
-
-        // Agora vamos enviar o formulário para atualizar no backend
-        var form = $(this).closest('form'); // Encontrar o formulário relacionado
-        form.submit(); // Envia o formulário
     });
 </script>
+
 
 
 
