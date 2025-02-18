@@ -117,21 +117,55 @@
     </div>
 {% endblock %}
 
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Shopping Bag</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Shopping Bag</h1>
+    <hr>
+
+    {% if bag_items %}
+    {% for item in bag_items %}
+    <div class="bag-item">
+        <img src="{{ item.product.image }}" alt="{{ item.product.name }}" class="bag-img">
+        <p>{{ item.product.name }} ({{ item.size.upper }})</p>
+        <p>Quantidade: {{ item.quantity }}</p>
+
+        <form action="{% url 'adjust_bag' item.product.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_size" value="{{ item.size }}">
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10" onchange="this.form.submit()">
+        </form>
+
+        <p>Subtotal: £{{ item.sub_total }}</p>
+
+        <form action="{% url 'remove_from_bag' item.product.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_size" value="{{ item.size }}">
+            <button type="submit">Remove</button>
+        </form>
+    </div>
+    {% endfor %}
+
+    <h3>Total: £{{ total }}</h3>
+    <h4>Delivery: £{{ delivery }}</h4>
+    <h2>Grand Total: £{{ grand_total }}</h2>
+
+    <a href="{% url 'checkout' %}" class="btn">Proceed to Checkout</a>
+    {% else %}
+    <p>Your bag is empty!</p>
+    <a href="{% url 'all_products' %}">Continue Shopping</a>
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
-    $('.btt-link').click(function(e) {
-        window.scrollTo(0,0)
-    })
-</script>
-{% include 'products/includes/quantity_input_script.html' %}
-
-<script type="text/javascript">
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
@@ -143,6 +177,6 @@
          .done(function() {
              location.reload();
          });
-    })
+    });
 </script>
 {% endblock %}

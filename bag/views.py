@@ -6,8 +6,35 @@ from products.models import Product
 
 
 def view_bag(request):
-    """Renders the shopping bag page."""
-    return render(request, 'bag/bag.html')
+    """Renders the shopping bag page with subtotal calculation."""
+    bag = request.session.get('bag', {})
+    bag_items = []
+    total = 0
+    delivery = 5  # Exemplo: taxa de entrega fixa
+    grand_total = 0
+
+    for item_id, item_data in bag.items():
+        product = get_object_or_404(Product, pk=item_id)
+        for size, quantity in item_data['items_by_size'].items():
+            sub_total = product.price * quantity
+            total += sub_total
+            bag_items.append({
+                'product': product,
+                'quantity': quantity,
+                'size': size,
+                'sub_total': sub_total,
+            })
+
+    grand_total = total + delivery
+
+    context = {
+        'bag_items': bag_items,
+        'total': total,
+        'delivery': delivery,
+        'grand_total': grand_total,
+    }
+
+    return render(request, 'bag/bag.html', context)
 
 
 def add_to_bag(request, item_id):
@@ -83,6 +110,7 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
 
 
 
