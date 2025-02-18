@@ -69,7 +69,7 @@ def adjust_bag(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity', 1))  # Default to 1 if not provided
     size = request.POST.get('product_size')
-    
+
     # Retrieve the shopping bag from the session
     bag = request.session.get('bag', {})
 
@@ -119,6 +119,7 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
 
 
 
