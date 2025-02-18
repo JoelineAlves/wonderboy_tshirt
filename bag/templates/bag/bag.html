@@ -124,6 +124,17 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
+    // Restaurando o comportamento do scroll para o topo
+    $('.btt-link').click(function(e) {
+        window.scrollTo(0, 0);
+    });
+</script>
+
+<!-- Incluindo o script de controle de quantidade -->
+{% include 'products/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    // Mantendo a funcionalidade de remoção de item da sacola
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
@@ -133,7 +144,7 @@
 
         $.post(url, data)
          .done(function() {
-             location.reload();
+             location.reload();  // Recarrega a página após a remoção
          });
     });
 </script>
