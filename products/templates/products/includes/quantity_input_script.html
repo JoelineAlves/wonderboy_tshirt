@@ -38,7 +38,14 @@
         handleEnableDisable(itemId, size);
     });
 
-    // Incrementar quantidade
+    // Quando o valor do input for alterado manualmente (ou seja, por digitação), atualiza o subtotal
+    $('.qty_input').on('input', function() {
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
+        handleEnableDisable(itemId, size); // Atualiza a habilitação dos botões
+    });
+
+    // Incrementar quantidade (sem submeter o formulário)
     $('.increment-qty').click(function(e) {
         e.preventDefault(); // Impede o envio do formulário
 
@@ -51,13 +58,9 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
-
-        // Agora vamos enviar o formulário para atualizar no backend
-        var form = $(this).closest('form'); // Encontrar o formulário relacionado
-        form.submit(); // Envia o formulário
     });
 
-    // Decrementar quantidade
+    // Decrementar quantidade (sem submeter o formulário)
     $('.decrement-qty').click(function(e) {
         e.preventDefault(); // Impede o envio do formulário
 
@@ -70,10 +73,12 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
+    });
 
-        // Agora vamos enviar o formulário para atualizar no backend
-        var form = $(this).closest('form'); // Encontrar o formulário relacionado
-        form.submit(); // Envia o formulário
+    // Submeter o formulário de adição ao carrinho quando o botão de adicionar ao carrinho for clicado
+    $('.add-to-bag').click(function(e) {
+        var form = $(this).closest('form');
+        form.submit(); // Aqui você permite que o formulário seja submetido quando o botão de "Adicionar ao Carrinho" for clicado
     });
 </script>
 
