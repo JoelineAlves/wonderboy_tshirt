@@ -37,6 +37,29 @@ def add_to_bag(request, item_id):
     return redirect(redirect_url)
 
 
+def update_bag(request):
+    """ Atualiza a quantidade do produto no carrinho via AJAX """
+    if request.method == "POST":
+        product_id = request.POST.get('product_id')
+        quantity = int(request.POST.get('quantity'))
+        size = request.POST.get('size', None)
+        bag = request.session.get('bag', {})
+
+        product = get_object_or_404(Product, pk=product_id)
+
+        if quantity > 0:
+            bag[product_id] = {'quantity': quantity, 'size': size}
+        else:
+            bag.pop(product_id, None)
+
+        request.session['bag'] = bag
+
+        # Calcula o novo total do carrinho
+        new_total = sum(item['quantity'] * product.price for item in bag.values())
+
+        return JsonResponse({'success': True, 'new_total': new_total})
+
+
 def adjust_bag(request, item_id):
     """Adjusts the quantity of a product in the shopping bag via AJAX."""
     product = get_object_or_404(Product, pk=item_id)

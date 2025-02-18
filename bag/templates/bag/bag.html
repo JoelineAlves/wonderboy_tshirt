@@ -151,4 +151,41 @@
          });
     })
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.qty_input').change(function() {
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            var quantity = $(this).val();
+            var price = $(this).data('price');
+            var subtotalField = $('#subtotal_' + itemId + '_' + size);
+            var csrfToken = "{{ csrf_token }}";
+            var url = "{% url 'update_bag' %}";
+
+            var data = {
+                'csrfmiddlewaretoken': csrfToken,
+                'product_id': itemId,
+                'quantity': quantity,
+                'size': size
+            };
+
+            $.post(url, data)
+             .done(function(response) {
+                 if (response.success) {
+                     // Atualiza o subtotal diretamente no HTML
+                     var newSubtotal = (price * quantity).toFixed(2);
+                     subtotalField.text('$' + newSubtotal);
+                     // Atualiza o total do carrinho (caso tenha um campo no template)
+                     $('#bag_total').text('$' + response.new_total);
+                 } else {
+                     alert('Erro ao atualizar o carrinho.');
+                 }
+             })
+             .fail(function() {
+                 alert('Erro ao enviar os dados.');
+             });
+        });
+    });
+</script>
 {% endblock %}
