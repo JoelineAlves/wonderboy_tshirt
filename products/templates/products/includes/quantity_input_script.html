@@ -19,6 +19,9 @@
 
         // Atualiza o subtotal na interface
         $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
+
+        // Debug para verificar o valor do subtotal
+        console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
     }
 
     // Verificar todos os inputs na página e habilitar/desabilitar corretamente
@@ -28,7 +31,7 @@
         handleEnableDisable(itemId, size);
     });
 
-    // Quando o valor do input muda, verifica se os botões devem ser desativados
+    // Quando o valor do input muda, verifica se os botões devem ser desativados e atualiza o subtotal
     $('.qty_input').change(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
@@ -38,27 +41,28 @@
     // Incrementar quantidade
     $('.increment-qty').click(function(e) {
         e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Corrigido para encontrar o input
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1);
-        
+        $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
+
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
+        handleEnableDisable(itemId, size);  // Atualiza o estado dos botões e o subtotal
     });
 
     // Decrementar quantidade
     $('.decrement-qty').click(function(e) {
         e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        var closestInput = $(this).closest('.input-group').find('.qty_input'); // Corrigido para encontrar o input
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1);
-        
+        $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
+
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
+        handleEnableDisable(itemId, size);  // Atualiza o estado dos botões e o subtotal
     });
 </script>
+
 
 
 
