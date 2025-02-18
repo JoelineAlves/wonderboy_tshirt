@@ -24,28 +24,21 @@
         console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
     }
 
-    // Verificar todos os inputs na página e habilitar/desabilitar corretamente
+    // Quando a página for carregada ou quando um item de quantidade for alterado
     $('.qty_input').each(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
+        handleEnableDisable(itemId, size); // Verifica se os botões devem ser habilitados/desabilitados e atualiza o subtotal
     });
 
-    // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
-    $('.qty_input').change(function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-    });
-
-    // Quando o valor do input for alterado manualmente (ou seja, por digitação), atualiza o subtotal
+    // Quando o valor do input de quantidade mudar (mude o valor diretamente)
     $('.qty_input').on('input', function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
-        handleEnableDisable(itemId, size); // Atualiza a habilitação dos botões
+        handleEnableDisable(itemId, size); // Atualiza o estado dos botões e o subtotal
     });
 
-    // Incrementar quantidade (sem submeter o formulário)
+    // Incrementar quantidade com o botão "+"
     $('.increment-qty').click(function(e) {
         e.preventDefault(); // Impede o envio do formulário
 
@@ -58,9 +51,13 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
+
+        // Enviar o formulário para atualizar no backend
+        var form = $(this).closest('form');
+        form.submit(); // Submete o formulário com a nova quantidade
     });
 
-    // Decrementar quantidade (sem submeter o formulário)
+    // Decrementar quantidade com o botão "-"
     $('.decrement-qty').click(function(e) {
         e.preventDefault(); // Impede o envio do formulário
 
@@ -73,14 +70,13 @@
 
         // Atualiza o estado dos botões e o subtotal
         handleEnableDisable(itemId, size);
-    });
 
-    // Submeter o formulário de adição ao carrinho quando o botão de adicionar ao carrinho for clicado
-    $('.add-to-bag').click(function(e) {
+        // Enviar o formulário para atualizar no backend
         var form = $(this).closest('form');
-        form.submit(); // Aqui você permite que o formulário seja submetido quando o botão de "Adicionar ao Carrinho" for clicado
+        form.submit(); // Submete o formulário com a nova quantidade
     });
 </script>
+
 
 
 
