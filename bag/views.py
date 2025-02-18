@@ -10,9 +10,10 @@ def view_bag(request):
     bag = request.session.get('bag', {})
     bag_items = []
     total = 0
-    delivery = 5  # Exemplo: taxa de entrega fixa
+    delivery = 5  # Example: fixed delivery fee
     grand_total = 0
 
+    # Loop through items in the bag
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         for size, quantity in item_data['items_by_size'].items():
@@ -25,7 +26,7 @@ def view_bag(request):
                 'sub_total': sub_total,
             })
 
-    grand_total = total + delivery
+    grand_total = total + delivery  # Calculate grand total including delivery
 
     context = {
         'bag_items': bag_items,
@@ -110,6 +111,7 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
 
 
 
