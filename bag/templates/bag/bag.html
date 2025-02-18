@@ -81,13 +81,17 @@
                                         {% include "bag/product-info.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ item.product.price }}</p>
+                                        <p class="my-0" id="price_{{ item.product.id }}" data-price="{{ item.product.price }}">
+                                            ${{ item.product.price }}
+                                        </p>
                                     </td>
                                     <td class="py-3 w-25">
                                         {% include "bag/quantity-form.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ item.sub_total }}</p> <!-- Alterado para item.sub_total -->
+                                        <p class="my-0" id="subtotal_{{ item.product.id }}_{{ item.size }}">
+                                            ${{ item.sub_total }}
+                                        </p> <!-- Alterado para id="subtotal" para cada item com seu valor -->
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -134,5 +138,6 @@
     });
 </script>
 {% endblock %}
+
 
 

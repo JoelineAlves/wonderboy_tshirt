@@ -9,11 +9,20 @@
         $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
     }
 
+    // Função para atualizar o subtotal
+    function updateSubtotal(itemId, size) {
+        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+        var price = parseFloat($(`#price_${itemId}_${size}`).data('price'));
+        var subtotal = currentValue * price;
+        $(`#subtotal_${itemId}_${size}`).text(subtotal.toFixed(2)); // Atualiza o subtotal na página
+    }
+
     // Verificar todos os inputs na página e habilitar/desabilitar corretamente
     $('.qty_input').each(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal inicial
     });
 
     // Quando o valor do input muda, verifica se os botões devem ser desativados
@@ -21,6 +30,7 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal quando a quantidade mudar
     });
 
     // Incrementar quantidade
@@ -33,6 +43,7 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal após incrementar
     });
 
     // Decrementar quantidade
@@ -45,7 +56,9 @@
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
         handleEnableDisable(itemId, size);
+        updateSubtotal(itemId, size); // Atualiza o subtotal após decrementar
     });
 
 </script>
+
 
