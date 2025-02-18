@@ -1,64 +1,95 @@
 <script type="text/javascript">
-    // Função para habilitar/desabilitar botões com base no valor da quantidade
-    function handleEnableDisable(itemId, size) {
-        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-        var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
-        $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
+    $(document).ready(function () {
+        // Detecta se estamos na página do produto ou do carrinho
+        var isProductPage = $('body').hasClass('product-page');
+        var isCartPage = $('body').hasClass('cart-page');
 
-        // Atualiza o subtotal após a mudança de quantidade
-        updateSubtotal(itemId, size);
-    }
+        // Função para habilitar/desabilitar os botões + e -
+        function handleEnableDisable(itemId, size) {
+            var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+            var minusDisabled = currentValue < 2;
+            var plusDisabled = currentValue > 98;
 
-    // Função para atualizar o subtotal
-    function updateSubtotal(itemId, size) {
-        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-        var price = parseFloat($(`#price_${itemId}`).data('price')); // Assume que o preço do produto está armazenado com data-price
-        var subtotal = currentValue * price;
+            $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
+            $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
-        // Atualiza o subtotal na interface
-        $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
-    }
+            // Atualiza o subtotal na página do carrinho
+            if (isCartPage) {
+                updateSubtotal(itemId, size);
+            }
+        }
 
-    // Verificar todos os inputs na página e habilitar/desabilitar corretamente
-    $('.qty_input').each(function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-    });
+        // Função para atualizar o subtotal
+        function updateSubtotal(itemId, size) {
+            var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+            var price = parseFloat($(`#price_${itemId}`).data('price'));
+            var subtotal = currentValue * price;
 
-    // Quando o valor do input muda, verifica se os botões devem ser desativados
-    $('.qty_input').change(function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-    });
+            // Atualiza o subtotal na interface
+            $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
 
-    // Incrementar quantidade
-    $('.increment-qty').click(function(e) {
-        e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1);
-        
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-    });
+            console.log(`Subtotal atualizado: ItemID ${itemId} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
+        }
 
-    // Decrementar quantidade
-    $('.decrement-qty').click(function(e) {
-        e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1);
-        
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
+        // Atualiza os estados ao carregar a página
+        $('.qty_input').each(function () {
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            handleEnableDisable(itemId, size);
+        });
+
+        // Quando o input de quantidade muda
+        $('.qty_input').on('change', function () {
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            handleEnableDisable(itemId, size);
+
+            // Se estamos na página do carrinho, submetemos automaticamente o formulário
+            if (isCartPage) {
+                $(this).closest('form').submit();
+            }
+        });
+
+        // Incrementar quantidade
+        $('.increment-qty').click(function (e) {
+            e.preventDefault();
+            var closestInput = $(this).closest('.input-group').find('.qty_input');
+            var currentValue = parseInt(closestInput.val());
+
+            closestInput.val(currentValue + 1);
+
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+
+            handleEnableDisable(itemId, size);
+
+            // Se for página do carrinho, submete o formulário
+            if (isCartPage) {
+                $(this).closest('form').submit();
+            }
+        });
+
+        // Decrementar quantidade
+        $('.decrement-qty').click(function (e) {
+            e.preventDefault();
+            var closestInput = $(this).closest('.input-group').find('.qty_input');
+            var currentValue = parseInt(closestInput.val());
+
+            closestInput.val(currentValue - 1);
+
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+
+            handleEnableDisable(itemId, size);
+
+            // Se for página do carrinho, submete o formulário
+            if (isCartPage) {
+                $(this).closest('form').submit();
+            }
+        });
     });
 </script>
+
 
 
 
