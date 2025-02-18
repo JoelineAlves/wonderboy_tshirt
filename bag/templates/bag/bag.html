@@ -124,6 +124,18 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
+    $('.btt-link').click(function(e) {
+        window.scrollTo(0,0)
+    })
+</script>
+{% include 'products/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
@@ -135,7 +147,7 @@
          .done(function() {
              location.reload();
          });
-    });
+    })
 </script>
 {% endblock %}
 
