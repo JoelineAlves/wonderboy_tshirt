@@ -23,20 +23,21 @@
             $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
         }
 
+        // Inicializa os elementos de quantidade e desabilita/abilita botões na página do produto
         $('.qty_input').each(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
         });
 
-        // Na página de produto, ao mudar a quantidade, não envia o formulário e não atualiza o subtotal
+        // Atualização de quantidade na página do produto
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
         });
 
-        // Atualizar o subtotal quando o botão "Add to Bag" for clicado
+        // Botão "Add to Bag" - Atualiza subtotal e envia o formulário
         $('.add-to-bag').click(function(e) {
             e.preventDefault(); // Impede o envio automático do formulário
 
@@ -51,7 +52,7 @@
             form.submit();
         });
 
-        // Comportamento do botão de incremento e decremento de quantidade
+        // Comportamento do botão de incremento de quantidade
         $('.increment-qty').click(function(e) {
             e.preventDefault(); 
 
@@ -65,6 +66,7 @@
             handleEnableDisable(itemId, size);
         });
 
+        // Comportamento do botão de decremento de quantidade
         $('.decrement-qty').click(function(e) {
             e.preventDefault(); 
 
@@ -78,12 +80,14 @@
             handleEnableDisable(itemId, size);
         });
 
+        // Página do Carrinho - Esconde os botões de incremento e decremento
         if (isCartPage) {
             $('.increment-qty').hide();
             $('.decrement-qty').hide();
         }
     });
 </script>
+
 
 
 
