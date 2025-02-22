@@ -13,7 +13,7 @@ body {
     background-position: center center;
     color: #0a0a0a;
     font-family: 'Lato', sans-serif;
-    flex: 1; /* Isso faz com que o conteúdo do body ocupe o espaço disponível */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
@@ -26,9 +26,8 @@ footer {
     margin-top: 0;
     padding-top: 50px;
     background-color: #333;
-    /* Adicionar este estilo para garantir que o footer sempre fique na parte inferior */
     position: relative; 
-    margin-top: auto; /* Isso vai forçar o footer a ficar no final */
+    margin-top: auto; 
 }
 
 /* Navbar */
@@ -532,5 +531,24 @@ hr {
 
     footer {
         padding-top: 30px; 
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        position: relative;
+        margin-top: 0;
+    }
+
+    body {
+        background-attachment: scroll;
+        height: auto;
+    }
+}   
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    footer {
+        position: relative;
+        padding-top: 60px;
     }
 }
