@@ -1,106 +1,91 @@
 <script type="text/javascript">
     $(document).ready(function () {
-      "use strict";
-  
-      let isProductPage = $("body").hasClass("product-page");
-      let isCartPage = $("body").hasClass("cart-page");
-  
-      function handleEnableDisable(itemId, size) {
-          let qtyInput = $(`#id_qty_${itemId}_${size}`);
-          if (!qtyInput.length) return;
-  
-          let currentValue = parseInt(qtyInput.val(), 10);
-          let minusDisabled = currentValue < 2;
-          let plusDisabled = currentValue > 98;
-  
-          $(`#decrement-qty_${itemId}_${size}`).prop("disabled", minusDisabled);
-          $(`#increment-qty_${itemId}_${size}`).prop("disabled", plusDisabled);
-  
-          if (isCartPage) {
-              updateSubtotal(itemId, size);
-          }
-      }
-  
-      function updateSubtotal(itemId, size) {
-          let qtyInput = $(`#id_qty_${itemId}_${size}`);
-          if (!qtyInput.length) return;
-  
-          let currentValue = parseInt(qtyInput.val(), 10);
-          let priceElement = $(`#price_${itemId}`);
-  
-          if (!priceElement.length) return;
-  
-          let price = parseFloat(priceElement.data("price"));
-  
-          if (!isNaN(price) && !isNaN(currentValue)) {
-              let subtotal = currentValue * price;
-              $(`#subtotal_${itemId}_${size}`).text(`$${subtotal.toFixed(2)}`);
-          }
-      }
-  
-      $(".qty_input").each(function () {
-          let itemId = $(this).data("item_id");
-          let size = $(this).data("size");
-          handleEnableDisable(itemId, size);
-      });
-  
-      $(".qty_input").change(function () {
-          let itemId = $(this).data("item_id");
-          let size = $(this).data("size");
-          handleEnableDisable(itemId, size);
-  
-          if (isCartPage) {
-              let form = $(this).closest("form");
-              form.submit();
-  
-              setTimeout(function () {
-                  updateSubtotal(itemId, size);
-              }, 500);
-          } else {
-              updateSubtotal(itemId, size);
-          }
-      });
-  
-      $(".increment-qty, .decrement-qty").click(function (e) {
-          e.preventDefault();
-  
-          let closestInput = $(this).closest(".input-group").find(".qty_input");
-          if (!closestInput.length) return;
-  
-          let currentValue = parseInt(closestInput.val(), 10);
-          let isIncrement = $(this).hasClass("increment-qty");
-  
-          let newValue = isIncrement ? currentValue + 1 : currentValue - 1;
-          closestInput.val(newValue);
-  
-          let itemId = $(this).data("item_id");
-          let size = $(this).data("size");
-  
-          handleEnableDisable(itemId, size);
-  
-          if (isCartPage) {
-              let form = $(this).closest("form");
-              form.submit();
-  
-              setTimeout(function () {
-                  updateSubtotal(itemId, size);
-              }, 500);
-          } else {
-              updateSubtotal(itemId, size);
-          }
-      });
-  
-      if (isCartPage) {
-          $(".increment-qty, .decrement-qty").hide();
-  
-          $(".qty_input").each(function () {
-              let itemId = $(this).data("item_id");
-              let size = $(this).data("size");
-              updateSubtotal(itemId, size);
-          });
-      }
+        "use strict";
+
+        var isProductPage = $("body").hasClass("product-page");
+        var isCartPage = $("body").hasClass("cart-page");
+
+        function handleEnableDisable(itemId, size) {
+            var qtyInput = $("#id_qty_" + itemId + "_" + size);
+            if (!qtyInput.length) return;
+
+            var currentValue = parseInt(qtyInput.val(), 10);
+            var minusDisabled = currentValue < 2;
+            var plusDisabled = currentValue > 98;
+
+            $("#decrement-qty_" + itemId + "_" + size).prop("disabled", minusDisabled);
+            $("#increment-qty_" + itemId + "_" + size).prop("disabled", plusDisabled);
+
+            if (isCartPage) {
+                updateSubtotal(itemId, size);
+            }
+        }
+
+        function updateSubtotal(itemId, size) {
+            var qtyInput = $("#id_qty_" + itemId + "_" + size);
+            if (!qtyInput.length) return;
+
+            var currentValue = parseInt(qtyInput.val(), 10);
+            var priceElement = $("#price_" + itemId);
+
+            if (!priceElement.length) return;
+
+            var price = parseFloat(priceElement.data("price"));
+
+            if (!isNaN(price) && !isNaN(currentValue)) {
+                var subtotal = currentValue * price;
+                $("#subtotal_" + itemId + "_" + size).text("$" + subtotal.toFixed(2));
+            }
+        }
+
+        $(".qty_input").each(function () {
+            var itemId = $(this).data("item_id");
+            var size = $(this).data("size");
+            handleEnableDisable(itemId, size);
+        });
+
+        $(".qty_input").change(function () {
+            var itemId = $(this).data("item_id");
+            var size = $(this).data("size");
+            handleEnableDisable(itemId, size);
+
+            if (isCartPage) {
+                $(this).closest("form").submit();
+            } else {
+                updateSubtotal(itemId, size);
+            }
+        });
+
+        $(".increment-qty, .decrement-qty").click(function (e) {
+            e.preventDefault();
+
+            var closestInput = $(this).closest(".input-group").find(".qty_input");
+            if (!closestInput.length) return;
+
+            var currentValue = parseInt(closestInput.val(), 10);
+            var isIncrement = $(this).hasClass("increment-qty");
+
+            var newValue = isIncrement ? currentValue + 1 : currentValue - 1;
+            closestInput.val(newValue);
+
+            var itemId = $(this).data("item_id");
+            var size = $(this).data("size");
+
+            handleEnableDisable(itemId, size);
+
+            if (isCartPage) {
+                $(this).closest("form").submit();
+            } else {
+                updateSubtotal(itemId, size);
+            }
+        });
+
+        if (isCartPage) {
+            $(".increment-qty, .decrement-qty").hide();
+        }
     });
 </script>
+
   
 
 
