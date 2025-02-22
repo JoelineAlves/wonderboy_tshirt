@@ -552,3 +552,27 @@ hr {
         padding-top: 60px;
     }
 }
+
+@media (max-width: 1024px) {
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-size: cover;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-size: contain;
+    }
+
+    footer {
+        padding-top: 10px;
+        padding-bottom: 0;
+    }
+}
