@@ -80,7 +80,7 @@ Visit the deployed website [here](https://wonderboytshirt-90045f83868e.herokuapp
 
 * As a shopper, I want to view products on a specific category.
 
-* As a shopper, I want to be able to sort the products depending on their price, category or sub-category.
+* As a shopper, I want to be able to sort the products depending on their price, category.
 
 * As a shopper, I want to be able to search for products using specific keywords.
 
