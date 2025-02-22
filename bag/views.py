@@ -94,29 +94,41 @@ def adjust_bag(request, item_id):
     return redirect(reverse('view_bag'))
 
 
-def remove_from_bag(request, item_id):
+def remove_from_bag(request, item_id, size):
     """Removes an item from the shopping bag."""
     try:
         product = get_object_or_404(Product, pk=item_id)
-        size = request.POST.get('product_size')
         bag = request.session.get('bag', {})
 
-        del bag[item_id]['items_by_size'][size]
-        if not bag[item_id]['items_by_size']:
-            bag.pop(item_id)
+        # Verifica se o item está na bolsa e se o tamanho está presente
+        if item_id in bag:
+            if size in bag[item_id]['items_by_size']:
+                # Remove o item do tamanho especificado
+                del bag[item_id]['items_by_size'][size]
 
-        messages.success(
-            request,
-            f'Removed {product.name} ({size.upper()}) from the bag.'
-        )
+                # Se não houver mais itens desse produto, remove o produto inteiro
+                if not bag[item_id]['items_by_size']:
+                    bag.pop(item_id)
+
+                messages.success(
+                    request,
+                    f'Removed {product.name} ({size.upper()}) from the bag.'
+                )
+            else:
+                messages.error(request, f'No size {size.upper()} found for this item in the bag.')
+        else:
+            messages.error(request, 'Item not found in the bag.')
+
+        # Atualiza a bolsa na sessão
         request.session['bag'] = bag
 
-        # Redirecionar para a página do carrinho (view_bag)
+        # Redireciona para a página do carrinho
         return redirect('view_bag')
 
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
-        return redirect('view_bag')  # Redireciona mesmo em caso de erro
+        return redirect('view_bag')
+
 
 
 
