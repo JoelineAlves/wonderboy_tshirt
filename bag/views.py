@@ -100,13 +100,10 @@ def remove_from_bag(request, item_id, size):
         product = get_object_or_404(Product, pk=item_id)
         bag = request.session.get('bag', {})
 
-        # Verifica se o item está na bolsa e se o tamanho está presente
         if item_id in bag:
             if size in bag[item_id]['items_by_size']:
-                # Remove o item do tamanho especificado
                 del bag[item_id]['items_by_size'][size]
 
-                # Se não houver mais itens desse produto, remove o produto inteiro
                 if not bag[item_id]['items_by_size']:
                     bag.pop(item_id)
 
@@ -119,10 +116,8 @@ def remove_from_bag(request, item_id, size):
         else:
             messages.error(request, 'Item not found in the bag.')
 
-        # Atualiza a bolsa na sessão
         request.session['bag'] = bag
 
-        # Redireciona para a página do carrinho
         return redirect('view_bag')
 
     except Exception as e:
