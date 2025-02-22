@@ -21,38 +21,26 @@
             var subtotal = currentValue * price;
 
             $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
+
+            
         }
 
-        // Inicializa os elementos de quantidade e desabilita/abilita botões na página do produto
         $('.qty_input').each(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
         });
 
-        // Atualização de quantidade na página do produto
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
+
+            if (isCartPage) {
+                $(this).closest('form').submit();
+            }
         });
 
-        // Botão "Add to Bag" - Atualiza subtotal e envia o formulário
-        $('.add-to-bag').click(function(e) {
-            e.preventDefault(); // Impede o envio automático do formulário
-
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
-
-            // Chama a função para atualizar o subtotal com base na quantidade selecionada
-            updateSubtotal(itemId, size);
-
-            // Submete o formulário do produto para adicionar ao carrinho
-            var form = $(this).closest('form');
-            form.submit();
-        });
-
-        // Comportamento do botão de incremento de quantidade
         $('.increment-qty').click(function(e) {
             e.preventDefault(); 
 
@@ -64,9 +52,12 @@
             var size = $(this).data('size');
 
             handleEnableDisable(itemId, size);
+
+            
+            var form = $(this).closest('form'); 
+            form.submit(); 
         });
 
-        // Comportamento do botão de decremento de quantidade
         $('.decrement-qty').click(function(e) {
             e.preventDefault(); 
 
@@ -78,13 +69,10 @@
             var size = $(this).data('size');
 
             handleEnableDisable(itemId, size);
-        });
 
-        // Página do Carrinho - Esconde os botões de incremento e decremento
-        if (isCartPage) {
-            $('.increment-qty').hide();
-            $('.decrement-qty').hide();
-        }
+            var form = $(this).closest('form'); 
+            form.submit(); 
+        });
     });
 </script>
 
