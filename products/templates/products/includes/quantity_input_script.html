@@ -21,8 +21,6 @@
             var subtotal = currentValue * price;
 
             $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
-
-            
         }
 
         $('.qty_input').each(function() {
@@ -31,16 +29,29 @@
             handleEnableDisable(itemId, size);
         });
 
+        // Na página de produto, ao mudar a quantidade, não envia o formulário e não atualiza o subtotal
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
-
-            if (isCartPage) {
-                $(this).closest('form').submit();
-            }
         });
 
+        // Atualizar o subtotal quando o botão "Add to Bag" for clicado
+        $('.add-to-bag').click(function(e) {
+            e.preventDefault(); // Impede o envio automático do formulário
+
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+
+            // Chama a função para atualizar o subtotal com base na quantidade selecionada
+            updateSubtotal(itemId, size);
+
+            // Submete o formulário do produto para adicionar ao carrinho
+            var form = $(this).closest('form');
+            form.submit();
+        });
+
+        // Comportamento do botão de incremento e decremento de quantidade
         $('.increment-qty').click(function(e) {
             e.preventDefault(); 
 
@@ -52,10 +63,6 @@
             var size = $(this).data('size');
 
             handleEnableDisable(itemId, size);
-
-            
-            var form = $(this).closest('form'); 
-            form.submit(); 
         });
 
         $('.decrement-qty').click(function(e) {
@@ -69,9 +76,6 @@
             var size = $(this).data('size');
 
             handleEnableDisable(itemId, size);
-
-            var form = $(this).closest('form'); 
-            form.submit(); 
         });
 
         if (isCartPage) {
@@ -80,6 +84,7 @@
         }
     });
 </script>
+
 
 
   
