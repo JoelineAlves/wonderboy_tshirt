@@ -6,17 +6,17 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container mt-5 pt-5"> 
+<div class="container mt-5" style="padding-top: 210px;"> 
     <h1 class="mb-4 text-black">Your Favorite Products</h1> 
 
     <ul class="list-group">
         {% for favorite in favorites %}
-            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-center bg-dark text-light"> 
-                <a href="{% url 'product_detail' favorite.product.id %}" class="text-warning text-decoration-none col-12 col-md-8">
+            <li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-center bg-dark text-light"> 
+                <a href="{% url 'product_detail' favorite.product.id %}" class="text-warning text-decoration-none mb-2 mb-md-0 col-12 col-md-8">
                     {{ favorite.product.name }}
                 </a>
-                <div class="col-12 col-md-4 text-end">
-                    <a href="{% url 'product_detail' favorite.product.id %}" class="btn btn-primary btn-sm me-2">
+                <div class="d-flex flex-column flex-md-row gap-2 justify-md-end col-12 col-md-4 text-center">
+                    <a href="{% url 'product_detail' favorite.product.id %}" class="btn btn-primary btn-sm mb-2 mb-md-0">
                         View Details
                     </a>
                     <a href="{% url 'toggle_favorite' favorite.product.id %}" class="btn btn-danger btn-sm">
