@@ -94,8 +94,8 @@
                                         </p> 
                                     </td>
                                     <td class="py-3">
-                                        <a href="{% url 'remove_from_bag' item.product.id %}" class="btn btn-md bg-sky-400 bd-radius-1 remove-item"
-                                           data-product_size="{{ item.size }}" aria-label="Remove {{ item.product.name }}">
+                                        <a href="{% url 'remove_from_bag' item.product.id size=item.size %}" class="btn btn-md bg-sky-400 bd-radius-1"
+                                           aria-label="Remove {{ item.product.name }}">
                                            Remove
                                         </a>
                                     </td>
