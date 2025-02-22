@@ -110,11 +110,13 @@ def remove_from_bag(request, item_id):
             f'Removed {product.name} ({size.upper()}) from the bag.'
         )
         request.session['bag'] = bag
-        return HttpResponse(status=200)
+
+        # Redirecionar para a página do carrinho (view_bag)
+        return redirect('view_bag')
 
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
-        return HttpResponse(status=500)
+        return redirect('view_bag')  # Redireciona mesmo em caso de erro
 
 
 
