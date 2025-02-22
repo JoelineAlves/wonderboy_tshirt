@@ -24,7 +24,6 @@
         <div class="row">
             <div class="col">
                 {% if bag_items %}
-                    {# MOBILE VIEW #}
                     <div class="d-block d-md-none">
                         <div class="row">
                             <div class="col">
@@ -52,14 +51,6 @@
                                 <div class="col-12 col-sm-6">
                                     {% include "bag/quantity-form.html" %}
                                 </div>
-                                <div class="col-12 text-right">
-                                    <a href="{% url 'remove_from_bag' item.product.id %}" 
-                                       class="btn btn-md bg-sky-400 bd-radius-1 remove-item"
-                                       aria-label="Remove {{ item.product.name }}"
-                                       id="remove_{{ item.product.id }}">
-                                        Remove
-                                    </a>
-                                </div>
                             </div>
                             <div class="row"><div class="col"><hr></div></div>
                         {% endfor %}
@@ -69,8 +60,6 @@
                             </a>    
                         </div>
                     </div>
-
-                    {# DESKTOP VIEW #}
                     <div class="table-responsive rounded d-none d-md-block">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
@@ -80,7 +69,6 @@
                                     <th scope="col">Price</th>
                                     <th scope="col">Qty</th>
                                     <th scope="col">Subtotal</th>
-                                    <th scope="col">Remove</th>
                                 </tr>
                             </thead>
 
@@ -106,22 +94,20 @@
                                         </p> 
                                     </td>
                                     <td class="py-3">
-                                        <a href="{% url 'remove_from_bag' item.product.id %}" 
-                                           class="btn btn-md bg-sky-400 bd-radius-1 remove-item"
-                                           aria-label="Remove {{ item.product.name }}"
-                                           id="remove_{{ item.product.id }}">
-                                            Remove
+                                        <a href="{% url 'remove_from_bag' item.product.id %}" class="btn btn-md bg-sky-400 bd-radius-1"
+                                           aria-label="Remove {{ item.product.name }}">
+                                           Remove
                                         </a>
                                     </td>
                                 </tr>
                             {% endfor %}
                             <tr>
-                                <td colspan="6" class="pt-5 text-right">
+                                <td colspan="5" class="pt-5 text-right">
                                     {% include "bag/bag-total.html" %}
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="text-right">
+                                <td colspan="5" class="text-right">
                                     {% include "bag/checkout-buttons.html" %}
                                 </td>
                             </tr>
