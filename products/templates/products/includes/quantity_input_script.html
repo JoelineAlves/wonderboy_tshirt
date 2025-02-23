@@ -1,80 +1,117 @@
 <script type="text/javascript">
-    $(document).ready(function() {
-        var isProductPage = $('body').hasClass('product-page');
-        var isCartPage = $('body').hasClass('cart-page');
+$(document).ready(function() {
+    var isProductPage = $('body').hasClass('product-page');  // Verifica se está na página do produto
+    var isCartPage = $('body').hasClass('cart-page');  // Verifica se está na página do carrinho
 
-        function handleEnableDisable(itemId, size) {
-            var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-            var minusDisabled = currentValue < 2;
-            var plusDisabled = currentValue > 98;
-            $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
-            $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
+    function handleEnableDisable(itemId, size) {
+        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+        var minusDisabled = currentValue < 2;
+        var plusDisabled = currentValue > 98;
+        $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
-            if (isCartPage) {
-                updateSubtotal(itemId, size);
-            }
+        // Atualiza o subtotal somente se for na página do carrinho
+        if (isCartPage) {
+            updateSubtotal(itemId, size);
         }
+    }
 
-        function updateSubtotal(itemId, size) {
-            var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-            var price = parseFloat($(`#price_${itemId}`).data('price')); 
-            var subtotal = currentValue * price;
+    function updateSubtotal(itemId, size) {
+        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+        var price = parseFloat($(`#price_${itemId}`).data('price'));
+        var subtotal = currentValue * price;
 
-            $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
+        $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));  // Atualiza o subtotal no carrinho
+    }
 
-            
-        }
-
-        $('.qty_input').each(function() {
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
-            handleEnableDisable(itemId, size);
-        });
-
-        $('.qty_input').change(function() {
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
-            handleEnableDisable(itemId, size);
-
-            if (isCartPage) {
-                $(this).closest('form').submit();
-            }
-        });
-
-        $('.increment-qty').click(function(e) {
-            e.preventDefault(); 
-
-            var closestInput = $(this).closest('.input-group').find('.qty_input'); 
-            var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue + 1); 
-
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
-
-            handleEnableDisable(itemId, size);
-
-            
-            var form = $(this).closest('form'); 
-            form.submit(); 
-        });
-
-        $('.decrement-qty').click(function(e) {
-            e.preventDefault(); 
-
-            var closestInput = $(this).closest('.input-group').find('.qty_input'); 
-            var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue - 1); 
-
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
-
-            handleEnableDisable(itemId, size);
-
-            var form = $(this).closest('form'); 
-            form.submit(); 
-        });
+    // Quando a quantidade for alterada, a lógica será distinta para cada página
+    $('.qty_input').each(function() {
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
+        handleEnableDisable(itemId, size);
     });
+
+    $('.qty_input').change(function() {
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
+        handleEnableDisable(itemId, size);
+
+        // Na página de produto, a quantidade não atualiza o subtotal imediatamente
+        if (isProductPage) {
+            // Não faz nada, evitando que o subtotal seja alterado.
+            return;
+        }
+
+        // Se for a página do carrinho, submete o formulário para atualizar as quantidades
+        if (isCartPage) {
+            $(this).closest('form').submit();
+        }
+    });
+
+    $('.increment-qty').click(function(e) {
+        e.preventDefault();
+
+        var closestInput = $(this).closest('.input-group').find('.qty_input');
+        var currentValue = parseInt($(closestInput).val());
+        $(closestInput).val(currentValue + 1);
+
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
+
+        handleEnableDisable(itemId, size);
+
+        // Na página de produto, a quantidade não atualiza o subtotal imediatamente
+        if (isProductPage) {
+            // Não faz nada, evitando que o subtotal seja alterado.
+            return;
+        }
+
+        // Submete o formulário na página do carrinho automaticamente
+        if (isCartPage) {
+            var form = $(this).closest('form');
+            form.submit();
+        }
+    });
+
+    $('.decrement-qty').click(function(e) {
+        e.preventDefault();
+
+        var closestInput = $(this).closest('.input-group').find('.qty_input');
+        var currentValue = parseInt($(closestInput).val());
+        $(closestInput).val(currentValue - 1);
+
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
+
+        handleEnableDisable(itemId, size);
+
+        // Na página de produto, a quantidade não atualiza o subtotal imediatamente
+        if (isProductPage) {
+            // Não faz nada, evitando que o subtotal seja alterado.
+            return;
+        }
+
+        // Submete o formulário na página do carrinho automaticamente
+        if (isCartPage) {
+            var form = $(this).closest('form');
+            form.submit();
+        }
+    });
+
+    // Adicionando ao carrinho na página de produto
+    $('#add_to_bag').click(function() {
+        var itemId = $(this).data('item_id');
+        var size = $(this).data('size');
+
+        // Atualiza o subtotal ao adicionar ao carrinho
+        if (isProductPage) {
+            updateSubtotal(itemId, size);
+        }
+    });
+});
 </script>
+
+
 
 
 
