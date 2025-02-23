@@ -20,6 +20,10 @@
 
         // Função para atualizar o subtotal
         function updateSubtotal(itemId, size) {
+            if (!isCartPage) {
+                return;
+            }
+            
             var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
             var price = parseFloat($(`#price_${itemId}`).data('price')); // Assume que o preço do produto está armazenado com data-price
             var subtotal = currentValue * price;
