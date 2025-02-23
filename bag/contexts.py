@@ -39,6 +39,7 @@ def bag_contents(request):
                     "item_id": item_id,
                     "quantity": item_data,
                     "product": product,
+                    "sub_total": item_data * product.price,
                 }
             )
         else:
@@ -51,6 +52,7 @@ def bag_contents(request):
                         "quantity": quantity,
                         "product": product,
                         "size": size,
+                        "sub_total": item_data * product.price,
                     }
                 )
 
