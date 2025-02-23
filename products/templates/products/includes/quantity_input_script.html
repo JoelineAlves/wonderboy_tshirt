@@ -3,7 +3,7 @@
         // Detectar se estamos na página do produto ou do carrinho
         var isProductPage = $('body').hasClass('product-page');
         var isCartPage = $('body').hasClass('cart-page');
-        var allowSubtotalUpdate = false; // 🔥 Bloqueia atualização do subtotal na página do produto
+        var isAddedToBag = false; // Variável para controlar a adição ao carrinho
 
         // Função para habilitar/desabilitar os botões com base no valor da quantidade
         function handleEnableDisable(itemId, size) {
@@ -13,27 +13,26 @@
             $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
             $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
-            // Atualiza o subtotal apenas no carrinho ou após adicionar ao carrinho na página do produto
-            if (isCartPage || allowSubtotalUpdate) {
+            // Atualiza o subtotal após a mudança de quantidade se estamos na página do carrinho ou se o produto foi adicionado ao carrinho
+            if (isCartPage || isAddedToBag) {
                 updateSubtotal(itemId, size);
             }
         }
 
         // Função para atualizar o subtotal
         function updateSubtotal(itemId, size) {
-            if (!isCartPage && !allowSubtotalUpdate) {
-                console.log('Subtotal bloqueado até adicionar ao carrinho.');
-                return; // 🔥 Bloqueia atualização do subtotal na página do produto
+            if (!isCartPage && !isAddedToBag) {
+                return; // Não faz nada se não estivermos na página do carrinho e o produto não foi adicionado ao carrinho
             }
 
             var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-            var price = parseFloat($(`#price_${itemId}`).data('price'));
+            var price = parseFloat($(`#price_${itemId}`).data('price')); // Assume que o preço do produto está armazenado com data-price
             var subtotal = currentValue * price;
 
             // Atualiza o subtotal na interface
             $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
 
-            // Debug
+            // Debug para verificar o valor do subtotal
             console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
         }
 
@@ -50,7 +49,7 @@
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
 
-            // Submete automaticamente apenas na página do carrinho
+            // Se estamos na página do carrinho, submete automaticamente o formulário
             if (isCartPage) {
                 $(this).closest('form').submit();
             }
@@ -70,11 +69,9 @@
             // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
 
-            // Apenas envia o formulário na página do carrinho
-            if (isCartPage) {
-                var form = $(this).closest('form');
-                form.submit();
-            }
+            // Agora vamos enviar o formulário para atualizar no backend
+            var form = $(this).closest('form'); // Encontrar o formulário relacionado
+            form.submit(); // Envia o formulário
         });
 
         // Decrementar quantidade
@@ -91,20 +88,25 @@
             // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
 
-            // Apenas envia o formulário na página do carrinho
-            if (isCartPage) {
-                var form = $(this).closest('form');
-                form.submit();
-            }
+            // Agora vamos enviar o formulário para atualizar no backend
+            var form = $(this).closest('form'); // Encontrar o formulário relacionado
+            form.submit(); // Envia o formulário
         });
 
-        // 🔥 Permite atualização do subtotal apenas depois que o botão "Add to Bag" for clicado
+        // Quando o botão "Add to Bag" é clicado, permite a atualização do subtotal na página de produto
         $('#add-to-bag-btn').click(function() {
-            allowSubtotalUpdate = true; 
-            console.log('Produto adicionado ao carrinho. Agora o subtotal pode ser atualizado.');
+            isAddedToBag = true; // Habilita a atualização do subtotal após a adição ao carrinho
+            console.log('Produto adicionado ao carrinho. O subtotal pode ser atualizado.');
         });
+
+        if (isCartPage) {
+            $('.increment-qty').hide();
+            $('.decrement-qty').hide();
+        }
     });
 </script>
+
+
 
 
 
