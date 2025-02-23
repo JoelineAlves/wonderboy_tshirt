@@ -1,112 +1,103 @@
 <script type="text/javascript">
     $(document).ready(function() {
-    var isProductPage = $('body').hasClass('product-page');  // Verifica se está na página do produto
-    var isCartPage = $('body').hasClass('cart-page');  // Verifica se está na página do carrinho
+        var isProductPage = $('body').hasClass('product-page');  // Detecta a página de produto
+        var isCartPage = $('body').hasClass('cart-page');  // Detecta a página do carrinho
 
-    function handleEnableDisable(itemId, size) {
-        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-        var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
-        $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
+        // Função para habilitar/desabilitar os botões de incremento e decremento
+        function handleEnableDisable(itemId, size) {
+            var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+            var minusDisabled = currentValue < 2;
+            var plusDisabled = currentValue > 98;
+            $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
+            $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
-        // Atualiza o subtotal somente se for na página do carrinho
+            // Atualiza o subtotal na página do carrinho
+            if (isCartPage) {
+                updateSubtotal(itemId, size);
+            }
+        }
+
+        // Função para atualizar o subtotal na página do carrinho
+        function updateSubtotal(itemId, size) {
+            var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
+            var price = parseFloat($(`#price_${itemId}`).data('price')); 
+            var subtotal = currentValue * price;
+
+            // Atualiza o texto do subtotal
+            $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
+        }
+
+        // Evento para mudar a quantidade e atualizar na página do carrinho
+        $('.qty_input').change(function() {
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            handleEnableDisable(itemId, size);
+        });
+
+        // Evento para incremento de quantidade
+        $('.increment-qty').click(function(e) {
+            e.preventDefault();  // Impede o envio do formulário
+
+            var closestInput = $(this).closest('.input-group').find('.qty_input'); 
+            var currentValue = parseInt($(closestInput).val());
+            $(closestInput).val(currentValue + 1);  // Incrementa a quantidade
+
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            handleEnableDisable(itemId, size);  // Atualiza os botões de incremento/decremento
+
+            // Se estiver na página do carrinho, atualiza o subtotal
+            if (isCartPage) {
+                updateSubtotal(itemId, size);
+            }
+        });
+
+        // Evento para decremento de quantidade
+        $('.decrement-qty').click(function(e) {
+            e.preventDefault();  // Impede o envio do formulário
+
+            var closestInput = $(this).closest('.input-group').find('.qty_input'); 
+            var currentValue = parseInt($(closestInput).val());
+            $(closestInput).val(currentValue - 1);  // Decrementa a quantidade
+
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            handleEnableDisable(itemId, size);  // Atualiza os botões de incremento/decremento
+
+            // Se estiver na página do carrinho, atualiza o subtotal
+            if (isCartPage) {
+                updateSubtotal(itemId, size);
+            }
+        });
+
+        // Lógica para o envio do formulário de "Add to Bag" na página de produto
+        $('form[action="{% url "add_to_bag" product.id %}"]').submit(function(e) {
+            if (isProductPage) {
+                // Impede o envio imediato do formulário
+                e.preventDefault();  
+
+                var itemId = $(this).find('.qty_input').data('item_id');
+                var size = $(this).find('.qty_input').data('size');
+                var currentValue = parseInt($(this).find('.qty_input').val());
+                var price = parseFloat($(this).find(`#price_${itemId}`).data('price'));
+                var subtotal = currentValue * price;
+
+                // Atualiza o subtotal antes de submeter o formulário
+                $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
+
+                // Agora envia o formulário
+                this.submit();
+            }
+        });
+
+        // Esconde os botões de incremento/decremento na página de carrinho
         if (isCartPage) {
-            updateSubtotal(itemId, size);
-        }
-    }
-
-    function updateSubtotal(itemId, size) {
-        var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-        var price = parseFloat($(`#price_${itemId}`).data('price'));
-        var subtotal = currentValue * price;
-
-        $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));  // Atualiza o subtotal no carrinho
-    }
-
-    // Quando a quantidade for alterada, a lógica será distinta para cada página
-    $('.qty_input').each(function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-    });
-
-    $('.qty_input').change(function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-        handleEnableDisable(itemId, size);
-
-        // Na página de produto, a quantidade não atualiza o subtotal imediatamente
-        if (isProductPage) {
-            return; // Não atualiza o subtotal na página do produto
-        }
-
-        // Se for a página do carrinho, submete o formulário para atualizar as quantidades
-        if (isCartPage) {
-            $(this).closest('form').submit();
+            $('.increment-qty').hide();
+            $('.decrement-qty').hide();
         }
     });
-
-    $('.increment-qty').click(function(e) {
-        e.preventDefault();
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input');
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1);
-
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-
-        handleEnableDisable(itemId, size);
-
-        // Na página de produto, a quantidade não atualiza o subtotal imediatamente
-        if (isProductPage) {
-            return; // Evita que o subtotal seja atualizado
-        }
-
-        // Submete o formulário na página do carrinho automaticamente
-        if (isCartPage) {
-            var form = $(this).closest('form');
-            form.submit();
-        }
-    });
-
-    $('.decrement-qty').click(function(e) {
-        e.preventDefault();
-
-        var closestInput = $(this).closest('.input-group').find('.qty_input');
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1);
-
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-
-        handleEnableDisable(itemId, size);
-
-        // Na página de produto, a quantidade não atualiza o subtotal imediatamente
-        if (isProductPage) {
-            return; // Evita que o subtotal seja atualizado
-        }
-
-        // Submete o formulário na página do carrinho automaticamente
-        if (isCartPage) {
-            var form = $(this).closest('form');
-            form.submit();
-        }
-    });
-
-    // Evento para o clique no botão "Add to Bag" na página de produto
-    $('#add_to_bag').click(function() {
-        var itemId = $(this).data('item_id');
-        var size = $(this).data('size');
-
-        // Atualiza o subtotal SOMENTE quando o botão "Add to Bag" for clicado na página do produto
-        if (isProductPage) {
-            updateSubtotal(itemId, size);
-        }
-    });
-});
 </script>
+
 
 
 
