@@ -3,7 +3,7 @@
         // Detectar se estamos na página do produto ou do carrinho
         var isProductPage = $('body').hasClass('product-page');
         var isCartPage = $('body').hasClass('cart-page');
-        var allowSubtotalUpdate = false; // 🔥 Bloqueia atualização na página do produto
+        var allowSubtotalUpdate = false; // 🔥 Bloqueia atualização do subtotal na página do produto
 
         // Função para habilitar/desabilitar os botões com base no valor da quantidade
         function handleEnableDisable(itemId, size) {
@@ -13,7 +13,7 @@
             $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
             $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
-            // **Somente no carrinho OU se o usuário clicou em "Add to Bag"**
+            // Atualiza o subtotal apenas no carrinho ou após adicionar ao carrinho na página do produto
             if (isCartPage || allowSubtotalUpdate) {
                 updateSubtotal(itemId, size);
             }
@@ -37,13 +37,20 @@
             console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
         }
 
-        // Quando o valor do input mudar, verifica se os botões devem ser desativados
+        // Verificar todos os inputs na página e habilitar/desabilitar corretamente
+        $('.qty_input').each(function() {
+            var itemId = $(this).data('item_id');
+            var size = $(this).data('size');
+            handleEnableDisable(itemId, size);
+        });
+
+        // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
 
-            // Apenas envia o formulário automaticamente no carrinho
+            // Submete automaticamente apenas na página do carrinho
             if (isCartPage) {
                 $(this).closest('form').submit();
             }
@@ -51,32 +58,44 @@
 
         // Incrementar quantidade
         $('.increment-qty').click(function(e) {
-            e.preventDefault(); 
+            e.preventDefault(); // Impede o envio do formulário
 
-            var closestInput = $(this).closest('.input-group').find('.qty_input');
+            var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
             var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue + 1); 
+            $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
 
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
 
-            // Atualiza o estado dos botões
+            // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
+
+            // Apenas envia o formulário na página do carrinho
+            if (isCartPage) {
+                var form = $(this).closest('form');
+                form.submit();
+            }
         });
 
         // Decrementar quantidade
         $('.decrement-qty').click(function(e) {
-            e.preventDefault(); 
+            e.preventDefault(); // Impede o envio do formulário
 
-            var closestInput = $(this).closest('.input-group').find('.qty_input');
+            var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
             var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue - 1); 
+            $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
 
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
 
-            // Atualiza o estado dos botões
+            // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
+
+            // Apenas envia o formulário na página do carrinho
+            if (isCartPage) {
+                var form = $(this).closest('form');
+                form.submit();
+            }
         });
 
         // 🔥 Permite atualização do subtotal apenas depois que o botão "Add to Bag" for clicado
@@ -86,6 +105,7 @@
         });
     });
 </script>
+
 
 
 
