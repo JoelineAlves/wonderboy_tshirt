@@ -3,6 +3,7 @@
         // Detectar se estamos na página do produto ou do carrinho
         var isProductPage = $('body').hasClass('product-page');
         var isCartPage = $('body').hasClass('cart-page');
+        var allowSubtotalUpdate = false; // 🔥 Bloqueia atualização na página do produto
 
         // Função para habilitar/desabilitar os botões com base no valor da quantidade
         function handleEnableDisable(itemId, size) {
@@ -12,43 +13,37 @@
             $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
             $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
-            // Atualiza o subtotal após a mudança de quantidade se estamos na página do carrinho
-            if (isCartPage) {
+            // **Somente no carrinho OU se o usuário clicou em "Add to Bag"**
+            if (isCartPage || allowSubtotalUpdate) {
                 updateSubtotal(itemId, size);
             }
         }
 
         // Função para atualizar o subtotal
         function updateSubtotal(itemId, size) {
-            if (!isCartPage) {
-                return;
+            if (!isCartPage && !allowSubtotalUpdate) {
+                console.log('Subtotal bloqueado até adicionar ao carrinho.');
+                return; // 🔥 Bloqueia atualização do subtotal na página do produto
             }
-            
+
             var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-            var price = parseFloat($(`#price_${itemId}`).data('price')); // Assume que o preço do produto está armazenado com data-price
+            var price = parseFloat($(`#price_${itemId}`).data('price'));
             var subtotal = currentValue * price;
 
             // Atualiza o subtotal na interface
             $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
 
-            // Debug para verificar o valor do subtotal
+            // Debug
             console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
         }
 
-        // Verificar todos os inputs na página e habilitar/desabilitar corretamente
-        $('.qty_input').each(function() {
-            var itemId = $(this).data('item_id');
-            var size = $(this).data('size');
-            handleEnableDisable(itemId, size);
-        });
-
-        // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
+        // Quando o valor do input mudar, verifica se os botões devem ser desativados
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
 
-            // Se estamos na página do carrinho, submete automaticamente o formulário
+            // Apenas envia o formulário automaticamente no carrinho
             if (isCartPage) {
                 $(this).closest('form').submit();
             }
@@ -56,43 +51,42 @@
 
         // Incrementar quantidade
         $('.increment-qty').click(function(e) {
-            e.preventDefault(); // Impede o envio do formulário
+            e.preventDefault(); 
 
-            var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
+            var closestInput = $(this).closest('.input-group').find('.qty_input');
             var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
+            $(closestInput).val(currentValue + 1); 
 
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
 
-            // Atualiza o estado dos botões e o subtotal
+            // Atualiza o estado dos botões
             handleEnableDisable(itemId, size);
-
-            // Agora vamos enviar o formulário para atualizar no backend
-            var form = $(this).closest('form'); // Encontrar o formulário relacionado
-            form.submit(); // Envia o formulário
         });
 
         // Decrementar quantidade
         $('.decrement-qty').click(function(e) {
-            e.preventDefault(); // Impede o envio do formulário
+            e.preventDefault(); 
 
-            var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
+            var closestInput = $(this).closest('.input-group').find('.qty_input');
             var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
+            $(closestInput).val(currentValue - 1); 
 
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
 
-            // Atualiza o estado dos botões e o subtotal
+            // Atualiza o estado dos botões
             handleEnableDisable(itemId, size);
+        });
 
-            // Agora vamos enviar o formulário para atualizar no backend
-            var form = $(this).closest('form'); // Encontrar o formulário relacionado
-            form.submit(); // Envia o formulário
+        // 🔥 Permite atualização do subtotal apenas depois que o botão "Add to Bag" for clicado
+        $('#add-to-bag-btn').click(function() {
+            allowSubtotalUpdate = true; 
+            console.log('Produto adicionado ao carrinho. Agora o subtotal pode ser atualizado.');
         });
     });
 </script>
+
 
 
 
