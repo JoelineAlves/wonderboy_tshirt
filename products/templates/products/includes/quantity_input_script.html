@@ -13,11 +13,11 @@
 
             // Atualiza o subtotal na página do carrinho
             if (isCartPage) {
-                updateSubtotal(itemId, size);
+                updateSubtotal(itemId, size); // Atualiza o subtotal aqui
             }
         }
 
-        // Função para atualizar o subtotal na página do carrinho
+        // Função para atualizar o subtotal
         function updateSubtotal(itemId, size) {
             var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
             var price = parseFloat($(`#price_${itemId}`).data('price')); 
@@ -31,7 +31,7 @@
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
-            handleEnableDisable(itemId, size);
+            handleEnableDisable(itemId, size);  // Atualiza os botões de incremento/decremento
         });
 
         // Evento para incremento de quantidade
@@ -46,10 +46,8 @@
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);  // Atualiza os botões de incremento/decremento
 
-            // Se estiver na página do carrinho, atualiza o subtotal
-            if (isCartPage) {
-                updateSubtotal(itemId, size);
-            }
+            // Atualiza o subtotal imediatamente
+            updateSubtotal(itemId, size);
         });
 
         // Evento para decremento de quantidade
@@ -64,10 +62,8 @@
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);  // Atualiza os botões de incremento/decremento
 
-            // Se estiver na página do carrinho, atualiza o subtotal
-            if (isCartPage) {
-                updateSubtotal(itemId, size);
-            }
+            // Atualiza o subtotal imediatamente
+            updateSubtotal(itemId, size);
         });
 
         // Lógica para o envio do formulário de "Add to Bag" na página de produto
@@ -97,6 +93,7 @@
         }
     });
 </script>
+
 
 
 
