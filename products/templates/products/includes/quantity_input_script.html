@@ -38,7 +38,7 @@ $(document).ready(function() {
 
         // Na página de produto, a quantidade não atualiza o subtotal imediatamente
         if (isProductPage) {
-            // Não faz nada, evitando que o subtotal seja alterado.
+            // Evita que o subtotal seja atualizado na página do produto
             return;
         }
 
@@ -62,8 +62,7 @@ $(document).ready(function() {
 
         // Na página de produto, a quantidade não atualiza o subtotal imediatamente
         if (isProductPage) {
-            // Não faz nada, evitando que o subtotal seja alterado.
-            return;
+            return; // Evita que o subtotal seja atualizado
         }
 
         // Submete o formulário na página do carrinho automaticamente
@@ -87,8 +86,7 @@ $(document).ready(function() {
 
         // Na página de produto, a quantidade não atualiza o subtotal imediatamente
         if (isProductPage) {
-            // Não faz nada, evitando que o subtotal seja alterado.
-            return;
+            return; // Evita que o subtotal seja atualizado
         }
 
         // Submete o formulário na página do carrinho automaticamente
@@ -98,12 +96,12 @@ $(document).ready(function() {
         }
     });
 
-    // Adicionando ao carrinho na página de produto
+    // Lógica para o botão "Add to Bag" na página de produto
     $('#add_to_bag').click(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
 
-        // Atualiza o subtotal ao adicionar ao carrinho
+        // Aqui, no clique de "Add to Bag", atualizamos o subtotal na página de produto
         if (isProductPage) {
             updateSubtotal(itemId, size);
         }
