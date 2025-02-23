@@ -63,35 +63,44 @@ def add_to_bag(request, item_id):
     return redirect(redirect_url)
 
 
+from decimal import Decimal
+from django.shortcuts import get_object_or_404, redirect
+from products.models import Product
+from django.contrib import messages
+from django.urls import reverse
+
 def adjust_bag(request, item_id):
     """Adjusts the quantity of a product in the shopping bag."""
     product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity', 1))
-    size = request.POST.get('product_size')
-
+    size = request.POST.get('product_size')  # Obter o tamanho (se existir)
+    
+    # Obter a quantidade e a ação
+    action = request.POST.get('action')
+    quantity = int(request.POST.get('quantity', 1))  # A quantidade no input
+    
     bag = request.session.get('bag', {})
 
-    if item_id in bag and size in bag[item_id]['items_by_size']:
-        if quantity > 0:
+    if item_id in bag:
+        if size in bag[item_id]['items_by_size']:
+            if action == 'increment':
+                quantity += 1
+            elif action == 'decrement' and quantity > 1:
+                quantity -= 1
+            
+            # Atualiza a quantidade no carrinho
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(
                 request,
                 f'Updated {product.name} ({size.upper()}) to {quantity} in the bag.'
             )
         else:
-
-            del bag[item_id]['items_by_size'][size]
-            if not bag[item_id]['items_by_size']:
-                bag.pop(item_id)
-            messages.success(
-                request,
-                f'Removed {product.name} ({size.upper()}) from the bag.'
-            )
+            messages.error(request, f"Item with size {size} not found in the bag.")
     else:
-        messages.error(request, "Item or size not found in bag.")
+        messages.error(request, "Item not found in the bag.")
 
-    request.session['bag'] = bag
+    request.session['bag'] = bag  # Salvar as alterações no carrinho
     return redirect(reverse('view_bag'))
+
 
 
 def remove_from_bag(request, item_id, size):
