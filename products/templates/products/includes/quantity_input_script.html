@@ -1,5 +1,5 @@
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
     var isProductPage = $('body').hasClass('product-page');  // Verifica se está na página do produto
     var isCartPage = $('body').hasClass('cart-page');  // Verifica se está na página do carrinho
 
@@ -38,8 +38,7 @@ $(document).ready(function() {
 
         // Na página de produto, a quantidade não atualiza o subtotal imediatamente
         if (isProductPage) {
-            // Evita que o subtotal seja atualizado na página do produto
-            return;
+            return; // Não atualiza o subtotal na página do produto
         }
 
         // Se for a página do carrinho, submete o formulário para atualizar as quantidades
@@ -96,12 +95,12 @@ $(document).ready(function() {
         }
     });
 
-    // Lógica para o botão "Add to Bag" na página de produto
+    // Evento para o clique no botão "Add to Bag" na página de produto
     $('#add_to_bag').click(function() {
         var itemId = $(this).data('item_id');
         var size = $(this).data('size');
 
-        // Aqui, no clique de "Add to Bag", atualizamos o subtotal na página de produto
+        // Atualiza o subtotal SOMENTE quando o botão "Add to Bag" for clicado na página do produto
         if (isProductPage) {
             updateSubtotal(itemId, size);
         }
