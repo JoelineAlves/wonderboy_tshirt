@@ -23,7 +23,7 @@ def bag_contents(request):
             - 'grand_total' (Decimal): Final total including delivery.
     """
 
-   bag_items = []
+bag_items = []
 total = Decimal(0)
 product_count = 0
 bag = request.session.get("bag", {})
