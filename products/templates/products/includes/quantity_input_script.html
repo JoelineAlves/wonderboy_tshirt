@@ -1,8 +1,10 @@
 <script type="text/javascript">
     $(document).ready(function() {
+        // Detectar se estamos na página do produto ou do carrinho
         var isProductPage = $('body').hasClass('product-page');
         var isCartPage = $('body').hasClass('cart-page');
 
+        // Função para habilitar/desabilitar os botões com base no valor da quantidade
         function handleEnableDisable(itemId, size) {
             var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
             var minusDisabled = currentValue < 2;
@@ -10,74 +12,81 @@
             $(`#decrement-qty_${itemId}_${size}`).prop('disabled', minusDisabled);
             $(`#increment-qty_${itemId}_${size}`).prop('disabled', plusDisabled);
 
+            // Atualiza o subtotal após a mudança de quantidade se estamos na página do carrinho
             if (isCartPage) {
                 updateSubtotal(itemId, size);
             }
         }
 
+        // Função para atualizar o subtotal
         function updateSubtotal(itemId, size) {
             var currentValue = parseInt($(`#id_qty_${itemId}_${size}`).val());
-            var price = parseFloat($(`#price_${itemId}`).data('price')); 
+            var price = parseFloat($(`#price_${itemId}`).data('price')); // Assume que o preço do produto está armazenado com data-price
             var subtotal = currentValue * price;
 
+            // Atualiza o subtotal na interface
             $(`#subtotal_${itemId}_${size}`).text('$' + subtotal.toFixed(2));
 
-            
+            // Debug para verificar o valor do subtotal
+            console.log(`Subtotal atualizado: ItemID ${itemId} | Tamanho ${size} | Quantidade ${currentValue} | Subtotal $${subtotal.toFixed(2)}`);
         }
 
+        // Verificar todos os inputs na página e habilitar/desabilitar corretamente
         $('.qty_input').each(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
         });
 
+        // Quando o valor do input mudar, verifica se os botões devem ser desativados e atualiza o subtotal
         $('.qty_input').change(function() {
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
             handleEnableDisable(itemId, size);
 
+            // Se estamos na página do carrinho, submete automaticamente o formulário
             if (isCartPage) {
                 $(this).closest('form').submit();
             }
         });
 
+        // Incrementar quantidade
         $('.increment-qty').click(function(e) {
-            e.preventDefault(); 
+            e.preventDefault(); // Impede o envio do formulário
 
-            var closestInput = $(this).closest('.input-group').find('.qty_input'); 
+            var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
             var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue + 1); 
+            $(closestInput).val(currentValue + 1); // Atualiza a quantidade no input
 
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
 
+            // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
 
-            
-            var form = $(this).closest('form'); 
-            form.submit(); 
+            // Agora vamos enviar o formulário para atualizar no backend
+            var form = $(this).closest('form'); // Encontrar o formulário relacionado
+            form.submit(); // Envia o formulário
         });
 
+        // Decrementar quantidade
         $('.decrement-qty').click(function(e) {
-            e.preventDefault(); 
+            e.preventDefault(); // Impede o envio do formulário
 
-            var closestInput = $(this).closest('.input-group').find('.qty_input'); 
+            var closestInput = $(this).closest('.input-group').find('.qty_input'); // Encontrar o input de quantidade
             var currentValue = parseInt($(closestInput).val());
-            $(closestInput).val(currentValue - 1); 
+            $(closestInput).val(currentValue - 1); // Atualiza a quantidade no input
 
             var itemId = $(this).data('item_id');
             var size = $(this).data('size');
 
+            // Atualiza o estado dos botões e o subtotal
             handleEnableDisable(itemId, size);
 
-            var form = $(this).closest('form'); 
-            form.submit(); 
+            // Agora vamos enviar o formulário para atualizar no backend
+            var form = $(this).closest('form'); // Encontrar o formulário relacionado
+            form.submit(); // Envia o formulário
         });
-
-        if (isCartPage) {
-            $('.increment-qty').hide();
-            $('.decrement-qty').hide();
-        }
     });
 </script>
 
