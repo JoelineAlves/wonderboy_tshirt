@@ -24,12 +24,14 @@ def all_reviews(request, product_id):
     reviews = product.product_reviews_from_reviews.all()
 
 
-for review in reviews:
-    review.stars = range(int(review.rating))
-    review.half_star = review.rating - int(review.rating) > 0
+    for review in reviews:
+        review.stars = range(int(review.rating))
+        review.half_star = review.rating - int(review.rating) > 0
 
     template = 'reviews/all_reviews.html'
     context = {'product': product, 'reviews': reviews}
+
+
     return render(request, template, context)
 
 
