@@ -187,7 +187,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 * The main logo acts as a link to the homepage, allowing users to easily return to the main page.
 
-* The navigation links provide shoppers with access to all sections of the website, ensuring easy navigation. Additionally, the navbar includes different tabs to help customers find products based on their categories, offering an intuitive and well-organized shopping experience. The links feature a hover effect that changes color, providing visual feedback to enhance the user experience.
+* The navigation links provide shoppers with access to all sections of the website, ensuring easy navigation. Additionally, the navbar includes different tabs to help customers find products based on their categories, offering an intuitive and well-organized shopping experience.
 
 * The shopping bag icon is prominently displayed on the website. Whenever a product is added to the shopping cart, the total value of the items is dynamically updated, keeping customers informed in real time and ensuring a seamless shopping experience. 
 
@@ -254,8 +254,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 * An "Add to Bag" button is provided to add the selected quantity of the product to the shopping bag.
 
-* A reviews link is available, showing how many reviews the product has received, and allows toggling the reviews 
-  section.
+* A reviews link is available, showing how many reviews the product has received, and allows toggling the     reviews section.
 
 * All reviews for the product are displayed in the reviews section at the bottom of the page.
 
@@ -286,8 +285,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 ### Shopping Bag Page
 ![Wonderboytshirt shopping bag page image](assets/readme_images/shopping_bag.png)
 
-* A message alerts the user if the free delivery threshold has not been reached, displaying the remaining amount needed 
-  to qualify for free delivery.
+* A message alerts the user if the free delivery threshold has not been reached, displaying the remaining amount needed to qualify for free delivery.
 
 * Display all products currently in the shopping bag, along with their details.
 
@@ -303,11 +301,9 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 ### Checkout Page
 ![Wonderboytshirt checkout page image](assets/readme_images/checkout_page.png)
 
-* Provide a checkout form for the shopper to complete the purchase, including the necessary contact, shipping, and 
-  payment information.
+* Provide a checkout form for the shopper to complete the purchase, including the necessary contact, shipping, and payment information.
 
-* Display an order summary that lists all the products to be purchased, along with their total cost, including the bag 
-  total and delivery fees.
+* Display an order summary that lists all the products to be purchased, along with their total cost, including the bag total and delivery fees.
 
 * Provide a link back to the shopping bag for the shopper to adjust the products before finalizing the purchase.
 
@@ -317,7 +313,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 * Ensure a clear button is available for the shopper to complete the order.
 
-* Implement a Stripe webhook handler in the backend to pass the order information if the browser crashes during         checkout  completion.
+* Implement a Stripe webhook handler in the backend to pass the order information if the browser crashes during checkout completion.
 
 
 ### Checkout Success Page
@@ -325,8 +321,7 @@ The font used across the site is Lato, with sans-serif as the fallback. This cle
 
 *Display the order and shopper information, allowing the shopper to confirm that the details are correct.
 
-*Additionally, inform the shopper that a confirmation email has been sent to the provided email address with the same 
- information.
+*Additionally, inform the shopper that a confirmation email has been sent to the provided email address with the same information.
 
 
 ### Profile Page
@@ -463,6 +458,9 @@ Sign Out | Allow the registered shopper to sign out from their account. | ![Wond
 
 * [JSHint](https://jshint.com/) 
     * The JSHints JavaScript Code Quality Tool was used to validate the site's JavaScript code.
+
+* [CI Python Linter](https://pep8ci.herokuapp.com/)
+    * The CI Python Linter was used to validate the site's Python code.
 
 
 [Back to top ⇧](#Wonderboytshirt)
@@ -805,14 +803,14 @@ Create a custom_storages.py file in your project's root directory, and inside it
 
 Page | Desktop | Mobile |
 --- | --- | --- |
-| Home | ![Desktop Home Page image](assets/readme_images/home_page.png) | ![Mobile Home Page image ]() |
-| Products | ![Desktop Products Page image](assets/readme_images/product_page.png) | ![Mobile Products Page image ]() |
-| Product Details | ![Desktop Product Details Page image](assets/readme_images/product_detail.png) | ![Mobile Product Details Page image ]() |
-| Shopping Bag | ![Desktop Shopping Bag Page image](assets/readme_images/shopping_bag.png) | ![Mobile Shopping Bag Page image ]() |
-| Checkout | ![Desktop Checkout Page image](assets/readme_images/checkout_page.png) | ![Mobile Checkout Page image ]() |
-| Checkout Success | ![Desktop Checkout Success Page image](assets/readme_images/checkout_success.png) | ![Mobile Checkout Page image ]() |
-| Profile | ![Desktop Profile Page image](assets/readme_images/profile_page.png) | ![Mobile Profile Page image ]() |
-| Reviews | ![Desktop Reviews Page image](assets/readme_images/reviews_page.png) | ![Mobile Reviews Page image ]() |
+| Home | ![Desktop Home Page image](assets/readme_images/home_page.png) | ![Mobile Home Page image ](assets/readme_images/home_mobile.png) |
+| Products | ![Desktop Products Page image](assets/readme_images/product_page.png) | ![Mobile Products Page image ](assets/readme_images/product_mobile.png) |
+| Product Details | ![Desktop Product Details Page image](assets/readme_images/product_detail.png) | ![Mobile Product Details Page image ](assets/readme_images/product_detail_mobile.png) |
+| Shopping Bag | ![Desktop Shopping Bag Page image](assets/readme_images/shopping_bag.png) | ![Mobile Shopping Bag Page image ](assets/readme_images/bag_mobile.png) |
+| Checkout | ![Desktop Checkout Page image](assets/readme_images/checkout_page.png) | ![Mobile Checkout Page image ](assets/readme_images/checkout_mobile.png) |
+| Checkout Success | ![Desktop Checkout Success Page image](assets/readme_images/checkout_success.png) | ![Mobile Checkout Page image ](assets/readme_images/checkout_success_mobile.png) |
+| Profile | ![Desktop Profile Page image](assets/readme_images/profile_page.png) | ![Mobile Profile Page image ](assets/readme_images/profile_mobile.png) |
+| Reviews | ![Desktop Reviews Page image](assets/readme_images/reviews_page.png) | ![Mobile Reviews Page image ](assets/readme_images/reviews_mobile.png) |
 
 
 

@@ -311,7 +311,6 @@ Element | Expected Outcome | Pass/Fail |
 --- | --- | --- |
 Decrease Quantity Button | Decreases the quantity on the input form. | Pass |
 Increase Quantity Button | Increases the quantity on the input form. | Pass |
-Select Size Button | Select the size on the input form. | Pass |
 Update Link | Clicking the link update the product quantity on the shopping bag. | Pass
 Delete Link | Clicking the link removed the product from the shopping bag. | Pass
 Keep Shopping Button | Clicking the button redirects to the products page. | Pass |
