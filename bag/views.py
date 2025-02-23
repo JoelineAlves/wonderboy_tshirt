@@ -3,6 +3,7 @@ from django.shortcuts import (
 )
 from django.contrib import messages
 from products.models import Product
+from decimal import Decimal
 
 
 def view_bag(request):
@@ -63,21 +64,13 @@ def add_to_bag(request, item_id):
     return redirect(redirect_url)
 
 
-from decimal import Decimal
-from django.shortcuts import get_object_or_404, redirect
-from products.models import Product
-from django.contrib import messages
-from django.urls import reverse
-
 def adjust_bag(request, item_id):
     """Adjusts the quantity of a product in the shopping bag."""
     product = get_object_or_404(Product, pk=item_id)
-    size = request.POST.get('product_size')  # Obter o tamanho (se existir)
-    
-    # Obter a quantidade e a ação
+    size = request.POST.get('product_size')
+
     action = request.POST.get('action')
-    quantity = int(request.POST.get('quantity', 1))  # A quantidade no input
-    
+    quantity = int(request.POST.get('quantity', 1))
     bag = request.session.get('bag', {})
 
     if item_id in bag:
@@ -86,21 +79,21 @@ def adjust_bag(request, item_id):
                 quantity += 1
             elif action == 'decrement' and quantity > 1:
                 quantity -= 1
-            
-            # Atualiza a quantidade no carrinho
+
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(
                 request,
-                f'Updated {product.name} ({size.upper()}) to {quantity} in the bag.'
+                f'Updated {product.name} ({size.upper()}) to {quantity} in \
+                the bag.'
             )
         else:
-            messages.error(request, f"Item with size {size} not found in the bag.")
+            messages.error(request, f"Item with size {size} not found \
+            in the bag.")
     else:
         messages.error(request, "Item not found in the bag.")
 
-    request.session['bag'] = bag  # Salvar as alterações no carrinho
+    request.session['bag'] = bag
     return redirect(reverse('view_bag'))
-
 
 
 def remove_from_bag(request, item_id, size):
@@ -121,7 +114,8 @@ def remove_from_bag(request, item_id, size):
                     f'Removed {product.name} ({size.upper()}) from the bag.'
                 )
             else:
-                messages.error(request, f'No size {size.upper()} found for this item in the bag.')
+                messages.error(request, f'No size {size.upper()} found \
+                for this item in the bag.')
         else:
             messages.error(request, 'Item not found in the bag.')
 
@@ -132,6 +126,7 @@ def remove_from_bag(request, item_id, size):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return redirect('view_bag')
+
 
 
 

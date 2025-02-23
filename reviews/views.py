@@ -24,10 +24,9 @@ def all_reviews(request, product_id):
     reviews = product.product_reviews_from_reviews.all()
 
 
-
-    for review in reviews:
-        review.stars = range(int(review.rating))
-        review.half_star = review.rating - int(review.rating) > 0
+for review in reviews:
+    review.stars = range(int(review.rating))
+    review.half_star = review.rating - int(review.rating) > 0
 
     template = 'reviews/all_reviews.html'
     context = {'product': product, 'reviews': reviews}
@@ -64,7 +63,7 @@ def add_review(request, product_id):
 
             # Verificando os dados da review antes de salvar
             print(f"Review data before saving: {review}")
-            
+
             review.save()
             print("Review saved:", review)
             messages.success(request, 'Your review has been submitted.')
@@ -72,7 +71,8 @@ def add_review(request, product_id):
         else:
             # Verificando os erros do formulário se a validação falhar
             print(f"Form errors: {form.errors}")
-            messages.error(request, 'There was an error submitting your review. Please try again.')
+            messages.error(request, 'There was an error submitting your \
+            review. Please try again.')
     else:
         print("GET request or another method received")
         form = ProductReviewForm()
@@ -80,7 +80,6 @@ def add_review(request, product_id):
     template = 'reviews/add_review.html'
     context = {'form': form, 'product': product}
     return render(request, template, context)
-
 
 
 @login_required
@@ -149,8 +148,5 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Your review has been deleted.')
     return redirect('product_detail', product_id=product_id)
-
-
-
 
 

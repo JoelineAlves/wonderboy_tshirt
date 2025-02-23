@@ -32,7 +32,6 @@ def bag_contents(request):
         product = get_object_or_404(Product, pk=item_id)
 
         if isinstance(item_data, int):
-            # Quando é uma quantidade simples
             total += item_data * product.price
             product_count += item_data
             bag_items.append(
@@ -40,11 +39,10 @@ def bag_contents(request):
                     "item_id": item_id,
                     "quantity": item_data,
                     "product": product,
-                    "sub_total": item_data * product.price,  # Calculando o subtotal
+                    "sub_total": item_data * product.price,
                 }
             )
         else:
-            # Quando é um dicionário com diferentes tamanhos
             for size, quantity in item_data["items_by_size"].items():
                 total += quantity * product.price
                 product_count += quantity
@@ -54,7 +52,7 @@ def bag_contents(request):
                         "quantity": quantity,
                         "product": product,
                         "size": size,
-                        "sub_total": quantity * product.price,  # Correção aqui, multiplicando a quantidade
+                        "sub_total": quantity * product.price,
                     }
                 )
 
@@ -81,4 +79,5 @@ def bag_contents(request):
     }
 
     return context
+
 

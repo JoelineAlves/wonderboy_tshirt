@@ -585,7 +585,7 @@ hr {
     }
 
     .main-content {
-        flex: 1; /* Mantém o conteúdo empurrando o footer para baixo */
+        flex: 1;
     }
 
     footer {
