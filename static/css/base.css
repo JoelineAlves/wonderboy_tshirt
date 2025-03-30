@@ -176,7 +176,7 @@ a.category-badge > span.badge:hover {
 }
 
 .fab {
-    color: #222;
+    color: #222 !important;
 }
 
 
