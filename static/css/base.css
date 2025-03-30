@@ -7,7 +7,8 @@ html, body {
 }
 
 body {
-    background: url('/media/background.jpg') no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('/media/background.jpg') no-repeat center center;
     background-attachment: scroll; 
     background-size: cover;
     background-position: center center;
