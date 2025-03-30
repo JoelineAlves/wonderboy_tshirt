@@ -175,6 +175,11 @@ a.category-badge > span.badge:hover {
     background-color: #BDBDBD !important;
 }
 
+.fab {
+    color: #222;
+}
+
+
 input[name='q']::placeholder {
     color: #aab7c4;
 }
