@@ -137,3 +137,4 @@ def remove_from_bag(request, item_id, size):
 
 
 
+

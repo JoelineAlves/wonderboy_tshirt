@@ -145,6 +145,7 @@
 ## Code Validation
 
 ### HTML
+![W3C Markup Validator image](assets/testing_images/html_validation.png)
 
 * [W3C Markup Validator](https://validator.w3.org/) I identified an error, which I successfully resolved by updating the ID names in both the mobile and base HTML templates and I managed to find a stray end tag div in toast html templates which was fixed.
 
@@ -155,6 +156,10 @@
 
 ### Python
 ![CI Python Linter Validator image](assets/testing_images/python_validation.png)
+
+![CI Python Linter Validator image](assets/testing_images/python_secondv.png)
+
+![CI Python Linter Validator image](assets/testing_images/python_thirtv.png)
 
 * [CI Python Linter](https://pep8ci.herokuapp.com/) Code Institute's Python Linter was used to lint my Python code. This process highlighted several whitespace and indentation issues, which were promptly addressed where possible to ensure clean and maintainable code.
 
