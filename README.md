@@ -819,6 +819,12 @@ Page | Desktop | Mobile |
 
 ## Credits
 
+* The **footer** design and **subscribe** functionality were inspired by and adapted from the **Nutritionist website**.
+
+* This project was developed by **Rachel Furlong**.
+
+Thanks for the inspiration for these sections!
+
 ### Media
 
 
