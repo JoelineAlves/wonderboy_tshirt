@@ -1,4 +1,4 @@
-# Wonderbotshirt
+# Wonderboytshirt
 
 
 ![Wonderboytshirt mockup images](assets/readme_images/screens.png)
